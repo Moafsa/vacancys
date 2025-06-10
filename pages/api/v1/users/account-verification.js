@@ -6,6 +6,7 @@ import { unlink } from 'fs/promises';
 import fetch from 'node-fetch';
 import FormData from 'form-data';
 import { saveFile, parseRequest } from '../../../../lib/fileUpload';
+import os from 'os';
 
 export const config = {
   api: {
@@ -19,7 +20,9 @@ async function verifyWithYolo(fileUrl, fileType, publicUrl) {
   const formData = new FormData();
   let fileBuffer;
   let fileName;
-  const filePath = path.isAbsolute(fileUrl) ? fileUrl : path.join(process.cwd(), 'public', fileUrl);
+  const filePath = path.isAbsolute(fileUrl)
+    ? fileUrl
+    : path.join(os.tmpdir(), path.basename(fileUrl));
   try {
     fileBuffer = await fs.readFile(filePath);
     fileName = path.basename(filePath);
@@ -159,32 +162,26 @@ export default async function handler(req, res) {
     // Atualizar apenas o arquivo enviado
     if (documentFile) {
       const docFile = Array.isArray(documentFile) ? documentFile[0] : documentFile;
+      // Use o path temporário diretamente
       console.log('[DEBUG] Chamando YOLO com arquivo temporário local:', docFile.filepath);
       const documentResult = await verifyWithYolo(docFile.filepath, 'document');
-      // Após YOLO, faz upload para o S3
       documentUrl = await saveFile(docFile);
-      console.log('[DEBUG] Documento salvo no MinIO:', documentUrl);
-      // Remover arquivo local após upload
       try { await fs.unlink(docFile.filepath); } catch (e) { /* ignora erro */ }
       documentStatus = documentResult.result === 'REJECTED' ? 'REJECTED' : 'APPROVED';
       documentRejectionReason = documentResult.result === 'REJECTED' ? (documentResult.reason || 'Document verification failed') : null;
       console.log('[DEBUG] Documento verificado pelo YOLO:', documentResult);
     }
     if (proofFile) {
-      console.log('[DEBUG] Salvando comprovante de endereço no MinIO:', proofFile);
       proofUrl = await saveFile(Array.isArray(proofFile) ? proofFile[0] : proofFile);
-      console.log('[DEBUG] Comprovante salvo no MinIO:', proofUrl);
       proofOfAddressStatus = 'APPROVED';
       proofOfAddressRejectionReason = null;
     }
     if (selfieFile) {
       const selfFile = Array.isArray(selfieFile) ? selfieFile[0] : selfieFile;
+      // Use o path temporário diretamente
       console.log('[DEBUG] Chamando YOLO com selfie temporária local:', selfFile.filepath);
       const selfieResult = await verifyWithYolo(selfFile.filepath, 'selfie');
-      // Após YOLO, faz upload para o S3
       selfieUrl = await saveFile(selfFile, '.jpg');
-      console.log('[DEBUG] Selfie salva no MinIO:', selfieUrl);
-      // Remover arquivo local após upload
       try { await fs.unlink(selfFile.filepath); } catch (e) { /* ignora erro */ }
       selfieStatus = selfieResult.result === 'REJECTED' ? 'REJECTED' : 'APPROVED';
       selfieRejectionReason = selfieResult.result === 'REJECTED' ? (selfieResult.reason || 'Selfie verification failed') : null;
