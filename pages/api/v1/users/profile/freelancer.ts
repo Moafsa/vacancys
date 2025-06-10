@@ -29,11 +29,11 @@ export default async function handler(req, res) {
     const jwtSecret = process.env.JWT_SECRET || 'default-secret';
     const decoded = jwt.verify(token, jwtSecret);
     
-    if (!decoded || !decoded.userId) {
-      return res.status(401).json({ message: 'Token inválido' });
+    if (!decoded || typeof decoded !== 'object' || !('userId' in decoded)) {
+      return res.status(401).json({ message: 'Invalid token' });
     }
     
-    const userId = decoded.userId;
+    const userId = (decoded as { userId: string }).userId;
     console.log(`Processando ${req.method} requisição de perfil de freelancer para usuário ${userId}`);
     
     switch (req.method) {

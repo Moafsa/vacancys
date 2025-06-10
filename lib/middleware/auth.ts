@@ -30,14 +30,14 @@ export const withAuth = (handler: ApiHandler): ApiHandler => async (
     
     // Verify token
     const jwtSecret = process.env.JWT_SECRET || 'default-secret';
-    const decoded = jwt.verify(token, jwtSecret) as jwt.JwtPayload;
+    const decoded = jwt.verify(token, jwtSecret);
     
-    if (!decoded || !decoded.userId) {
+    if (!decoded || typeof decoded !== 'object' || !('userId' in decoded)) {
       return res.status(401).json({ message: 'Invalid token' });
     }
     
     // Add userId to request object
-    req.userId = decoded.userId;
+    req.userId = (decoded as { userId: string }).userId;
     
     // Call the original handler
     return handler(req, res);

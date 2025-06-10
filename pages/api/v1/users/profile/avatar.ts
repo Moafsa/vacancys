@@ -39,13 +39,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     
     // Verificar o token
     const jwtSecret = process.env.JWT_SECRET || 'default-secret';
-    const decoded = jwt.verify(token, jwtSecret) as { userId: string };
+    const decoded = jwt.verify(token, jwtSecret);
     
-    if (!decoded || !decoded.userId) {
+    if (!decoded || typeof decoded !== 'object' || !('userId' in decoded)) {
       return res.status(401).json({ message: 'Invalid token' });
     }
-
-    const userId = decoded.userId;
+    
+    const userId = (decoded as { userId: string }).userId;
 
     // Parse do formulário de upload
     const { files } = await fileUploadService.parseRequest(req as any);
