@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 19: Competidores - Vacancy.services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <style>
+        .slide {
+            min-height: 100vh;
+            display: block;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #6e48aa 0%, #4894ea 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Estilos para quadrante competidor */
+        .quadrant-container {
+            position: relative;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            aspect-ratio: 1;
+        }
+        
+        .quadrant-divider-x, .quadrant-divider-y {
+            position: absolute;
+            background-color: #e5e7eb;
+            z-index: 1;
+        }
+        
+        .quadrant-divider-x {
+            width: 100%;
+            height: 1px;
+            top: 50%;
+            left: 0;
+        }
+        
+        .quadrant-divider-y {
+            width: 1px;
+            height: 100%;
+            top: 0;
+            left: 50%;
+        }
+        
+        .quadrant-label {
+            position: absolute;
+            z-index: 2;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #4B5563;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+        }
+        
+        .top-left {
+            top: 0.5rem;
+            left: 0.5rem;
+        }
+        
+        .top-right {
+            top: 0.5rem;
+            right: 0.5rem;
+        }
+        
+        .bottom-left {
+            bottom: 0.5rem;
+            left: 0.5rem;
+        }
+        
+        .bottom-right {
+            bottom: 0.5rem;
+            right: 0.5rem;
+        }
+        
+        .competitor-bubble {
+            position: absolute;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        /* Estilos para tabela de pontos fortes e fracos */
+        .strengths-table td, .strengths-table th {
+            padding: 0.75rem 1rem;
+        }
+        
+        .strengths-table tr:not(:last-child) {
+            border-bottom: 1px solid #e5e7eb;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="h-10 w-auto">
+                    <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images//3.svg" alt="Vacancy.services logo" class="h-full">
+                </div>
+                <span class="ml-3 text-sm text-purple-700 hidden md:block">Talentos Globais, Oportunidades sem Fronteiras</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="slide18-roadmap.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-left text-purple-600"></i>
+                </a>
+                <a href="index_principal.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-home text-purple-600"></i>
+                </a>
+                <a href="slide20-proposta-valor.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-right text-purple-600"></i>
+                </a>
+                <span class="text-sm font-medium text-gray-600">19/22</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Slide: Análise de Competidores -->
+    <section class="slide bg-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen">
+            <h2 class="text-4xl font-bold text-center mb-16 mt-10 text-purple-800">Análise de Competidores</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+                <!-- Mapa de posicionamento -->
+                <div>
+                    <h3 class="text-2xl font-bold text-purple-800 mb-6">Mapa de Posicionamento</h3>
+                    
+                    <div class="quadrant-container bg-white p-4">
+                        <div class="quadrant-divider-x"></div>
+                        <div class="quadrant-divider-y"></div>
+                        
+                        <div class="quadrant-label top-left">Nicho<br/>Local</div>
+                        <div class="quadrant-label top-right">Premium<br/>Global</div>
+                        <div class="quadrant-label bottom-left">Básico<br/>Baixo Custo</div>
+                        <div class="quadrant-label bottom-right">Volume<br/>Massivo</div>
+                        
+                        <!-- Vacancy.services -->
+                        <div class="competitor-bubble" style="width: 120px; height: 120px; background-color: #8B5CF6; left: 40%; top: 30%;">
+                            <div class="text-center">
+                                <div class="text-xs">Vacancy</div>
+                                <div class="text-xs">.services</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Upwork -->
+                        <div class="competitor-bubble" style="width: 80px; height: 80px; background-color: #3B82F6; left: 75%; top: 25%;">
+                            Upwork
+                        </div>
+                        
+                        <!-- Fiverr -->
+                        <div class="competitor-bubble" style="width: 70px; height: 70px; background-color: #10B981; left: 80%; top: 75%;">
+                            Fiverr
+                        </div>
+                        
+                        <!-- LinkedIn -->
+                        <div class="competitor-bubble" style="width: 65px; height: 65px; background-color: #0077B5; left: 65%; top: 35%;">
+                            LinkedIn
+                        </div>
+                        
+                        <!-- GetNinjas -->
+                        <div class="competitor-bubble" style="width: 40px; height: 40px; background-color: #6B7280; left: 35%; top: 80%;">
+                            GetNinjas
+                        </div>
+                        
+                        <!-- Workana -->
+                        <div class="competitor-bubble" style="width: 45px; height: 45px; background-color: #F59E0B; left: 20%; top: 60%;">
+                            Workana
+                        </div>
+                        
+                        <!-- Legendas -->
+                        <div class="absolute bottom-2 right-2 bg-white bg-opacity-75 p-2 rounded-lg">
+                            <div class="text-xs text-center font-medium mb-1">
+                                Tamanho = Market Share LATAM
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tabela de pontos fortes e fracos -->
+                <div>
+                    <h3 class="text-2xl font-bold text-purple-800 mb-6">Pontos Fortes e Fracos dos Competidores</h3>
+                    
+                    <div class="bg-white rounded-xl shadow-lg overflow-x-auto">
+                        <table class="w-full strengths-table">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="text-left">Competidor</th>
+                                    <th class="text-left">Pontos Fortes</th>
+                                    <th class="text-left">Pontos Fracos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-medium">Upwork</td>
+                                    <td class="text-sm">
+                                        <ul class="space-y-1">
+                                            <li>• Base global de freelancers</li>
+                                            <li>• Reconhecimento da marca</li>
+                                            <li>• Funcionalidades avançadas</li>
+                                        </ul>
+                                    </td>
+                                    <td class="text-sm">
+                                        <ul class="space-y-1">
+                                            <li>• Taxas altas (25%)</li>
+                                            <li>• Baixa penetração na LATAM</li>
+                                            <li>• Falta de suporte local</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td class="font-medium">Fiverr</td>
+                                    <td class="text-sm">
+                                        <ul class="space-y-1">
+                                            <li>• Modelo de serviços empacotados</li>
+                                            <li>• UX intuitiva para contratantes</li>
+                                            <li>• Presença global forte</li>
+                                        </ul>
+                                    </td>
+                                    <td class="text-sm">
+                                        <ul class="space-y-1">
+                                            <li>• Foco em gig economy</li>
+                                            <li>• Baixa retenção de talentos</li>
+                                            <li>• Preços não competitivos LATAM</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td class="font-medium">LinkedIn</td>
+                                    <td class="text-sm">
+                                        <ul class="space-y-1">
+                                            <li>• Rede profissional estabelecida</li>
+                                            <li>• Integração com Microsoft</li>
+                                            <li>• Dados de mercado valiosos</li>
+                                        </ul>
+                                    </td>
+                                    <td class="text-sm">
+                                        <ul class="space-y-1">
+                                            <li>• Plataforma freelance limitada</li>
+                                            <li>• Foco em recrutamento tradicional</li>
+                                            <li>• Custos elevados para empresas</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td class="font-medium">Workana</td>
+                                    <td class="text-sm">
+                                        <ul class="space-y-1">
+                                            <li>• Presença histórica na LATAM</li>
+                                            <li>• Base de usuários leal</li>
+                                            <li>• Preços competitivos</li>
+                                        </ul>
+                                    </td>
+                                    <td class="text-sm">
+                                        <ul class="space-y-1">
+                                            <li>• Plataforma desatualizada</li>
+                                            <li>• Perda de market share</li>
+                                            <li>• Falta de inovação</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Oportunidades no Mercado -->
+                <div class="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-purple-800 mb-4">Oportunidades Identificadas</h3>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="text-green-500 text-lg mr-3 mt-0.5">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Mercado LATAM em expansão</p>
+                                <p class="text-sm text-gray-600">Crescimento acelerado do trabalho remoto e demanda por talentos tech.</p>
+                            </div>
+                        </li>
+                        
+                        <li class="flex items-start">
+                            <div class="text-green-500 text-lg mr-3 mt-0.5">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Integração com IA avançada</p>
+                                <p class="text-sm text-gray-600">Oportunidade de liderar com IA generativa para matchmaking e gestão de projetos.</p>
+                            </div>
+                        </li>
+                        
+                        <li class="flex items-start">
+                            <div class="text-green-500 text-lg mr-3 mt-0.5">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Ecossistema financeiro regional</p>
+                                <p class="text-sm text-gray-600">Integração com PIX, SPEI e outros sistemas locais proporciona vantagem competitiva.</p>
+                            </div>
+                        </li>
+                        
+                        <li class="flex items-start">
+                            <div class="text-green-500 text-lg mr-3 mt-0.5">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Demanda por talentos especializados</p>
+                                <p class="text-sm text-gray-600">Empresas globais buscando talentos LATAM em áreas específicas como IA, blockchain e cloud.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Estratégia de Diferenciação -->
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-purple-800 mb-4">Estratégia de Diferenciação</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-medium flex items-center">
+                                <span class="inline-block w-3 h-3 rounded-full bg-purple-600 mr-2"></span>
+                                Posicionamento no Mercado
+                            </h4>
+                            <p class="text-sm text-gray-600 ml-5 mt-1">Líder em tecnologia na LATAM com expansão acelerada para mercados globais.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-medium flex items-center">
+                                <span class="inline-block w-3 h-3 rounded-full bg-purple-600 mr-2"></span>
+                                Vantagem Tecnológica
+                            </h4>
+                            <p class="text-sm text-gray-600 ml-5 mt-1">Stack proprietária de IA para matchmaking, análise preditiva e automação de processos.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-medium flex items-center">
+                                <span class="inline-block w-3 h-3 rounded-full bg-purple-600 mr-2"></span>
+                                Modelo de Negócio Competitivo
+                            </h4>
+                            <p class="text-sm text-gray-600 ml-5 mt-1">Taxas competitivas (12-15%) e sistema de créditos com benefícios para usuários frequentes.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-medium flex items-center">
+                                <span class="inline-block w-3 h-3 rounded-full bg-purple-600 mr-2"></span>
+                                Expansão Estratégica
+                            </h4>
+                            <p class="text-sm text-gray-600 ml-5 mt-1">Consolidação na LATAM e expansão estratégica para EUA e Europa em 2025-2026.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Para garantir que a seção esteja visível (já que estamos tornando todos os slides visíveis por padrão)
+        const slides = document.querySelectorAll('.slide');
+        slides.forEach(slide => {
+            slide.classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html> 

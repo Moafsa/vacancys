@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 17: Comparativo - Vacancy.services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <style>
+        .slide {
+            min-height: 100vh;
+            display: block;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #6e48aa 0%, #4894ea 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Estilos para os gráficos */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+        
+        /* Estilos para a tabela comparativa */
+        .comparison-table th, .comparison-table td {
+            padding: 0.75rem 1rem;
+            text-align: center;
+        }
+        
+        .comparison-table th {
+            font-weight: 600;
+        }
+        
+        .comparison-table tr:not(:last-child) {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .highlight-row {
+            background-color: rgba(139, 92, 246, 0.05);
+        }
+        
+        /* Estilos para os ícones de comparação */
+        .check-icon {
+            color: #10B981;
+        }
+        
+        .times-icon {
+            color: #EF4444;
+        }
+        
+        .partial-icon {
+            color: #F59E0B;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="h-10 w-auto">
+                    <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images//3.svg" alt="Vacancy.services logo" class="h-full">
+                </div>
+                <span class="ml-3 text-sm text-purple-700 hidden md:block">Talentos Globais, Oportunidades sem Fronteiras</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="slide16-depoimentos.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-left text-purple-600"></i>
+                </a>
+                <a href="index_principal.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-home text-purple-600"></i>
+                </a>
+                <a href="slide18-roadmap.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-right text-purple-600"></i>
+                </a>
+                <span class="text-sm font-medium text-gray-600">17/22</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Slide: Comparativo com Concorrentes -->
+    <section class="slide bg-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen">
+            <h2 class="text-4xl font-bold text-center mb-16 mt-10 text-purple-800">Vacancy.services vs. Concorrentes</h2>
+            
+            <div class="bg-white p-8 rounded-xl shadow-lg mb-12 overflow-x-auto">
+                <table class="w-full comparison-table">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="text-left px-6 py-3 text-gray-500">Recursos</th>
+                            <th class="px-6 py-3 text-purple-700">Vacancy.services</th>
+                            <th class="px-6 py-3 text-gray-500">Upwork</th>
+                            <th class="px-6 py-3 text-gray-500">Fiverr</th>
+                            <th class="px-6 py-3 text-gray-500">LinkedIn Jobs</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td class="text-left font-medium">Testes de habilidades automatizados</td>
+                            <td><i class="fas fa-check-circle text-lg check-icon"></i></td>
+                            <td><i class="fas fa-times text-lg times-icon"></i></td>
+                            <td><i class="fas fa-times text-lg times-icon"></i></td>
+                            <td><i class="fas fa-times text-lg times-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left font-medium">Matchmaking baseado em IA</td>
+                            <td><i class="fas fa-check-circle text-lg check-icon"></i></td>
+                            <td><i class="fas fa-check-circle text-lg partial-icon"></i></td>
+                            <td><i class="fas fa-check-circle text-lg partial-icon"></i></td>
+                            <td><i class="fas fa-check-circle text-lg partial-icon"></i></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td class="text-left font-medium">Tradução em tempo real</td>
+                            <td><i class="fas fa-check-circle text-lg check-icon"></i></td>
+                            <td><i class="fas fa-times text-lg times-icon"></i></td>
+                            <td><i class="fas fa-times text-lg times-icon"></i></td>
+                            <td><i class="fas fa-times text-lg times-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left font-medium">Pagamentos locais (Brasil/LATAM)</td>
+                            <td><i class="fas fa-check-circle text-lg check-icon"></i></td>
+                            <td><i class="fas fa-times text-lg times-icon"></i></td>
+                            <td><i class="fas fa-check-circle text-lg partial-icon"></i></td>
+                            <td><i class="fas fa-times text-lg times-icon"></i></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td class="text-left font-medium">Onboarding guiado por IA</td>
+                            <td><i class="fas fa-check-circle text-lg check-icon"></i></td>
+                            <td><i class="fas fa-times text-lg times-icon"></i></td>
+                            <td><i class="fas fa-times text-lg times-icon"></i></td>
+                            <td><i class="fas fa-times text-lg times-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left font-medium">Sistema de créditos flexível</td>
+                            <td><i class="fas fa-check-circle text-lg check-icon"></i></td>
+                            <td><i class="fas fa-times text-lg times-icon"></i></td>
+                            <td><i class="fas fa-times text-lg times-icon"></i></td>
+                            <td><i class="fas fa-check-circle text-lg partial-icon"></i></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td class="text-left font-medium">Escudo anti-fraude</td>
+                            <td><i class="fas fa-check-circle text-lg check-icon"></i></td>
+                            <td><i class="fas fa-check-circle text-lg partial-icon"></i></td>
+                            <td><i class="fas fa-check-circle text-lg partial-icon"></i></td>
+                            <td><i class="fas fa-times text-lg times-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left font-medium">Foco no mercado LATAM</td>
+                            <td><i class="fas fa-check-circle text-lg check-icon"></i></td>
+                            <td><i class="fas fa-times text-lg times-icon"></i></td>
+                            <td><i class="fas fa-times text-lg times-icon"></i></td>
+                            <td><i class="fas fa-check-circle text-lg partial-icon"></i></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td class="text-left font-medium">Taxa média para freelancers</td>
+                            <td class="text-purple-700 font-bold">12-15%</td>
+                            <td>20%</td>
+                            <td>20%</td>
+                            <td>N/A</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-purple-800 mb-4">Nossas Vantagens Competitivas</h3>
+                    
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <div class="text-purple-600 text-lg mr-3 mt-0.5">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Taxas competitivas com benefícios premium</p>
+                                <p class="text-sm text-gray-600">Taxa otimizada para sustentar inovação contínua e oferecer benefícios exclusivos aos usuários.</p>
+                            </div>
+                        </li>
+                        
+                        <li class="flex items-start">
+                            <div class="text-purple-600 text-lg mr-3 mt-0.5">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">IA Generativa para Comunicação</p>
+                                <p class="text-sm text-gray-600">Tradução e comunicação multilíngue em tempo real com IA avançada.</p>
+                            </div>
+                        </li>
+                        
+                        <li class="flex items-start">
+                            <div class="text-purple-600 text-lg mr-3 mt-0.5">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Matchmaking de Alta Precisão</p>
+                                <p class="text-sm text-gray-600">98% de precisão nas correspondências projeto-talento usando IA avançada.</p>
+                            </div>
+                        </li>
+                        
+                        <li class="flex items-start">
+                            <div class="text-purple-600 text-lg mr-3 mt-0.5">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Presença Local Forte</p>
+                                <p class="text-sm text-gray-600">Operações estabelecidas em 5 países LATAM com suporte local dedicado.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-purple-800 mb-4">Market Share Atual (LATAM)</h3>
+                    
+                    <div class="chart-container">
+                        <canvas id="marketShareChart"></canvas>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4 mt-6">
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <div class="text-sm text-gray-600">Mercado atual LATAM</div>
+                            <div class="font-bold text-xl">$58B</div>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <div class="text-sm text-gray-600">Market share atual (2025)</div>
+                            <div class="font-bold text-xl">18%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 p-6 rounded-xl">
+                <h3 class="text-xl font-bold text-purple-800 mb-4">O Que Nos Diferencia</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-4 rounded-lg shadow">
+                        <div class="text-center mb-4">
+                            <div class="inline-block p-3 rounded-full bg-purple-100 text-purple-600 text-xl">
+                                <i class="fas fa-globe-americas"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-center mb-2">Foco Regional</h4>
+                        <p class="text-sm text-center text-gray-600">Plataforma construída para atender às necessidades específicas do mercado latino-americano.</p>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg shadow">
+                        <div class="text-center mb-4">
+                            <div class="inline-block p-3 rounded-full bg-purple-100 text-purple-600 text-xl">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-center mb-2">Tecnologia Superior</h4>
+                        <p class="text-sm text-center text-gray-600">IA avançada que realmente entende as habilidades técnicas e os perfis comportamentais.</p>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg shadow">
+                        <div class="text-center mb-4">
+                            <div class="inline-block p-3 rounded-full bg-purple-100 text-purple-600 text-xl">
+                                <i class="fas fa-hand-holding-usd"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-center mb-2">Modelo Econômico</h4>
+                        <p class="text-sm text-center text-gray-600">Sistema de créditos e taxas reduzidas tornam a plataforma mais acessível para todos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Para garantir que a seção esteja visível (já que estamos tornando todos os slides visíveis por padrão)
+        const slides = document.querySelectorAll('.slide');
+        slides.forEach(slide => {
+            slide.classList.add('active');
+        });
+        
+        // Inicialização do gráfico de market share
+        const marketShareCtx = document.getElementById('marketShareChart').getContext('2d');
+        const marketShareChart = new Chart(marketShareCtx, {
+            type: 'bar',
+            data: {
+                labels: ['2023', '2024', '2025', '2026'],
+                datasets: [
+                    {
+                        label: 'Vacancy.services',
+                        data: [8, 12, 18, 25],
+                        backgroundColor: '#8B5CF6',
+                    },
+                    {
+                        label: 'Upwork (LATAM)',
+                        data: [12, 10, 8, 7],
+                        backgroundColor: '#3B82F6',
+                    },
+                    {
+                        label: 'Fiverr (LATAM)',
+                        data: [8, 7, 6, 5],
+                        backgroundColor: '#10B981',
+                    },
+                    {
+                        label: 'Outros',
+                        data: [72, 71, 68, 63],
+                        backgroundColor: '#6B7280',
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                    },
+                    y: {
+                        stacked: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.raw + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
+    </script>
+</body>
+</html> 

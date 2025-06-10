@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 12: América Latina - Vacancy.services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <style>
+        .slide {
+            min-height: 100vh;
+            display: block;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #6e48aa 0%, #4894ea 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Estilos para os gráficos */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+        
+        /* Estilos para animação de gráficos */
+        .pie-chart-container, .line-chart-container {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .slide.active .pie-chart-container,
+        .slide.active .line-chart-container {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Estilos para animação das setas de expansão */
+        @keyframes arrowFlow {
+            0% { stroke-dashoffset: 10; }
+            100% { stroke-dashoffset: 0; }
+        }
+        
+        .arrow-path {
+            stroke-dasharray: 5, 2;
+            animation: arrowFlow 1s infinite linear;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="h-10 w-auto">
+                    <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images//3.svg" alt="Vacancy.services logo" class="h-full">
+                </div>
+                <span class="ml-3 text-sm text-purple-700 hidden md:block">Talentos Globais, Oportunidades sem Fronteiras</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="slide11-estrategia.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-left text-purple-600"></i>
+                </a>
+                <a href="index_principal.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-home text-purple-600"></i>
+                </a>
+                <a href="slide13-time.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-right text-purple-600"></i>
+                </a>
+                <span class="text-sm font-medium text-gray-600">13/22</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Slide: América Latina -->
+    <section class="slide bg-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen flex flex-col justify-center">
+            <h2 class="text-4xl font-bold text-center mb-16 text-purple-800">Dominando a América Latina em 18 Meses</h2>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-10 mb-16">
+                <div class="lg:w-1/2">
+                    <div class="relative bg-white p-8 rounded-xl shadow-2xl">
+                        <!-- Mapa de expansão global -->
+                        <div class="relative">
+                            <!-- Mapa mundial estilizado -->
+                            <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                <defs>
+                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#4FD1C5" stop-opacity="0.8" />
+                                        <stop offset="100%" stop-color="#4FD1C5" stop-opacity="0.2" />
+                                    </linearGradient>
+                                </defs>
+                                <path d="M10 10 L90 10 L90 90 L10 90 Z" fill="url(#gradient)" stroke="#4FD1C5" stroke-width="2" />
+                            </svg>
+                            
+                            <!-- Pontos de expansão -->
+                            <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                <div class="flex items-center justify-center space-x-8">
+                                    <div class="flex flex-col items-center">
+                                        <div class="bg-white rounded-full w-10 h-10 flex items-center justify-center text-purple-800 font-bold shadow-lg">1</div>
+                                        <div class="mt-2 px-3 py-1 bg-black bg-opacity-70 rounded-lg text-xs text-white whitespace-nowrap shadow-lg">Brasil</div>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                        <div class="bg-white rounded-full w-10 h-10 flex items-center justify-center text-purple-800 font-bold shadow-lg">2</div>
+                                        <div class="mt-2 px-3 py-1 bg-black bg-opacity-70 rounded-lg text-xs text-white whitespace-nowrap shadow-lg">México</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-center space-x-8 mt-8">
+                                    <div class="flex flex-col items-center">
+                                        <div class="bg-white rounded-full w-10 h-10 flex items-center justify-center text-purple-800 font-bold shadow-lg">3</div>
+                                        <div class="mt-2 px-3 py-1 bg-black bg-opacity-70 rounded-lg text-xs text-white whitespace-nowrap shadow-lg">SEA</div>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                        <div class="bg-white rounded-full w-10 h-10 flex items-center justify-center text-purple-800 font-bold shadow-lg">4</div>
+                                        <div class="mt-2 px-3 py-1 bg-black bg-opacity-70 rounded-lg text-xs text-white whitespace-nowrap shadow-lg">África</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="space-y-6">
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <h3 class="font-bold text-xl mb-4">Estratégia de Expansão Global</h3>
+                            
+                            <div class="space-y-5">
+                                <div class="flex items-start">
+                                    <div class="text-purple-800 text-2xl mr-4">
+                                        <i class="fas fa-globe-americas"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold mb-1">Lançamento Oficial (Brasil/México)</h4>
+                                        <p class="text-sm text-gray-600">Foco inicial na América Latina com lançamento oficial em Brasil e México.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="text-blue-600 text-2xl mr-4">
+                                        <i class="fas fa-handshake"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold mb-1">Parcerias com Escolas Técnicas</h4>
+                                        <p class="text-sm text-gray-600">Colaboração com instituições de ensino para capacitar e conectar talentos locais.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="text-green-600 text-2xl mr-4">
+                                        <i class="fas fa-language"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold mb-1">Suporte a Idiomas Locais</h4>
+                                        <p class="text-sm text-gray-600">Português, Espanhol e Inglês integrados com tradução em tempo real.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="text-yellow-600 text-2xl mr-4">
+                                        <i class="fas fa-credit-card"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold mb-1">Métodos de Pagamento Regionais</h4>
+                                        <p class="text-sm text-gray-600">Integração com Pix (Brasil), SPEI (México) e outros sistemas locais de pagamento.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-6 rounded-xl">
+                            <h3 class="font-bold text-xl mb-3 text-purple-800">Números do Mercado LATAM</h3>
+                            <div class="grid grid-cols-3 gap-3">
+                                <div class="bg-white p-3 rounded-lg text-center">
+                                    <div class="text-2xl font-bold text-purple-700">45M+</div>
+                                    <p class="text-xs text-gray-600">Freelancers</p>
+                                </div>
+                                <div class="bg-white p-3 rounded-lg text-center">
+                                    <div class="text-2xl font-bold text-blue-600">$42B</div>
+                                    <p class="text-xs text-gray-600">Mercado Potencial</p>
+                                </div>
+                                <div class="bg-white p-3 rounded-lg text-center">
+                                    <div class="text-2xl font-bold text-green-600">31%</div>
+                                    <p class="text-xs text-gray-600">Crescimento Anual</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Para garantir que a seção esteja visível (já que estamos tornando todos os slides visíveis por padrão)
+        const slides = document.querySelectorAll('.slide');
+        slides.forEach(slide => {
+            slide.classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html> 

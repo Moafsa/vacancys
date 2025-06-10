@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 18: Roadmap - Vacancy.services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <style>
+        .slide {
+            min-height: 100vh;
+            display: block;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #6e48aa 0%, #4894ea 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Estilos para roadmap */
+        .roadmap-container {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .roadmap-line {
+            position: absolute;
+            width: 6px;
+            background-color: #E5E7EB;
+            top: 0;
+            bottom: 0;
+            left: calc(50% - 3px);
+            border-radius: 3px;
+        }
+        
+        .roadmap-item {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .roadmap-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .roadmap-dot {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background-color: white;
+            border: 4px solid #8B5CF6;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+        
+        .roadmap-content {
+            width: 45%;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            background-color: white;
+        }
+        
+        .roadmap-left {
+            margin-right: 55%;
+        }
+        
+        .roadmap-right {
+            margin-left: 55%;
+        }
+        
+        .roadmap-arrow {
+            position: absolute;
+            top: 50%;
+            width: calc(10% - 12px);
+            height: 2px;
+            background-color: #E5E7EB;
+        }
+        
+        .roadmap-left .roadmap-arrow {
+            right: -10%;
+        }
+        
+        .roadmap-right .roadmap-arrow {
+            left: -10%;
+        }
+        
+        .roadmap-quarter {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        /* Cores dos trimestres */
+        .q1 { background-color: #EDE9FE; color: #6D28D9; }
+        .q2 { background-color: #E0E7FF; color: #4F46E5; }
+        .q3 { background-color: #DBEAFE; color: #2563EB; }
+        .q4 { background-color: #E0F2FE; color: #0284C7; }
+        
+        @media screen and (max-width: 767px) {
+            .roadmap-line {
+                left: 20px;
+            }
+            
+            .roadmap-dot {
+                left: 20px;
+            }
+            
+            .roadmap-content {
+                width: 80%;
+                margin-left: 50px !important;
+                margin-right: 0 !important;
+            }
+            
+            .roadmap-arrow {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="h-10 w-auto">
+                    <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images//3.svg" alt="Vacancy.services logo" class="h-full">
+                </div>
+                <span class="ml-3 text-sm text-purple-700 hidden md:block">Talentos Globais, Oportunidades sem Fronteiras</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="slide17-comparativo.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-left text-purple-600"></i>
+                </a>
+                <a href="index_principal.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-home text-purple-600"></i>
+                </a>
+                <a href="slide19-competidores.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-right text-purple-600"></i>
+                </a>
+                <span class="text-sm font-medium text-gray-600">18/22</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Slide: Roadmap -->
+    <section class="slide bg-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen">
+            <h2 class="text-4xl font-bold text-center mb-16 mt-10 text-purple-800">Roadmap 2025-2026</h2>
+            
+            <div class="roadmap-container">
+                <div class="roadmap-line"></div>
+                
+                <!-- Q2 2025 -->
+                <div class="roadmap-item">
+                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-arrow"></div>
+                    <div class="roadmap-content roadmap-left">
+                        <span class="roadmap-quarter q2 mb-3">Q2 2025</span>
+                        <h3 class="font-bold text-xl mb-3">Expansão Global</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Série B concluída ($20M)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Presença consolidada em 5 países LATAM</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Lançamento do programa de certificação própria</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Q3 2025 -->
+                <div class="roadmap-item">
+                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-arrow"></div>
+                    <div class="roadmap-content roadmap-right">
+                        <span class="roadmap-quarter q3 mb-3">Q3 2025</span>
+                        <h3 class="font-bold text-xl mb-3">Inovação Tecnológica</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-gray-400 mt-1 mr-2"></i>
+                                <span>Lançamento da plataforma de treinamento IA</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-gray-400 mt-1 mr-2"></i>
+                                <span>Sistema de mentoria automatizada</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-gray-400 mt-1 mr-2"></i>
+                                <span>Marketplace de cursos especializados</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Q4 2025 -->
+                <div class="roadmap-item">
+                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-arrow"></div>
+                    <div class="roadmap-content roadmap-left">
+                        <span class="roadmap-quarter q4 mb-3">Q4 2025</span>
+                        <h3 class="font-bold text-xl mb-3">Expansão EUA</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-gray-400 mt-1 mr-2"></i>
+                                <span>Lançamento oficial nos Estados Unidos</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-gray-400 mt-1 mr-2"></i>
+                                <span>Parcerias com empresas Fortune 500</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-gray-400 mt-1 mr-2"></i>
+                                <span>Escritório em São Francisco</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Q1 2026 -->
+                <div class="roadmap-item">
+                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-arrow"></div>
+                    <div class="roadmap-content roadmap-right">
+                        <span class="roadmap-quarter q1 mb-3">Q1 2026</span>
+                        <h3 class="font-bold text-xl mb-3">Série C</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-gray-400 mt-1 mr-2"></i>
+                                <span>Captação de $50M para expansão global</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-gray-400 mt-1 mr-2"></i>
+                                <span>Aquisição de startups estratégicas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-gray-400 mt-1 mr-2"></i>
+                                <span>Lançamento do programa de aceleração</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Q2 2026 -->
+                <div class="roadmap-item">
+                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-arrow"></div>
+                    <div class="roadmap-content roadmap-left">
+                        <span class="roadmap-quarter q2 mb-3">Q2 2026</span>
+                        <h3 class="font-bold text-xl mb-3">Expansão Europa</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-gray-400 mt-1 mr-2"></i>
+                                <span>Lançamento em 5 países europeus</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-gray-400 mt-1 mr-2"></i>
+                                <span>Conformidade com GDPR e regulações EU</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-circle text-gray-400 mt-1 mr-2"></i>
+                                <span>Escritório em Londres</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold text-xl text-purple-800 mb-4">Próximos Marcos</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="rounded-full bg-purple-100 p-2 mr-3">
+                                    <i class="fas fa-users text-purple-600"></i>
+                                </div>
+                                <span>500.000 usuários ativos</span>
+                            </div>
+                            <span class="text-sm font-medium text-purple-700">Q3 2025</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="rounded-full bg-purple-100 p-2 mr-3">
+                                    <i class="fas fa-project-diagram text-purple-600"></i>
+                                </div>
+                                <span>50.000 projetos mensais</span>
+                            </div>
+                            <span class="text-sm font-medium text-purple-700">Q4 2025</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="rounded-full bg-purple-100 p-2 mr-3">
+                                    <i class="fas fa-globe-americas text-purple-600"></i>
+                                </div>
+                                <span>Presença em 12 países</span>
+                            </div>
+                            <span class="text-sm font-medium text-purple-700">Q2 2026</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="rounded-full bg-purple-100 p-2 mr-3">
+                                    <i class="fas fa-dollar-sign text-purple-600"></i>
+                                </div>
+                                <span>$50M em transações mensais</span>
+                            </div>
+                            <span class="text-sm font-medium text-purple-700">Q4 2026</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold text-xl text-purple-800 mb-4">Desafios Estratégicos</h3>
+                    
+                    <div class="space-y-5">
+                        <div>
+                            <div class="flex items-start mb-2">
+                                <div class="text-red-500 mr-3 mt-0.5">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <p class="font-medium">Expansão para mercados desenvolvidos</p>
+                            </div>
+                            <p class="text-sm text-gray-600 ml-8">Estratégia: Foco em nichos específicos e diferenciação tecnológica</p>
+                        </div>
+                        
+                        <div>
+                            <div class="flex items-start mb-2">
+                                <div class="text-red-500 mr-3 mt-0.5">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <p class="font-medium">Escalabilidade da infraestrutura</p>
+                            </div>
+                            <p class="text-sm text-gray-600 ml-8">Estratégia: Arquitetura distribuída e parcerias com provedores cloud regionais</p>
+                        </div>
+                        
+                        <div>
+                            <div class="flex items-start mb-2">
+                                <div class="text-red-500 mr-3 mt-0.5">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <p class="font-medium">Retenção de talentos-chave</p>
+                            </div>
+                            <p class="text-sm text-gray-600 ml-8">Estratégia: Programa de equity e desenvolvimento de lideranças locais</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Para garantir que a seção esteja visível (já que estamos tornando todos os slides visíveis por padrão)
+        const slides = document.querySelectorAll('.slide');
+        slides.forEach(slide => {
+            slide.classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html> 

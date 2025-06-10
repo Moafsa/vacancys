@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 15: Resultados - Vacancy.services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <style>
+        .slide {
+            min-height: 100vh;
+            display: block;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #6e48aa 0%, #4894ea 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Estilos para os gráficos */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 350px;
+        }
+        
+        /* Estilos para animação de gráficos */
+        .pie-chart-container, .line-chart-container {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .slide.active .pie-chart-container,
+        .slide.active .line-chart-container {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Estilo para emblemas de crescimento */
+        .growth-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+        
+        .growth-badge.positive {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #10B981;
+        }
+        
+        .growth-badge.negative {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: #EF4444;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="h-10 w-auto">
+                    <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images//3.svg" alt="Vacancy.services logo" class="h-full">
+                </div>
+                <span class="ml-3 text-sm text-purple-700 hidden md:block">Talentos Globais, Oportunidades sem Fronteiras</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="slide14-investimento.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-left text-purple-600"></i>
+                </a>
+                <a href="index_principal.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-home text-purple-600"></i>
+                </a>
+                <a href="slide16-depoimentos.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-right text-purple-600"></i>
+                </a>
+                <span class="text-sm font-medium text-gray-600">15/22</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Slide: Resultados Iniciais -->
+    <section class="slide bg-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen">
+            <h2 class="text-4xl font-bold text-center mb-16 mt-10 text-purple-800">Projeções e Metas</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-purple-800 mb-6">Metas para 12 Meses</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <p class="text-sm text-gray-600">Usuários cadastrados</p>
+                            <div class="flex items-center justify-between">
+                                <p class="text-2xl font-bold">5,000+</p>
+                                <span class="text-green-500 text-sm">Meta Q2 2026</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <p class="text-sm text-gray-600">Projetos ativos</p>
+                            <div class="flex items-center justify-between">
+                                <p class="text-2xl font-bold">1,000+</p>
+                                <span class="text-green-500 text-sm">Meta Q2 2026</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <p class="text-sm text-gray-600">Contratações projetadas</p>
+                            <div class="flex items-center justify-between">
+                                <p class="text-2xl font-bold">500+</p>
+                                <span class="text-green-500 text-sm">Meta Q2 2026</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <p class="text-sm text-gray-600">Churn rate esperado</p>
+                            <div class="flex items-center justify-between">
+                                <p class="text-2xl font-bold">3.5%</p>
+                                <span class="text-green-500 text-sm">Meta Q2 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-purple-800 mb-6">Crescimento Projetado</h3>
+                    <div class="chart-container">
+                        <canvas id="growthChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12">
+                <h3 class="text-2xl font-bold text-purple-800 mb-6">Principais Objetivos</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-xl shadow-lg">
+                        <h4 class="font-bold text-xl mb-4">Fase MVP (Q3-Q4 2025)</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-600 mt-1 mr-2"></i>
+                                <span>Desenvolvimento da plataforma base com IA para matchmaking</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-600 mt-1 mr-2"></i>
+                                <span>Testes com 100 usuários beta em São Paulo</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-600 mt-1 mr-2"></i>
+                                <span>Validação do modelo de negócios</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-xl shadow-lg">
+                        <h4 class="font-bold text-xl mb-4">Expansão Inicial (Q1-Q2 2026)</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-600 mt-1 mr-2"></i>
+                                <span>Lançamento oficial em São Paulo e Rio de Janeiro</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-600 mt-1 mr-2"></i>
+                                <span>Integração com principais plataformas de pagamento</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-600 mt-1 mr-2"></i>
+                                <span>Preparação para expansão regional</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Para garantir que a seção esteja visível (já que estamos tornando todos os slides visíveis por padrão)
+        const slides = document.querySelectorAll('.slide');
+        slides.forEach(slide => {
+            slide.classList.add('active');
+        });
+        
+        // Inicialização do gráfico de distribuição de usuários
+        const usersDistCtx = document.getElementById('usersDistributionChart').getContext('2d');
+        const usersDistChart = new Chart(usersDistCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Freelancers Tech', 'Empresas Contratantes', 'Escolas Parceiras', 'Outros'],
+                datasets: [{
+                    data: [72, 20, 5, 3],
+                    backgroundColor: [
+                        '#8B5CF6', // Purple for Freelancers
+                        '#3B82F6', // Blue for Companies
+                        '#10B981', // Green for Schools
+                        '#6B7280'  // Gray for Others
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            boxWidth: 12,
+                            padding: 15
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Inicialização do gráfico de crescimento mensal
+        const ctx = document.getElementById('growthChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Q3 2025', 'Q4 2025', 'Q1 2026', 'Q2 2026'],
+                datasets: [{
+                    label: 'Usuários',
+                    data: [0, 100, 2000, 5000],
+                    borderColor: '#8B5CF6',
+                    backgroundColor: '#8B5CF680',
+                    fill: true
+                },
+                {
+                    label: 'Projetos',
+                    data: [0, 20, 400, 1000],
+                    borderColor: '#3B82F6',
+                    backgroundColor: '#3B82F680',
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    });
+    </script>
+</body>
+</html> 

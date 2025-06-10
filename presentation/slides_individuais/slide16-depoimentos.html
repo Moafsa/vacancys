@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 16: Depoimentos - Vacancy.services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <style>
+        .slide {
+            min-height: 100vh;
+            display: block;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #6e48aa 0%, #4894ea 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Estilos para os cartões de testemunhos */
+        .testimonial-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            font-size: 120px;
+            font-family: serif;
+            color: rgba(139, 92, 246, 0.1);
+            line-height: 1;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Animação para o carrossel */
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .animate-slide-in {
+            animation: slideIn 0.5s ease forwards;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="h-10 w-auto">
+                    <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images//3.svg" alt="Vacancy.services logo" class="h-full">
+                </div>
+                <span class="ml-3 text-sm text-purple-700 hidden md:block">Talentos Globais, Oportunidades sem Fronteiras</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="slide15-resultados.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-left text-purple-600"></i>
+                </a>
+                <a href="index_principal.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-home text-purple-600"></i>
+                </a>
+                <a href="slide17-comparativo.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-right text-purple-600"></i>
+                </a>
+                <span class="text-sm font-medium text-gray-600">16/22</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Slide: Depoimentos -->
+    <section class="slide bg-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen">
+            <h2 class="text-4xl font-bold text-center mb-16 mt-10 text-purple-800">O Que Nossos Usuários Dizem</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <!-- Seção de depoimentos principais -->
+                <div>
+                    <div class="testimonial-card bg-white p-8 rounded-xl shadow-lg mb-8">
+                        <div class="flex flex-col">
+                            <p class="text-gray-600 mb-6 relative z-10">"Como CTO de uma startup em crescimento, encontrar talentos de qualidade sempre foi um desafio. A Vacancy.services mudou completamente nosso processo de contratação. Em menos de uma semana, encontramos dois desenvolvedores frontend excepcionais que se encaixaram perfeitamente em nossa equipe e cultura."</p>
+                            
+                            <div class="flex items-center mt-auto">
+                                <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                                    <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images/avatar1.png" alt="Avatar" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Marcos Oliveira</h4>
+                                    <p class="text-sm text-gray-500">CTO, FinTech Solutions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card bg-white p-8 rounded-xl shadow-lg">
+                        <div class="flex flex-col">
+                            <p class="text-gray-600 mb-6 relative z-10">"Trabalho como freelancer há mais de 5 anos e já testei praticamente todas as plataformas disponíveis. A Vacancy é, de longe, a melhor em termos de correspondência de projetos com minhas habilidades. Os projetos sugeridos são tão relevantes que minha taxa de conversão de propostas aumentou de 20% para impressionantes 75%."</p>
+                            
+                            <div class="flex items-center mt-auto">
+                                <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                                    <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images/avatar2.png" alt="Avatar" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Luisa Santos</h4>
+                                    <p class="text-sm text-gray-500">Desenvolvedora Full-Stack</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Estatísticas e mini depoimentos -->
+                <div>
+                    <div class="bg-gradient-to-br from-purple-50 to-indigo-50 p-8 rounded-xl shadow-lg mb-10">
+                        <h3 class="text-2xl font-bold text-purple-800 mb-6">Satisfação dos Usuários</h3>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Freelancers satisfeitos</span>
+                                    <span class="font-bold text-purple-700">93%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-purple-600 h-2.5 rounded-full" style="width: 93%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Empresas satisfeitas</span>
+                                    <span class="font-bold text-purple-700">96%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-purple-600 h-2.5 rounded-full" style="width: 96%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Recomendariam a plataforma</span>
+                                    <span class="font-bold text-purple-700">98%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-purple-600 h-2.5 rounded-full" style="width: 98%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Qualidade das correspondências</span>
+                                    <span class="font-bold text-purple-700">92%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-purple-600 h-2.5 rounded-full" style="width: 92%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <p class="text-sm text-gray-600 italic mb-3">"A tradução em tempo real nas entrevistas tornou possível contratar talentos incríveis da América Latina mesmo sem falar espanhol."</p>
+                            <div class="text-xs text-gray-500">Carlos M., Recrutador</div>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <p class="text-sm text-gray-600 italic mb-3">"O sistema de testes de habilidades é o mais preciso que já utilizei. Economizou-me horas de entrevistas técnicas."</p>
+                            <div class="text-xs text-gray-500">Teresa L., Tech Lead</div>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <p class="text-sm text-gray-600 italic mb-3">"O que mais me impressionou foi a transparência e a facilidade dos pagamentos internacionais."</p>
+                            <div class="text-xs text-gray-500">Roberto A., Desenvolvedor</div>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <p class="text-sm text-gray-600 italic mb-3">"Consegui montar uma equipe remota em 3 países diferentes em menos de 2 semanas."</p>
+                            <div class="text-xs text-gray-500">Ana P., CEO</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Parceiros e empresas contratantes -->
+            <div>
+                <h3 class="text-2xl font-bold text-center text-purple-800 mb-8">Empresas Contratantes</h3>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                    <div class="bg-white p-4 rounded-lg shadow flex items-center justify-center h-24">
+                        <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images/company1.png" alt="Empresa 1" class="max-h-12">
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow flex items-center justify-center h-24">
+                        <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images/company2.png" alt="Empresa 2" class="max-h-12">
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow flex items-center justify-center h-24">
+                        <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images/company3.png" alt="Empresa 3" class="max-h-12">
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow flex items-center justify-center h-24">
+                        <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images/company4.png" alt="Empresa 4" class="max-h-12">
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow flex items-center justify-center h-24">
+                        <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images/company5.png" alt="Empresa 5" class="max-h-12">
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow flex items-center justify-center h-24">
+                        <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images/company6.png" alt="Empresa 6" class="max-h-12">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Para garantir que a seção esteja visível (já que estamos tornando todos os slides visíveis por padrão)
+        const slides = document.querySelectorAll('.slide');
+        slides.forEach(slide => {
+            slide.classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html> 

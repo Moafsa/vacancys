@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 5A: Stack Tecnológico - Vacancy.services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <style>
+        .slide {
+            min-height: 100vh;
+            display: block;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #6e48aa 0%, #4894ea 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Estilos para os gráficos */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+        
+        /* Estilos para animação de gráficos */
+        .pie-chart-container, .line-chart-container {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .slide.active .pie-chart-container,
+        .slide.active .line-chart-container {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Estilos para animação das setas de expansão */
+        @keyframes arrowFlow {
+            0% { stroke-dashoffset: 10; }
+            100% { stroke-dashoffset: 0; }
+        }
+        
+        .arrow-path {
+            stroke-dasharray: 5, 2;
+            animation: arrowFlow 1s infinite linear;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="h-10 w-auto">
+                    <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images//3.svg" alt="Vacancy.services logo" class="h-full">
+                </div>
+                <span class="ml-3 text-sm text-purple-700 hidden md:block">Talentos Globais, Oportunidades sem Fronteiras</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="slide05-tecnologia.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-left text-purple-600"></i>
+                </a>
+                <a href="index_principal.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-home text-purple-600"></i>
+                </a>
+                <a href="slide06-ia.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-right text-purple-600"></i>
+                </a>
+                <span class="text-sm font-medium text-gray-600">6/15</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Slide 5A: Technical Stack -->
+    <section class="slide bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen flex flex-col justify-center">
+            <h2 class="text-4xl font-bold text-center mb-16">Stack Tecnológico Especializado</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-gray-700 p-6 rounded-xl shadow-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-300">Frontend</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-code text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Next.js</h4>
+                                <p class="text-gray-300 text-sm">Framework principal para SSR e otimização de SEO</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-bolt text-yellow-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">TailwindCSS</h4>
+                                <p class="text-gray-300 text-sm">Design system consistente e responsivo</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-exchange-alt text-green-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Socket.io</h4>
+                                <p class="text-gray-300 text-sm">Comunicação em tempo real para mensagens e reuniões</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-700 p-6 rounded-xl shadow-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-purple-300">Backend</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-server text-green-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Node.js + Express</h4>
+                                <p class="text-gray-300 text-sm">Camada de serviços principal para APIs</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-brain text-pink-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Python + FastAPI</h4>
+                                <p class="text-gray-300 text-sm">Para módulos de IA e processamento de dados</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-video text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">WebRTC</h4>
+                                <p class="text-gray-300 text-sm">Streaming de vídeo P2P para reuniões</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-700 p-6 rounded-xl shadow-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-yellow-300">Bancos de Dados</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-database text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">PostgreSQL</h4>
+                                <p class="text-gray-300 text-sm">Para módulos que exigem ACID e relacionamentos (Core, Skills, Reviews)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-leaf text-green-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">MongoDB</h4>
+                                <p class="text-gray-300 text-sm">Para módulos com dados semiestruturados (Projects, Payments, Messaging)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-bolt text-red-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Redis</h4>
+                                <p class="text-gray-300 text-sm">Cache, filas de mensagens e dados voláteis</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-700 p-6 rounded-xl shadow-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-green-300">Inteligência Artificial</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-language text-purple-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">OpenAI API</h4>
+                                <p class="text-gray-300 text-sm">Tradução de mensagens e transcrição automática</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-cogs text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">TensorFlow</h4>
+                                <p class="text-gray-300 text-sm">Modelos de matching entre projetos e freelancers</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-search text-yellow-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Elasticsearch</h4>
+                                <p class="text-gray-300 text-sm">Busca avançada de projetos e freelancers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gray-700 p-6 rounded-xl max-w-2xl mx-auto">
+                <h3 class="text-xl font-bold mb-3 text-center text-blue-300">Comunicação entre Módulos</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gray-600 p-4 rounded-lg text-center">
+                        <div class="text-2xl mb-2 text-green-300">
+                            <i class="fas fa-random"></i>
+                        </div>
+                        <h4 class="font-semibold mb-1">Event-Driven</h4>
+                        <p class="text-sm text-gray-300">Comunicação assíncrona via barramento de eventos</p>
+                    </div>
+                    
+                    <div class="bg-gray-600 p-4 rounded-lg text-center">
+                        <div class="text-2xl mb-2 text-blue-300">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <h4 class="font-semibold mb-1">APIs Internas</h4>
+                        <p class="text-sm text-gray-300">Comunicação síncrona via APIs REST protegidas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html> 

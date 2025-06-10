@@ -1,0 +1,85 @@
+version: '3.8'
+
+services:
+  core:
+    image: vacancy/core-module:production-latest
+    container_name: vacancy-core-production
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+      - PORT=8080
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+      - JWT_SECRET=${JWT_SECRET}
+      - LOG_LEVEL=error
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+    depends_on:
+      - db
+      - redis
+    networks:
+      - vacancy-network
+
+  db:
+    image: postgres:14
+    container_name: vacancy-db-production
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - pg_data_production:/var/lib/postgresql/data
+    networks:
+      - vacancy-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+
+  redis:
+    image: redis:6
+    container_name: vacancy-redis-production
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data_production:/data
+    networks:
+      - vacancy-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+
+networks:
+  vacancy-network:
+    driver: bridge
+
+volumes:
+  pg_data_production:
+  redis_data_production: 

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste da API Core</title>
+    <script>
+        window.onload = function() {
+            // Função para testar a rota de saúde
+            document.getElementById('test-health').addEventListener('click', function() {
+                fetch('http://localhost:8080/api/health')
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+                    })
+                    .catch(error => {
+                        document.getElementById('result').textContent = 'Erro: ' + error.message;
+                    });
+            });
+
+            // Função para testar a rota pública
+            document.getElementById('test-public').addEventListener('click', function() {
+                fetch('http://localhost:8080/api/public')
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+                    })
+                    .catch(error => {
+                        document.getElementById('result').textContent = 'Erro: ' + error.message;
+                    });
+            });
+            
+            // Função para testar a rota de status do core
+            document.getElementById('test-core-status').addEventListener('click', function() {
+                fetch('http://localhost:8080/api/core/status')
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+                    })
+                    .catch(error => {
+                        document.getElementById('result').textContent = 'Erro: ' + error.message;
+                    });
+            });
+        };
+    </script>
+</head>
+<body>
+    <h1>Teste da API Core</h1>
+    <button id="test-health">Testar /api/health</button>
+    <button id="test-public">Testar /api/public</button>
+    <button id="test-core-status">Testar /api/core/status</button>
+    <hr>
+    <h2>Resultado:</h2>
+    <pre id="result">Clique em um botão para testar a API</pre>
+</body>
+</html> 

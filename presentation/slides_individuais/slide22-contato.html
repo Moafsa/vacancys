@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 22: Contato - Vacancy.services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .slide {
+            min-height: 100vh;
+            display: block;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #6e48aa 0%, #4894ea 100%);
+        }
+        .contact-card {
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: #8B5CF6;
+        }
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        .social-icon:hover {
+            transform: translateY(-3px);
+            color: #8B5CF6;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="h-10 w-auto">
+                    <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images//3.svg" alt="Vacancy.services logo" class="h-full">
+                </div>
+                <span class="ml-3 text-sm text-purple-700 hidden md:block">Talentos Globais, Oportunidades sem Fronteiras</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="slide21-conclusao.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-left text-purple-600"></i>
+                </a>
+                <a href="index_principal.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-home text-purple-600"></i>
+                </a>
+                <span class="text-sm font-medium text-gray-600">22/22</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Slide: Contato -->
+    <section class="slide bg-gradient-to-br from-indigo-900 to-purple-900 text-white">
+        <div class="min-h-screen flex items-center">
+            <div class="container mx-auto px-6 py-20">
+                <div class="max-w-5xl mx-auto">
+                    <div class="text-center mb-16 pt-10">
+                        <h2 class="text-4xl font-bold mb-6">Entre em Contato</h2>
+                        <p class="text-xl text-indigo-200 max-w-3xl mx-auto">Estamos construindo o futuro do trabalho na América Latina. Junte-se a nós nessa jornada.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                        <!-- Investidores -->
+                        <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-xl p-8 contact-card">
+                            <div class="text-center mb-6">
+                                <span class="inline-block p-3 rounded-full bg-purple-500 text-white mb-4">
+                                    <i class="fas fa-chart-line text-2xl"></i>
+                                </span>
+                                <h3 class="text-2xl font-bold">Investidores</h3>
+                            </div>
+                            <p class="text-indigo-200 text-center mb-6">Interessados em participar da nossa Série C? Temos um deck detalhado pronto para compartilhar.</p>
+                            <div class="text-center">
+                                <a href="mailto:investors@vacancy.services" class="inline-block py-2 px-6 bg-purple-600 hover:bg-purple-700 rounded-full transition duration-300 font-medium">
+                                    <i class="fas fa-envelope mr-2"></i>
+                                    investors@vacancy.services
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Empresas -->
+                        <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-xl p-8 contact-card">
+                            <div class="text-center mb-6">
+                                <span class="inline-block p-3 rounded-full bg-blue-500 text-white mb-4">
+                                    <i class="fas fa-building text-2xl"></i>
+                                </span>
+                                <h3 class="text-2xl font-bold">Empresas</h3>
+                            </div>
+                            <p class="text-indigo-200 text-center mb-6">Procurando talentos tech latino-americanos? Nossa plataforma conecta você aos melhores profissionais da região.</p>
+                            <div class="text-center">
+                                <a href="mailto:enterprise@vacancy.services" class="inline-block py-2 px-6 bg-blue-600 hover:bg-blue-700 rounded-full transition duration-300 font-medium">
+                                    <i class="fas fa-envelope mr-2"></i>
+                                    enterprise@vacancy.services
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Freelancers -->
+                        <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-xl p-8 contact-card">
+                            <div class="text-center mb-6">
+                                <span class="inline-block p-3 rounded-full bg-green-500 text-white mb-4">
+                                    <i class="fas fa-laptop-code text-2xl"></i>
+                                </span>
+                                <h3 class="text-2xl font-bold">Freelancers</h3>
+                            </div>
+                            <p class="text-indigo-200 text-center mb-6">Junte-se a +500k profissionais tech e acesse oportunidades globais com as melhores empresas.</p>
+                            <div class="text-center">
+                                <a href="mailto:talents@vacancy.services" class="inline-block py-2 px-6 bg-green-600 hover:bg-green-700 rounded-full transition duration-300 font-medium">
+                                    <i class="fas fa-envelope mr-2"></i>
+                                    talents@vacancy.services
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-5 rounded-xl p-10 backdrop-filter backdrop-blur-sm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-6">Equipe Executiva</h3>
+                                
+                                <div class="space-y-6">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 bg-gradient-to-r from-purple-400 to-blue-500">
+                                            <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images//user1.jpg" alt="CEO" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/150?text=CEO'">
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-lg">Ana Paula Silva</h4>
+                                            <p class="text-indigo-300">CEO & Co-Fundadora</p>
+                                            <p class="text-sm text-indigo-200 mt-2">Liderando a expansão global da Vacancy.services com foco em inovação e impacto social.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 bg-gradient-to-r from-purple-400 to-blue-500">
+                                            <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images//user2.jpg" alt="CTO" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/150?text=CTO'">
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-lg">Carlos Ramirez</h4>
+                                            <p class="text-indigo-300">CTO & Co-Fundador</p>
+                                            <p class="text-sm text-indigo-200 mt-2">Arquiteto da nossa stack de IA e líder do desenvolvimento tecnológico global.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 bg-gradient-to-r from-purple-400 to-blue-500">
+                                            <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images//user3.jpg" alt="COO" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/150?text=COO'">
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-lg">Mateo González</h4>
+                                            <p class="text-indigo-300">COO & Co-Fundador</p>
+                                            <p class="text-sm text-indigo-200 mt-2">Responsável pela expansão operacional em 5 países e preparação para mercados globais.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-2xl font-bold mb-6">Informações da Empresa</h3>
+                                
+                                <div class="space-y-6">
+                                    <div>
+                                        <h4 class="text-lg font-semibold mb-3">Escritórios</h4>
+                                        <div class="flex items-start space-x-3">
+                                            <i class="fas fa-map-marker-alt mt-1 text-indigo-300"></i>
+                                            <div>
+                                                <p>Sede Global: São Paulo, Brasil</p>
+                                                <p class="text-indigo-300 text-sm">Escritórios: Cidade do México, Bogotá, Buenos Aires, Santiago</p>
+                                                <p class="text-indigo-300 text-sm">Em breve: São Francisco (Q4 2025), Londres (Q2 2026)</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h4 class="text-lg font-semibold mb-3">Conecte-se conosco</h4>
+                                        <div class="flex space-x-4">
+                                            <a href="https://linkedin.com/company/vacancy-services" class="text-2xl social-icon">
+                                                <i class="fab fa-linkedin"></i>
+                                            </a>
+                                            <a href="https://twitter.com/vacancy_services" class="text-2xl social-icon">
+                                                <i class="fab fa-twitter"></i>
+                                            </a>
+                                            <a href="https://instagram.com/vacancy.services" class="text-2xl social-icon">
+                                                <i class="fab fa-instagram"></i>
+                                            </a>
+                                            <a href="https://facebook.com/vacancy.services" class="text-2xl social-icon">
+                                                <i class="fab fa-facebook"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h4 class="text-lg font-semibold mb-3">Website</h4>
+                                        <a href="https://vacancy.services" class="text-indigo-300 hover:text-white transition duration-300">
+                                            <i class="fas fa-globe mr-2"></i>
+                                            www.vacancy.services
+                                        </a>
+                                    </div>
+                                    
+                                    <div class="pt-6">
+                                        <a href="index_principal.html" class="inline-block py-3 px-8 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full hover:from-purple-700 hover:to-indigo-700 transition duration-300 font-medium shadow-lg">
+                                            <i class="fas fa-arrow-left mr-2"></i>
+                                            Voltar ao Início
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Para garantir que a seção esteja visível
+        const slides = document.querySelectorAll('.slide');
+        slides.forEach(slide => {
+            slide.classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html> 

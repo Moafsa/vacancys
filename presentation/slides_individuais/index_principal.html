@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacancy.services - Apresentação</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #6e48aa 0%, #4894ea 100%);
+        }
+        .slide-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        .slide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-left-color: #8B5CF6;
+        }
+        .status-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-100 text-gray-800">
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="gradient-bg text-white py-16">
+            <div class="container mx-auto px-6 text-center">
+                <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images//3.svg" alt="Vacancy.services logo" class="h-20 mx-auto mb-6">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Vacancy.services</h1>
+                <p class="text-xl opacity-90 max-w-2xl mx-auto">Talentos Globais, Oportunidades sem Fronteiras</p>
+                <p class="mt-6 text-lg">Apresentação Completa em Slides Individuais</p>
+            </div>
+        </header>
+
+        <!-- Slides Navigation -->
+        <main class="flex-grow container mx-auto px-6 py-12">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8 text-center text-purple-800">Navegue pelos Slides</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Slide 1 -->
+                    <a href="slide01-cover.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 1: Capa</h3>
+                        <p class="text-gray-600">Introdução à Vacancy.services e sua missão global.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                    
+                    <!-- Slide 2 -->
+                    <a href="slide02-problema.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 2: Problema</h3>
+                        <p class="text-gray-600">Desafios atuais do mercado de trabalho freelancer.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                    
+                    <!-- Slide 3 -->
+                    <a href="slide03-solucao.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 3: Solução</h3>
+                        <p class="text-gray-600">Nossa abordagem para resolver os problemas identificados.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                    
+                    <!-- Slide 4 -->
+                    <a href="slide04-mercado.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 4: Mercado</h3>
+                        <p class="text-gray-600">Análise do mercado global de trabalho freelancer.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                    
+                    <!-- Slide 5 -->
+                    <a href="slide05-tecnologia.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 5: Tecnologia</h3>
+                        <p class="text-gray-600">Nossa infraestrutura tecnológica e diferenciais técnicos.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                    
+                    <!-- Slide 5A -->
+                    <a href="slide05a-stack.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 5A: Stack Tecnológico</h3>
+                        <p class="text-gray-600">Detalhamento do stack tecnológico e arquitetura.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                    
+                    <!-- Slide 6 -->
+                    <a href="slide06-ia.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 6: Inteligência Artificial</h3>
+                        <p class="text-gray-600">Como usamos IA para otimizar o matchmaking e tradução.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                    
+                    <!-- Slide 7 -->
+                    <a href="slide07-creditos.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 7: Sistema de Créditos</h3>
+                        <p class="text-gray-600">Detalhamento do sistema de monetização por créditos.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                    
+                    <!-- Slide 8 -->
+                    <a href="slide08-seguranca.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 8: Segurança</h3>
+                        <p class="text-gray-600">Medidas de segurança, proteção e garantias da plataforma.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                    
+                    <!-- Slide 9 -->
+                    <a href="slide09-pagamentos.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 9: Sistema de Pagamentos</h3>
+                        <p class="text-gray-600">Estrutura de pagamentos globalizada e localizada.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                    
+                    <!-- Slide 10 -->
+                    <a href="slide10-negocios.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 10: Modelo de Negócios</h3>
+                        <p class="text-gray-600">Como geramos receita e mantemos o negócio sustentável.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                    
+                    <!-- Slide 11 -->
+                    <a href="slide11-estrategia.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 11: Estratégia</h3>
+                        <p class="text-gray-600">Plano estratégico de crescimento e expansão de mercado.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                    
+                    <!-- Slide 12 -->
+                    <a href="slide12-america-latina.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 12: América Latina</h3>
+                        <p class="text-gray-600">Estratégia específica para o mercado latino-americano.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                    
+                    <!-- Slide 13 -->
+                    <a href="slide13-time.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 13: Time</h3>
+                        <p class="text-gray-600">Apresentação da equipe fundadora e consultores.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                    
+                    <!-- Slide 14 -->
+                    <a href="slide14-investimento.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 14: Investimento</h3>
+                        <p class="text-gray-600">Detalhes da rodada de investimento atual.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                    
+                    <!-- Slide 15 -->
+                    <a href="slide15-resultados.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 15: Resultados</h3>
+                        <p class="text-gray-600">Métricas iniciais e projeções para os próximos anos.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                    
+                    <!-- Slide 16 -->
+                    <a href="slide16-depoimentos.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 16: Depoimentos</h3>
+                        <p class="text-gray-600">Feedback de usuários da versão beta da plataforma.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                    
+                    <!-- Slide 17 -->
+                    <a href="slide17-comparativo.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 17: Comparativo</h3>
+                        <p class="text-gray-600">Comparação com plataformas concorrentes do mercado.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                    
+                    <!-- Slide 18 -->
+                    <a href="slide18-roadmap.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 18: Roadmap</h3>
+                        <p class="text-gray-600">Planejamento de desenvolvimento e lançamentos futuros.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                    
+                    <!-- Slide 19 -->
+                    <a href="slide19-competidores.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 19: Competidores</h3>
+                        <p class="text-gray-600">Análise detalhada da concorrência e nossos diferenciais.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                    
+                    <!-- Slide 20 -->
+                    <a href="slide20-proposta-valor.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 20: Proposta de Valor</h3>
+                        <p class="text-gray-600">Nossa proposta de valor para cada stakeholder.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                    
+                    <!-- Slide 21 -->
+                    <a href="slide21-conclusao.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 21: Conclusão</h3>
+                        <p class="text-gray-600">Resumo dos principais pontos e próximos passos.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                    
+                    <!-- Slide 22 -->
+                    <a href="slide22-contato.html" class="block relative bg-white rounded-lg shadow-md p-6 slide-card">
+                        <h3 class="text-xl font-bold text-purple-700 mb-2">Slide 22: Contato</h3>
+                        <p class="text-gray-600">Informações de contato e oportunidades de parceria.</p>
+                        <div class="status-badge bg-green-100 text-green-800">Completo</div>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="gradient-bg text-white py-8">
+            <div class="container mx-auto px-6 text-center">
+                <p>© 2025 Vacancy.services - Todos os direitos reservados</p>
+                <p class="mt-2 text-sm opacity-80">Slides divididos individualmente para melhor navegação e apresentação</p>
+                <p class="mt-2 text-sm opacity-80">Última atualização: Abril 2025 - Dados e projeções atualizados</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html> 

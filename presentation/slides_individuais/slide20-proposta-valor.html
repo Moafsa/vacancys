@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 20: Proposta de Valor - Vacancy.services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <style>
+        .slide {
+            min-height: 100vh;
+            display: block;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #6e48aa 0%, #4894ea 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Estilos específicos para a proposta de valor */
+        .value-prop-icon {
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+        
+        .value-prop-card {
+            height: 100%;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .value-prop-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #8B5CF6, #4894ea);
+            transform: scaleX(0);
+            transform-origin: 0 50%;
+            transition: transform 0.3s ease;
+        }
+        
+        .value-prop-card:hover::after {
+            transform: scaleX(1);
+        }
+        
+        /* Estilos para o canvas */
+        .canvas-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="h-10 w-auto">
+                    <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images//3.svg" alt="Vacancy.services logo" class="h-full">
+                </div>
+                <span class="ml-3 text-sm text-purple-700 hidden md:block">Talentos Globais, Oportunidades sem Fronteiras</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="slide19-competidores.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-left text-purple-600"></i>
+                </a>
+                <a href="index_principal.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-home text-purple-600"></i>
+                </a>
+                <a href="slide21-conclusao.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-right text-purple-600"></i>
+                </a>
+                <span class="text-sm font-medium text-gray-600">20/22</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Slide: Proposta de Valor -->
+    <section class="slide bg-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen">
+            <h2 class="text-4xl font-bold text-center mb-16 mt-10 text-purple-800">Nossa Proposta de Valor</h2>
+            
+            <div class="mb-16">
+                <div class="flex justify-center mb-8">
+                    <div class="p-6 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-xl shadow-lg max-w-3xl">
+                        <h3 class="text-2xl font-bold text-white text-center">Conectamos Talentos Latino-Americanos às Melhores Oportunidades Globais</h3>
+                        <p class="text-white text-center mt-4">Usando tecnologia de ponta e foco regional, eliminamos barreiras e potencializamos carreiras.</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Valor para Freelancers -->
+                    <div class="value-prop-card bg-white p-6 rounded-xl shadow-lg">
+                        <div class="value-prop-icon bg-purple-100 text-purple-600 mx-auto">
+                            <i class="fas fa-laptop-code text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl text-center mb-4">Para Freelancers</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Projetos altamente compatíveis com suas habilidades via IA</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Taxas competitivas (12-15%)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Programa de certificação e desenvolvimento profissional</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Pagamentos globais em moeda local</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>IA generativa para comunicação multilíngue</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Valor para Empresas -->
+                    <div class="value-prop-card bg-white p-6 rounded-xl shadow-lg">
+                        <div class="value-prop-icon bg-blue-100 text-blue-600 mx-auto">
+                            <i class="fas fa-building text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl text-center mb-4">Para Empresas</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Talentos verificados com avaliação contínua de skills</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Redução de 85% no tempo de contratação</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Comunicação fluida com IA generativa</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Gestão de projetos e equipes integrada</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Garantia de qualidade e compliance global</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Valor para o Mercado -->
+                    <div class="value-prop-card bg-white p-6 rounded-xl shadow-lg">
+                        <div class="value-prop-icon bg-green-100 text-green-600 mx-auto">
+                            <i class="fas fa-globe-americas text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl text-center mb-4">Para o Mercado</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Acesso global a talentos tech da LATAM</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Impacto econômico direto em comunidades locais</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Desenvolvimento do ecossistema tech regional</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Plataforma líder em inovação na LATAM</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Referência em qualidade e confiabilidade</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Business Model Canvas -->
+                <div class="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-purple-800 mb-6">Business Model Canvas</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold mb-2 flex items-center">
+                                <span class="inline-block w-3 h-3 rounded-full bg-purple-600 mr-2"></span>
+                                Segmentos de Clientes
+                            </h4>
+                            <ul class="ml-5 text-sm space-y-1">
+                                <li>• Freelancers tech de toda LATAM</li>
+                                <li>• Empresas globais de médio e grande porte</li>
+                                <li>• Parceiros estratégicos (educação e tech)</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2 flex items-center">
+                                <span class="inline-block w-3 h-3 rounded-full bg-purple-600 mr-2"></span>
+                                Canais
+                            </h4>
+                            <ul class="ml-5 text-sm space-y-1">
+                                <li>• Plataforma web e apps nativos</li>
+                                <li>• Marketing digital e growth hacking</li>
+                                <li>• Ecossistema de parceiros e integrações</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2 flex items-center">
+                                <span class="inline-block w-3 h-3 rounded-full bg-purple-600 mr-2"></span>
+                                Fontes de Receita
+                            </h4>
+                            <ul class="ml-5 text-sm space-y-1">
+                                <li>• Comissão de 12-15% sobre projetos</li>
+                                <li>• Planos enterprise personalizados</li>
+                                <li>• Serviços premium e certificações</li>
+                                <li>• Marketplace de cursos e ferramentas</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2 flex items-center">
+                                <span class="inline-block w-3 h-3 rounded-full bg-purple-600 mr-2"></span>
+                                Recursos-Chave
+                            </h4>
+                            <ul class="ml-5 text-sm space-y-1">
+                                <li>• Stack proprietária de IA e ML</li>
+                                <li>• Time especializado em 5 países</li>
+                                <li>• Rede global de parceiros</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Impacto Projetado -->
+                <div>
+                    <h3 class="text-xl font-bold text-purple-800 mb-6">Impacto Alcançado (2025)</h3>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <div class="text-4xl font-bold text-purple-700 mb-2">+500k</div>
+                            <p class="text-sm text-gray-600">Profissionais ativos na plataforma</p>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <div class="text-4xl font-bold text-purple-700 mb-2">$180M</div>
+                            <p class="text-sm text-gray-600">Rendimento anual para freelancers</p>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <div class="text-4xl font-bold text-purple-700 mb-2">50k+</div>
+                            <p class="text-sm text-gray-600">Empresas contratando ativamente</p>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <div class="text-4xl font-bold text-purple-700 mb-2">97%</div>
+                            <p class="text-sm text-gray-600">Satisfação e retenção de usuários</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-5 rounded-xl shadow-lg">
+                        <h4 class="font-bold mb-4">Impacto Social</h4>
+                        <div class="canvas-container">
+                            <canvas id="impactChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Para garantir que a seção esteja visível (já que estamos tornando todos os slides visíveis por padrão)
+        const slides = document.querySelectorAll('.slide');
+        slides.forEach(slide => {
+            slide.classList.add('active');
+        });
+        
+        // Inicialização do gráfico de impacto social
+        const impactCtx = document.getElementById('impactChart').getContext('2d');
+        const impactChart = new Chart(impactCtx, {
+            type: 'radar',
+            data: {
+                labels: [
+                    'Inclusão Digital',
+                    'Distribuição de Renda',
+                    'Desenvolvimento Econômico',
+                    'Capacitação Profissional',
+                    'Diversidade no Tech',
+                    'Redução da Desigualdade'
+                ],
+                datasets: [{
+                    label: 'Vacancy.services',
+                    data: [85, 90, 75, 95, 80, 85],
+                    fill: true,
+                    backgroundColor: 'rgba(139, 92, 246, 0.2)',
+                    borderColor: '#8B5CF6',
+                    pointBackgroundColor: '#8B5CF6',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#8B5CF6'
+                }, {
+                    label: 'Plataformas Tradicionais',
+                    data: [45, 40, 35, 50, 40, 30],
+                    fill: true,
+                    backgroundColor: 'rgba(107, 114, 128, 0.2)',
+                    borderColor: '#6B7280',
+                    pointBackgroundColor: '#6B7280',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#6B7280'
+                }]
+            },
+            options: {
+                elements: {
+                    line: {
+                        tension: 0.1
+                    }
+                },
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    });
+    </script>
+</body>
+</html> 

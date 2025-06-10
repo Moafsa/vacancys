@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacancy.services - Revolucionando o Mercado de Freelancing Global</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .slide {
+            min-height: 100vh;
+            display: none;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        .slide.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #6e48aa 0%, #4894ea 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="h-10 w-auto">
+                    <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images//3.svg" alt="Vacancy.services logo" class="h-full">
+                </div>
+                <span class="ml-3 text-sm text-purple-700 hidden md:block">Talentos Globais, Oportunidades sem Fronteiras</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="prevBtn" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-left text-purple-600"></i>
+                </button>
+                <button id="nextBtn" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-right text-purple-600"></i>
+                </button>
+                <span id="slideCounter" class="text-sm font-medium text-gray-600">1/15</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Slide 1: Cover -->
+    <section class="slide active gradient-bg text-white pt-20">
+        <div class="container mx-auto px-6 py-20 flex flex-col items-center justify-center min-h-screen">
+            <div class="text-center max-w-4xl">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">Vacancy.services</h1>
+                <h2 class="text-3xl md:text-4xl font-semibold mb-8">Revolucionando o Mercado de Freelancing Global</h2>
+                <div class="relative w-full h-64 md:h-96 mb-10 rounded-xl overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Profissionais conectados virtualmente" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-purple-900 opacity-30"></div>
+                </div>
+                <p class="text-xl mb-8">Conectando os melhores talentos globais com oportunidades sem fronteiras</p>
+                <div class="text-sm bg-black bg-opacity-50 inline-block px-4 py-2 rounded-lg">
+                    Confidencial - Pré-seed Round
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 2: The Problem -->
+    <section class="slide bg-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen flex flex-col justify-center">
+            <h2 class="text-4xl font-bold text-center mb-16 text-purple-800">A Fragmentação do Mercado de Freelancing</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- Problem Card 1 -->
+                <div class="card-hover bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500">
+                    <div class="text-red-500 text-4xl mb-4">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Taxas Abusivas</h3>
+                    <p class="text-gray-600">Plataformas tradicionais cobram até 20% por transação, reduzindo significativamente os ganhos dos freelancers.</p>
+                </div>
+                
+                <!-- Problem Card 2 -->
+                <div class="card-hover bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-500">
+                    <div class="text-blue-500 text-4xl mb-4">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Barreiras Linguísticas</h3>
+                    <p class="text-gray-600">78% dos freelancers perdem oportunidades globais devido à falta de ferramentas de comunicação eficientes.</p>
+                </div>
+                
+                <!-- Problem Card 3 -->
+                <div class="card-hover bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Falta de Ferramentas</h3>
+                    <p class="text-gray-600">62% dos projetos falham por má comunicação e falta de ferramentas integradas para gestão de projetos.</p>
+                </div>
+            </div>
+            
+            <div class="max-w-2xl mx-auto bg-purple-50 p-6 rounded-xl text-center">
+                <p class="text-lg font-medium text-purple-800">
+                    "Um mercado de $1.5 trilhão, mas com NPS médio de apenas 35 - claramente há espaço para inovação."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3: The Solution -->
+    <section class="slide gradient-bg text-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen flex flex-col justify-center">
+            <h2 class="text-4xl font-bold text-center mb-16">Uma Plataforma Unificada para Trabalho Remoto Global</h2>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12 mb-16">
+                <div class="lg:w-1/2">
+                    <div class="relative rounded-xl overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Vacancy.services interface" 
+                             class="w-full h-auto">
+                        <div class="absolute inset-0 bg-purple-900 opacity-30"></div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="stat-card p-5 rounded-lg">
+                            <div class="text-2xl mb-2 text-yellow-300">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-1">Taxas Competitivas</h3>
+                            <p class="text-sm opacity-90">Apenas 5-10% por transação, com modelos flexíveis de pagamento.</p>
+                        </div>
+                        
+                        <div class="stat-card p-5 rounded-lg">
+                            <div class="text-2xl mb-2 text-blue-300">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-1">Tradução em Tempo Real</h3>
+                            <p class="text-sm opacity-90">Salas de reunião com IA que quebram barreiras linguísticas.</p>
+                        </div>
+                        
+                        <div class="stat-card p-5 rounded-lg">
+                            <div class="text-2xl mb-2 text-green-300">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-1">Sistema Tokenizado</h3>
+                            <p class="text-sm opacity-90">Créditos flexíveis que simplificam transações globais.</p>
+                        </div>
+                        
+                        <div class="stat-card p-5 rounded-lg">
+                            <div class="text-2xl mb-2 text-pink-300">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-1">Matchmaking por IA</h3>
+                            <p class="text-sm opacity-90">Algoritmos que conectam talentos e projetos com precisão.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="max-w-3xl mx-auto text-center">
+                <p class="text-2xl font-bold mb-4">"Conectamos talentos e clientes como nenhuma outra plataforma"</p>
+                <p class="opacity-90">Uma solução completa que resolve os principais pontos de dor do mercado atual.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 4: Market -->
+    <section class="slide bg-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen flex flex-col justify-center">
+            <h2 class="text-4xl font-bold text-center mb-16 text-purple-800">Oportunidade de $300B em Mercados Emergentes</h2>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12 mb-12">
+                <div class="lg:w-1/2">
+                    <div class="relative rounded-xl overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80" 
+                             alt="Global market map" 
+                             class="w-full h-auto">
+                        <div class="absolute inset-0 bg-purple-900 opacity-20"></div>
+                        <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm">Brasil</div>
+                        <div class="absolute top-1/3 right-1/4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm">SEA</div>
+                        <div class="absolute bottom-1/4 left-1/3 bg-green-500 text-white px-3 py-1 rounded-full text-sm">África</div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-purple-100 text-purple-800 rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg mb-1">Crescimento Explosivo</h3>
+                                <p class="text-gray-600">22% ao ano em freelancing cross-border, com demanda crescente por soluções especializadas.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-purple-100 text-purple-800 rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg mb-1">Base de Talentos</h3>
+                                <p class="text-gray-600">140 milhões de freelancers globais projetados até 2025, com foco inicial em 45 milhões na América Latina.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-purple-100 text-purple-800 rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg mb-1">Demanda Global</h3>
+                                <p class="text-gray-600">"A demanda por plataformas multilíngues crescerá 3x até 2027" - Gartner</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 5: Technology -->
+    <section class="slide bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen flex flex-col justify-center">
+            <h2 class="text-4xl font-bold text-center mb-16">Arquitetura Modular para Escala Global</h2>
+            
+            <div class="relative mb-16">
+                <div class="relative z-10 max-w-4xl mx-auto bg-gray-800 p-8 rounded-xl shadow-2xl">
+                    <div class="flex items-center justify-center mb-8">
+                        <h3 class="text-2xl font-bold text-blue-300">Modular Monolith (MCP) com 16 Módulos Independentes</h3>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-blue-400 text-2xl mb-2">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">Core</h3>
+                            <p class="text-gray-300 text-sm">Autenticação, perfis e configurações globais</p>
+                        </div>
+                        
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-purple-400 text-2xl mb-2">
+                                <i class="fas fa-clipboard-list"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">Projects</h3>
+                            <p class="text-gray-300 text-sm">Projetos, propostas e gestão de contratos</p>
+                        </div>
+                        
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-green-400 text-2xl mb-2">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">Payments</h3>
+                            <p class="text-gray-300 text-sm">Processamento de pagamentos e escrow</p>
+                        </div>
+                        
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-yellow-400 text-2xl mb-2">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">Messaging</h3>
+                            <p class="text-gray-300 text-sm">Comunicação entre usuários e notificações</p>
+                        </div>
+                        
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-pink-400 text-2xl mb-2">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">Reviews</h3>
+                            <p class="text-gray-300 text-sm">Avaliações entre freelancers e clientes</p>
+                        </div>
+                        
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-indigo-400 text-2xl mb-2">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">Skills</h3>
+                            <p class="text-gray-300 text-sm">Gerenciamento de habilidades e testes</p>
+                        </div>
+                        
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-red-400 text-2xl mb-2">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">Admin</h3>
+                            <p class="text-gray-300 text-sm">Painel administrativo e gestão da plataforma</p>
+                        </div>
+                        
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-teal-400 text-2xl mb-2">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">Analytics</h3>
+                            <p class="text-gray-300 text-sm">Métricas e estatísticas da plataforma</p>
+                        </div>
+                        
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-blue-300 text-2xl mb-2">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">AI Translation</h3>
+                            <p class="text-gray-300 text-sm">Tradução em tempo real de mensagens</p>
+                        </div>
+                        
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-green-300 text-2xl mb-2">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">Meetings</h3>
+                            <p class="text-gray-300 text-sm">Salas de reuniões e entrevistas</p>
+                        </div>
+                        
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-purple-300 text-2xl mb-2">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">AI Matchmaking</h3>
+                            <p class="text-gray-300 text-sm">Matching inteligente de projetos e freelancers</p>
+                        </div>
+                        
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-yellow-300 text-2xl mb-2">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">Credits</h3>
+                            <p class="text-gray-300 text-sm">Sistema de créditos para propostas</p>
+                        </div>
+                        
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-red-300 text-2xl mb-2">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">Security</h3>
+                            <p class="text-gray-300 text-sm">Segurança e conformidade (LGPD/GDPR)</p>
+                        </div>
+                        
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-blue-300 text-2xl mb-2">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">Localization</h3>
+                            <p class="text-gray-300 text-sm">Internacionalização do sistema</p>
+                        </div>
+                        
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-green-300 text-2xl mb-2">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">Affiliates</h3>
+                            <p class="text-gray-300 text-sm">Programa de indicação e comissões</p>
+                        </div>
+                        
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <div class="text-pink-300 text-2xl mb-2">
+                                <i class="fas fa-plug"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">Integration Hub</h3>
+                            <p class="text-gray-300 text-sm">Integrações com plataformas externas</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-8">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-400">16</div>
+                            <div class="text-sm">Módulos Independentes</div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-purple-400">93%</div>
+                            <div class="text-sm">Reuso de Código via APIs</div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-green-400">1M+</div>
+                            <div class="text-sm">Transações/dia (capacidade)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl opacity-20 blur-lg"></div>
+            </div>
+            
+            <div class="max-w-2xl mx-auto text-center">
+                <p class="text-2xl font-bold text-blue-300 mb-4">"Cada módulo possui seu próprio banco de dados e API"</p>
+                <p class="text-gray-300">Uma arquitetura pensada para crescer com as demandas do mercado global, permitindo substituição e atualização independente de cada módulo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 5A: Technical Stack -->
+    <section class="slide bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen flex flex-col justify-center">
+            <h2 class="text-4xl font-bold text-center mb-16">Stack Tecnológico Especializado</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-gray-700 p-6 rounded-xl shadow-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-300">Frontend</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-code text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Next.js</h4>
+                                <p class="text-gray-300 text-sm">Framework principal para SSR e otimização de SEO</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-bolt text-yellow-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">TailwindCSS</h4>
+                                <p class="text-gray-300 text-sm">Design system consistente e responsivo</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-exchange-alt text-green-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Socket.io</h4>
+                                <p class="text-gray-300 text-sm">Comunicação em tempo real para mensagens e reuniões</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-700 p-6 rounded-xl shadow-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-purple-300">Backend</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-server text-green-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Node.js + Express</h4>
+                                <p class="text-gray-300 text-sm">Camada de serviços principal para APIs</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-brain text-pink-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Python + FastAPI</h4>
+                                <p class="text-gray-300 text-sm">Para módulos de IA e processamento de dados</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-video text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">WebRTC</h4>
+                                <p class="text-gray-300 text-sm">Streaming de vídeo P2P para reuniões</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-700 p-6 rounded-xl shadow-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-yellow-300">Bancos de Dados</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-database text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">PostgreSQL</h4>
+                                <p class="text-gray-300 text-sm">Para módulos que exigem ACID e relacionamentos (Core, Skills, Reviews)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-leaf text-green-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">MongoDB</h4>
+                                <p class="text-gray-300 text-sm">Para módulos com dados semiestruturados (Projects, Payments, Messaging)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-bolt text-red-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Redis</h4>
+                                <p class="text-gray-300 text-sm">Cache, filas de mensagens e dados voláteis</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-700 p-6 rounded-xl shadow-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-green-300">Inteligência Artificial</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-language text-purple-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">OpenAI API</h4>
+                                <p class="text-gray-300 text-sm">Tradução de mensagens e transcrição automática</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-cogs text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">TensorFlow</h4>
+                                <p class="text-gray-300 text-sm">Modelos de matching entre projetos e freelancers</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-search text-yellow-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Elasticsearch</h4>
+                                <p class="text-gray-300 text-sm">Busca avançada de projetos e freelancers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gray-700 p-6 rounded-xl max-w-2xl mx-auto">
+                <h3 class="text-xl font-bold mb-3 text-center text-blue-300">Comunicação entre Módulos</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gray-600 p-4 rounded-lg text-center">
+                        <div class="text-2xl mb-2 text-green-300">
+                            <i class="fas fa-random"></i>
+                        </div>
+                        <h4 class="font-semibold mb-1">Event-Driven</h4>
+                        <p class="text-sm text-gray-300">Comunicação assíncrona via barramento de eventos</p>
+                    </div>
+                    
+                    <div class="bg-gray-600 p-4 rounded-lg text-center">
+                        <div class="text-2xl mb-2 text-blue-300">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <h4 class="font-semibold mb-1">APIs Internas</h4>
+                        <p class="text-sm text-gray-300">Comunicação síncrona via APIs REST protegidas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 6: Inovação em IA -->
+    <section class="slide bg-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen flex flex-col justify-center">
+            <h2 class="text-4xl font-bold text-center mb-16 text-purple-800">Inteligência Artificial que Cria Valor</h2>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12 mb-12">
+                <div class="lg:w-1/2">
+                    <div class="relative rounded-xl overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1562813733-b31f1c359713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" 
+                             alt="Chat com tradução automática" 
+                             class="w-full h-auto">
+                        <div class="absolute inset-0 bg-purple-900 opacity-20"></div>
+                        <div class="absolute top-4 left-4 bg-purple-500 text-white px-3 py-1 rounded-full text-sm">Em tempo real</div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-purple-100 text-purple-800 rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg mb-1">Tradução Simultânea</h3>
+                                <p class="text-gray-600">Suporte para 25 idiomas, permitindo colaboração global instantânea sem barreiras linguísticas.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-purple-100 text-purple-800 rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg mb-1">Testes de Habilidades Automatizados</h3>
+                                <p class="text-gray-600">Validação inteligente de habilidades técnicas e soft skills, eliminando a necessidade de processos manuais.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-purple-100 text-purple-800 rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-puzzle-piece"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg mb-1">Matchmaking com 92% de Precisão</h3>
+                                <p class="text-gray-600">Algoritmos avançados que conectam talentos e projetos com base em habilidades, experiência e compatibilidade cultural.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-purple-100 text-purple-800 rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-microphone"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg mb-1">Transcrição Automática de Reuniões</h3>
+                                <p class="text-gray-600">Capture insights importantes com transcrições inteligentes que identificam pontos-chave e ações.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="max-w-2xl mx-auto bg-purple-50 p-6 rounded-xl text-center">
+                <p class="text-lg font-medium text-purple-800">
+                    "Redução de 70% no tempo de contratação com nossa tecnologia proprietária de IA"
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 7: Sistema de Créditos -->
+    <section class="slide gradient-bg text-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen flex flex-col justify-center">
+            <h2 class="text-4xl font-bold text-center mb-16">Economia Tokenizada para Freelancers</h2>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12 mb-16">
+                <div class="lg:w-1/2">
+                    <div class="relative bg-gray-800 p-8 rounded-xl shadow-2xl">
+                        <!-- Infográfico de uso dos fundos -->
+                        <div class="relative">
+                            <!-- Círculo central -->
+                            <div class="mx-auto w-48 h-48 rounded-full bg-gray-700 flex items-center justify-center mb-10">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-white mb-1">$500k</div>
+                                    <div class="text-sm text-gray-300">Captação</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Alocação radial -->
+                            <div class="grid grid-cols-4 gap-4">
+                                <!-- 40% Desenvolvimento -->
+                                <div class="col-span-2 bg-purple-700 p-4 rounded-lg text-center">
+                                    <div class="text-3xl font-bold">40%</div>
+                                    <div class="text-sm">Desenvolvimento Técnico</div>
+                                </div>
+                                
+                                <!-- 30% Aquisição de Talentos -->
+                                <div class="col-span-2 bg-blue-700 p-4 rounded-lg text-center">
+                                    <div class="text-3xl font-bold">30%</div>
+                                    <div class="text-sm">Aquisição de Talentos</div>
+                                </div>
+                                
+                                <!-- 20% Marketing -->
+                                <div class="col-span-2 bg-pink-700 p-4 rounded-lg text-center">
+                                    <div class="text-2xl font-bold">20%</div>
+                                    <div class="text-sm">Marketing Inicial</div>
+                                </div>
+                                
+                                <!-- 10% Legal/Compliance -->
+                                <div class="col-span-2 bg-green-700 p-4 rounded-lg text-center">
+                                    <div class="text-2xl font-bold">10%</div>
+                                    <div class="text-sm">Legal/Compliance</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="space-y-6">
+                        <div class="bg-gray-800 p-6 rounded-xl">
+                            <h3 class="font-bold text-xl mb-4">Uso Estratégico de Capital</h3>
+                            
+                            <div class="space-y-5">
+                                <div class="flex items-start">
+                                    <div class="text-purple-400 text-2xl mr-4">
+                                        <i class="fas fa-code"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold mb-1">Desenvolvimento Técnico</h4>
+                                        <p class="text-sm text-gray-300">Ampliação dos recursos de IA e finalização do módulo de pagamentos.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="text-blue-400 text-2xl mr-4">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold mb-1">Aquisição de Talentos</h4>
+                                        <p class="text-sm text-gray-300">Especialistas em ML para aprimorar os algoritmos de matching e tradução.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="text-pink-400 text-2xl mr-4">
+                                        <i class="fas fa-bullhorn"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold mb-1">Marketing Inicial</h4>
+                                        <p class="text-sm text-gray-300">Campanhas direcionadas para aquisição de usuários em mercados-chave.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="text-green-400 text-2xl mr-4">
+                                        <i class="fas fa-balance-scale"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold mb-1">Legal/Compliance</h4>
+                                        <p class="text-sm text-gray-300">Estruturação para operar em múltiplas jurisdições com conformidade.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-r from-purple-600 to-blue-500 p-5 rounded-xl">
+                            <div class="text-center">
+                                <h4 class="font-bold text-lg mb-2">Objetivo Principal:</h4>
+                                <p class="text-xl font-bold">"Alcançar 50k usuários e $1M GMV em 12 meses"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Novo Slide: Módulo de Segurança e Compliance -->
+    <section class="slide bg-gradient-to-r from-gray-900 to-slate-800 text-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen flex flex-col justify-center">
+            <h2 class="text-4xl font-bold text-center mb-16">Segurança e Compliance Integrados</h2>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12 mb-16">
+                <div class="lg:w-1/2">
+                    <div class="bg-white bg-opacity-10 p-6 rounded-xl border border-white border-opacity-20 mb-8">
+                        <h3 class="text-2xl font-bold mb-6">Recursos do Módulo Segurança</h3>
+                        
+                        <div class="space-y-5">
+                            <div class="flex items-start">
+                                <div class="bg-red-600 p-3 rounded-lg mr-4 shrink-0">
+                                    <i class="fas fa-shield-alt text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">Proteção Avançada contra Fraudes</h4>
+                                    <p class="text-sm opacity-90">Sistema de detecção proativa que analisa comportamentos suspeitos em tempo real, com mais de 200 pontos de verificação.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-600 p-3 rounded-lg mr-4 shrink-0">
+                                    <i class="fas fa-lock text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">Criptografia Ponta-a-Ponta</h4>
+                                    <p class="text-sm opacity-90">Todas as comunicações e dados pessoais são criptografados usando AES-256 e protocolos de criptografia assimétrica.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-green-600 p-3 rounded-lg mr-4 shrink-0">
+                                    <i class="fas fa-passport text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">KYC e Verificação de Identidade</h4>
+                                    <p class="text-sm opacity-90">Verificação em múltiplos níveis com reconhecimento facial, validação de documentos e autenticação biométrica.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-yellow-600 p-3 rounded-lg mr-4 shrink-0">
+                                    <i class="fas fa-file-contract text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">Conformidade Regulatória Global</h4>
+                                    <p class="text-sm opacity-90">Adaptação automática às exigências legais de cada país, incluindo GDPR, LGPD, CCPA e outras regulamentações regionais.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-10 p-5 rounded-xl border border-white border-opacity-20">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="font-bold text-xl">Certificações</h4>
+                            <div class="flex space-x-2">
+                                <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-green-600"></i>
+                                </div>
+                                <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-green-600"></i>
+                                </div>
+                                <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-green-600"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                            <div class="bg-white bg-opacity-5 p-2 rounded">ISO 27001</div>
+                            <div class="bg-white bg-opacity-5 p-2 rounded">SOC 2 Type II</div>
+                            <div class="bg-white bg-opacity-5 p-2 rounded">PCI DSS</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-white bg-opacity-10 p-6 rounded-xl border border-white border-opacity-20 mb-8">
+                        <h3 class="text-xl font-bold mb-4">Arquitetura de Segurança</h3>
+                        
+                        <div class="relative bg-gray-900 p-4 rounded-lg mb-6">
+                            <div class="absolute -top-3 left-4 bg-indigo-600 px-3 py-1 text-xs rounded-full">
+                                Camadas de Proteção
+                            </div>
+                            
+                            <div class="pt-3">
+                                <!-- Representação visual da arquitetura de segurança em camadas -->
+                                <div class="border border-dashed border-indigo-400 p-3 rounded-lg mb-3">
+                                    <div class="font-semibold mb-1 text-indigo-300">Camada de Aplicação</div>
+                                    <div class="grid grid-cols-3 gap-2 text-xs">
+                                        <div class="bg-indigo-900 p-2 rounded text-center">WAF</div>
+                                        <div class="bg-indigo-900 p-2 rounded text-center">XSS Protection</div>
+                                        <div class="bg-indigo-900 p-2 rounded text-center">CSRF Guards</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="border border-dashed border-blue-400 p-3 rounded-lg mb-3">
+                                    <div class="font-semibold mb-1 text-blue-300">Camada de Rede</div>
+                                    <div class="grid grid-cols-3 gap-2 text-xs">
+                                        <div class="bg-blue-900 p-2 rounded text-center">DDoS Protection</div>
+                                        <div class="bg-blue-900 p-2 rounded text-center">IP Filtering</div>
+                                        <div class="bg-blue-900 p-2 rounded text-center">Rate Limiting</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="border border-dashed border-green-400 p-3 rounded-lg">
+                                    <div class="font-semibold mb-1 text-green-300">Camada de Dados</div>
+                                    <div class="grid grid-cols-3 gap-2 text-xs">
+                                        <div class="bg-green-900 p-2 rounded text-center">Encryption</div>
+                                        <div class="bg-green-900 p-2 rounded text-center">Access Control</div>
+                                        <div class="bg-green-900 p-2 rounded text-center">Audit Logs</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="bg-gray-900 p-4 rounded-lg">
+                                <div class="text-center mb-2">
+                                    <i class="fas fa-user-shield text-yellow-400 text-2xl"></i>
+                                </div>
+                                <div class="text-center font-bold mb-1">2FA/MFA</div>
+                                <p class="text-xs text-center opacity-80">100% dos usuários com autenticação de múltiplos fatores</p>
+                            </div>
+                            
+                            <div class="bg-gray-900 p-4 rounded-lg">
+                                <div class="text-center mb-2">
+                                    <i class="fas fa-bug-slash text-red-400 text-2xl"></i>
+                                </div>
+                                <div class="text-center font-bold mb-1">Bug Bounty</div>
+                                <p class="text-xs text-center opacity-80">Programa ativo com +150 pesquisadores de segurança</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-900 p-4 rounded-lg">
+                            <h4 class="font-bold mb-3 text-center">Tecnologias Implementadas</h4>
+                            <div class="grid grid-cols-4 gap-2 text-xs text-center">
+                                <div class="bg-white bg-opacity-10 p-2 rounded">JWT</div>
+                                <div class="bg-white bg-opacity-10 p-2 rounded">OAuth 2.0</div>
+                                <div class="bg-white bg-opacity-10 p-2 rounded">HMAC</div>
+                                <div class="bg-white bg-opacity-10 p-2 rounded">TLS 1.3</div>
+                                <div class="bg-white bg-opacity-10 p-2 rounded">Redis Auth</div>
+                                <div class="bg-white bg-opacity-10 p-2 rounded">Vault</div>
+                                <div class="bg-white bg-opacity-10 p-2 rounded">Argon2</div>
+                                <div class="bg-white bg-opacity-10 p-2 rounded">Salt+Pepper</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-blue-900 to-indigo-900 p-4 rounded-xl text-center">
+                        <div class="text-2xl font-bold mb-2">99.97%</div>
+                        <div class="opacity-90">Taxa de bloqueio de ataques</div>
+                        <div class="text-xs mt-1 opacity-70">Baseado em 3 milhões de tentativas de ataque no último trimestre</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Novo Slide: Módulo de Pagamentos -->
+    <section class="slide bg-gradient-to-r from-blue-900 to-indigo-800 text-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen flex flex-col justify-center">
+            <h2 class="text-4xl font-bold text-center mb-16">Sistema de Pagamentos Robusto</h2>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12 mb-16">
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-bold mb-8">Arquitetura do Módulo Payments</h3>
+                    
+                    <div class="bg-white bg-opacity-10 p-6 rounded-xl border border-white border-opacity-20 mb-8">
+                        <div class="text-lg font-semibold mb-4">Responsabilidades Principais:</div>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <span class="text-green-300 mr-2">✓</span>
+                                <span>Processamento seguro de transações globais</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-300 mr-2">✓</span>
+                                <span>Sistema de escrow com liberação condicional</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-300 mr-2">✓</span>
+                                <span>Conversão automática entre moedas (FIAT/Crypto)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-300 mr-2">✓</span>
+                                <span>Relatórios fiscais e comprovantes de pagamento</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-300 mr-2">✓</span>
+                                <span>Suporte a pagamentos recorrentes e marcos do projeto</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-10 p-6 rounded-xl border border-white border-opacity-20">
+                        <div class="text-lg font-semibold mb-4">Integrações:</div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="flex items-center justify-center p-3 bg-white bg-opacity-5 rounded-lg">
+                                <i class="fab fa-stripe text-2xl mr-2"></i>
+                                <span>Stripe</span>
+                            </div>
+                            <div class="flex items-center justify-center p-3 bg-white bg-opacity-5 rounded-lg">
+                                <i class="fab fa-paypal text-2xl mr-2"></i>
+                                <span>PayPal</span>
+                            </div>
+                            <div class="flex items-center justify-center p-3 bg-white bg-opacity-5 rounded-lg">
+                                <i class="fab fa-ethereum text-2xl mr-2"></i>
+                                <span>Web3/Crypto</span>
+                            </div>
+                            <div class="flex items-center justify-center p-3 bg-white bg-opacity-5 rounded-lg">
+                                <i class="fas fa-exchange-alt text-2xl mr-2"></i>
+                                <span>Wise</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-white bg-opacity-10 p-6 rounded-xl mb-8">
+                        <h3 class="text-xl font-bold mb-4">Arquitetura Técnica</h3>
+                        
+                        <div class="mb-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold">PostgreSQL (ACID)</span>
+                                <span class="text-xs bg-blue-600 px-2 py-1 rounded">Transações</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-blue-600 h-2.5 rounded-full" style="width: 95%"></div>
+                            </div>
+                            <p class="text-xs mt-1 opacity-80">Armazenamento principal para todas as transações financeiras</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold">Redis</span>
+                                <span class="text-xs bg-red-500 px-2 py-1 rounded">Cache & Filas</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-red-500 h-2.5 rounded-full" style="width: 80%"></div>
+                            </div>
+                            <p class="text-xs mt-1 opacity-80">Cache de taxas e filas de processamento assíncrono</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold">RabbitMQ</span>
+                                <span class="text-xs bg-orange-500 px-2 py-1 rounded">Mensageria</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-orange-500 h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                            <p class="text-xs mt-1 opacity-80">Comunicação entre serviços para processamento confiável</p>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold">Node.js/Express</span>
+                                <span class="text-xs bg-green-500 px-2 py-1 rounded">API</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-green-500 h-2.5 rounded-full" style="width: 90%"></div>
+                            </div>
+                            <p class="text-xs mt-1 opacity-80">APIs RESTful para operações de pagamento</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-10 p-6 rounded-xl">
+                        <h3 class="text-xl font-bold mb-4">Eventos Publicados</h3>
+                        
+                        <div class="grid grid-cols-1 gap-3">
+                            <div class="p-3 bg-white bg-opacity-5 rounded-lg border border-white border-opacity-10">
+                                <code class="text-green-300">payment.processed</code>
+                                <p class="text-xs mt-1">Emitido quando um pagamento é confirmado</p>
+                            </div>
+                            <div class="p-3 bg-white bg-opacity-5 rounded-lg border border-white border-opacity-10">
+                                <code class="text-yellow-300">escrow.released</code>
+                                <p class="text-xs mt-1">Emitido quando fundos em escrow são liberados</p>
+                            </div>
+                            <div class="p-3 bg-white bg-opacity-5 rounded-lg border border-white border-opacity-10">
+                                <code class="text-blue-300">invoice.generated</code>
+                                <p class="text-xs mt-1">Emitido quando nova fatura é criada</p>
+                            </div>
+                            <div class="p-3 bg-white bg-opacity-5 rounded-lg border border-white border-opacity-10">
+                                <code class="text-red-300">dispute.created</code>
+                                <p class="text-xs mt-1">Emitido quando uma disputa é iniciada</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="max-w-3xl mx-auto text-center">
+                <p class="text-xl font-semibold mb-2">"Transações seguras em mais de 180 países"</p>
+                <p class="opacity-80">Compliance com regulamentações financeiras locais e PCI-DSS Level 1</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 8: Modelo de Negócios -->
+    <section class="slide bg-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen flex flex-col justify-center">
+            <h2 class="text-4xl font-bold text-center mb-16 text-purple-800">Posicionamento Único no Mercado</h2>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12 mb-12">
+                <div class="lg:w-1/2">
+                    <div class="relative">
+                        <!-- Matriz 2x2 (Preço x Features) -->
+                        <div class="bg-gray-100 rounded-xl p-8 shadow-lg">
+                            <div class="relative h-80 w-full">
+                                <!-- Eixos -->
+                                <div class="absolute left-0 top-0 h-full w-0.5 bg-gray-400"></div>
+                                <div class="absolute left-0 bottom-0 w-full h-0.5 bg-gray-400"></div>
+                                
+                                <!-- Rótulos dos eixos -->
+                                <div class="absolute -left-8 top-1/2 transform -translate-y-1/2 -rotate-90 text-sm font-medium text-gray-600">Features</div>
+                                <div class="absolute bottom-[-25px] left-1/2 transform -translate-x-1/2 text-sm font-medium text-gray-600">Preço (Taxa)</div>
+                                
+                                <!-- Quadrantes -->
+                                <div class="absolute top-0 left-0 w-1/2 h-1/2 border-r border-b border-dashed border-gray-300 flex items-center justify-center">
+                                    <div>
+                                        <span class="text-xs text-gray-500">Poucas Features</span>
+                                        <br />
+                                        <span class="text-xs text-gray-500">Baixo Preço</span>
+                                    </div>
+                                </div>
+                                <div class="absolute top-0 right-0 w-1/2 h-1/2 border-b border-dashed border-gray-300 flex items-center justify-center">
+                                    <div>
+                                        <span class="text-xs text-gray-500">Muitas Features</span>
+                                        <br />
+                                        <span class="text-xs text-gray-500">Baixo Preço</span>
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-0 left-0 w-1/2 h-1/2 border-r border-dashed border-gray-300 flex items-center justify-center">
+                                    <div>
+                                        <span class="text-xs text-gray-500">Poucas Features</span>
+                                        <br />
+                                        <span class="text-xs text-gray-500">Alto Preço</span>
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-0 right-0 w-1/2 h-1/2 flex items-center justify-center">
+                                    <div>
+                                        <span class="text-xs text-gray-500">Muitas Features</span>
+                                        <br />
+                                        <span class="text-xs text-gray-500">Alto Preço</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Posicionamento das empresas -->
+                                <div class="absolute top-[70%] left-[65%] bg-red-100 text-red-600 px-3 py-1 rounded-lg text-sm font-medium">Workana</div>
+                                <div class="absolute top-[60%] left-[40%] bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm font-medium">Upwork</div>
+                                <div class="absolute top-[45%] left-[55%] bg-green-100 text-green-600 px-3 py-1 rounded-lg text-sm font-medium">Fiverr</div>
+                                <div class="absolute top-[25%] left-[80%] bg-purple-600 text-white px-3 py-1 rounded-lg text-sm font-medium shadow-lg">Vacancy.services</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="space-y-6">
+                        <div class="bg-purple-50 p-6 rounded-xl">
+                            <h3 class="font-bold text-xl mb-3 text-purple-800">Análise Competitiva</h3>
+                            <p class="text-gray-700 mb-4">Nos diferenciamos por oferecer uma combinação única de recursos avançados e taxas mais acessíveis que nossos concorrentes.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <div class="flex items-start">
+                                        <div class="text-red-500 font-bold mr-3">Workana:</div>
+                                        <div class="text-gray-600">Taxas Altas (15-20%), foco regionalizado</div>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <div class="flex items-start">
+                                        <div class="text-blue-500 font-bold mr-3">Upwork:</div>
+                                        <div class="text-gray-600">Sem Crypto/Sistema de Créditos, processo de aprovação lento</div>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <div class="flex items-start">
+                                        <div class="text-green-500 font-bold mr-3">Fiverr:</div>
+                                        <div class="text-gray-600">Foco em Microsserviços, limitações em projetos complexos</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-purple-100 p-5 rounded-xl">
+                            <h4 class="font-semibold mb-2 text-purple-800">Nosso Diferencial:</h4>
+                            <p class="text-purple-900 font-medium">"Única plataforma com sala de reuniões integrada, tradução em tempo real e sistema de tokenização completo."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 9: Arquitetura Modular -->
+    <section class="slide bg-purple-100">
+        <div class="container mx-auto px-6 py-20 min-h-screen flex flex-col justify-center">
+            <h2 class="text-4xl font-bold text-center mb-12 text-purple-800">Arquitetura Modular Escalável</h2>
+            
+            <div class="flex flex-col lg:flex-row items-start gap-12 mb-12">
+                <div class="lg:w-1/2">
+                    <div class="bg-white rounded-xl p-6 shadow-lg mb-8">
+                        <h3 class="font-bold text-xl mb-4 text-purple-800">Interação Entre Módulos</h3>
+                        
+                        <div class="relative">
+                            <!-- Diagrama de Arquitetura -->
+                            <svg viewBox="0 0 800 500" class="w-full h-auto">
+                                <!-- Core Module (Central) -->
+                                <circle cx="400" cy="250" r="80" fill="#6D28D9" />
+                                <text x="400" y="250" text-anchor="middle" fill="white" font-weight="bold" font-size="16">Core</text>
+                                <text x="400" y="270" text-anchor="middle" fill="white" font-size="12">Autenticação</text>
+                                <text x="400" y="290" text-anchor="middle" fill="white" font-size="12">Perfis</text>
+                                
+                                <!-- Projects Module -->
+                                <circle cx="250" cy="150" r="60" fill="#8B5CF6" />
+                                <text x="250" y="150" text-anchor="middle" fill="white" font-weight="bold" font-size="14">Projetos</text>
+                                <text x="250" y="170" text-anchor="middle" fill="white" font-size="10">Gerenciamento</text>
+                                
+                                <!-- Payments Module -->
+                                <circle cx="550" cy="150" r="60" fill="#8B5CF6" />
+                                <text x="550" y="150" text-anchor="middle" fill="white" font-weight="bold" font-size="14">Pagamentos</text>
+                                <text x="550" y="170" text-anchor="middle" fill="white" font-size="10">Transações</text>
+                                
+                                <!-- Messaging Module -->
+                                <circle cx="200" cy="350" r="60" fill="#8B5CF6" />
+                                <text x="200" y="350" text-anchor="middle" fill="white" font-weight="bold" font-size="14">Mensagens</text>
+                                <text x="200" y="370" text-anchor="middle" fill="white" font-size="10">Comunicação</text>
+                                
+                                <!-- Skills Module -->
+                                <circle cx="600" cy="350" r="60" fill="#8B5CF6" />
+                                <text x="600" y="350" text-anchor="middle" fill="white" font-weight="bold" font-size="14">Skills</text>
+                                <text x="600" y="370" text-anchor="middle" fill="white" font-size="10">Testes</text>
+                                
+                                <!-- Linhas de conexão -->
+                                <line x1="330" y1="210" x2="250" y2="150" stroke="#A78BFA" stroke-width="3" stroke-dasharray="5,2" />
+                                <line x1="470" y1="210" x2="550" y2="150" stroke="#A78BFA" stroke-width="3" stroke-dasharray="5,2" />
+                                <line x1="340" y1="300" x2="200" y2="350" stroke="#A78BFA" stroke-width="3" stroke-dasharray="5,2" />
+                                <line x1="460" y1="300" x2="600" y2="350" stroke="#A78BFA" stroke-width="3" stroke-dasharray="5,2" />
+                                
+                                <!-- AI Translation -->
+                                <circle cx="100" cy="200" r="40" fill="#C4B5FD" />
+                                <text x="100" y="200" text-anchor="middle" fill="white" font-weight="bold" font-size="12">AI Translation</text>
+                                <line x1="150" y1="200" x2="200" y2="350" stroke="#C4B5FD" stroke-width="2" stroke-dasharray="3,1" />
+                                
+                                <!-- Meetings -->
+                                <circle cx="700" cy="200" r="40" fill="#C4B5FD" />
+                                <text x="700" y="200" text-anchor="middle" fill="white" font-weight="bold" font-size="12">Meetings</text>
+                                <line x1="650" y1="200" x2="600" y2="350" stroke="#C4B5FD" stroke-width="2" stroke-dasharray="3,1" />
+                                
+                                <!-- Credits -->
+                                <circle cx="300" cy="450" r="40" fill="#C4B5FD" />
+                                <text x="300" y="450" text-anchor="middle" fill="white" font-weight="bold" font-size="12">Credits</text>
+                                <line x1="300" y1="400" x2="340" y2="320" stroke="#C4B5FD" stroke-width="2" stroke-dasharray="3,1" />
+                                
+                                <!-- Analytics -->
+                                <circle cx="500" cy="450" r="40" fill="#C4B5FD" />
+                                <text x="500" y="450" text-anchor="middle" fill="white" font-weight="bold" font-size="12">Analytics</text>
+                                <line x1="500" y1="400" x2="460" y2="320" stroke="#C4B5FD" stroke-width="2" stroke-dasharray="3,1" />
+                            </svg>
+                        </div>
+                        
+                        <div class="text-center mt-2 text-sm text-gray-600">
+                            <span class="inline-block mr-6"><span class="inline-block w-3 h-3 rounded-full bg-purple-800 mr-1"></span> Core</span>
+                            <span class="inline-block mr-6"><span class="inline-block w-3 h-3 rounded-full bg-purple-600 mr-1"></span> Módulos Principais</span>
+                            <span class="inline-block"><span class="inline-block w-3 h-3 rounded-full bg-purple-400 mr-1"></span> Módulos Auxiliares</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-lg">
+                        <h3 class="font-bold text-xl mb-3 text-purple-800">Vantagens da Arquitetura</h3>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="w-4 h-4 bg-purple-500 rounded-full"></div>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-gray-700"><span class="font-semibold">Escalabilidade independente</span> - Cada módulo pode escalar de acordo com sua demanda específica</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="w-4 h-4 bg-purple-500 rounded-full"></div>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-gray-700"><span class="font-semibold">Isolamento de falhas</span> - Problemas em um módulo não afetam o sistema inteiro</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="w-4 h-4 bg-purple-500 rounded-full"></div>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-gray-700"><span class="font-semibold">Desenvolvimento paralelo</span> - Equipes podem trabalhar em diferentes módulos simultaneamente</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-white rounded-xl p-6 shadow-lg mb-8">
+                        <h3 class="font-bold text-xl mb-4 text-purple-800">Detalhes dos Módulos Principais</h3>
+                        
+                        <div class="space-y-5">
+                            <div class="p-4 bg-purple-50 rounded-lg border-l-4 border-purple-600">
+                                <h4 class="font-semibold text-purple-800">Módulo Core</h4>
+                                <p class="text-sm text-gray-700 mt-1">Gerencia autenticação, perfis de usuário e configurações globais. Integra OAuth, JWT e validação de 2FA.</p>
+                                <div class="mt-2 flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs">PostgreSQL</span>
+                                    <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs">Redis</span>
+                                </div>
+                            </div>
+                            
+                            <div class="p-4 bg-indigo-50 rounded-lg border-l-4 border-indigo-600">
+                                <h4 class="font-semibold text-indigo-800">Módulo Projetos</h4>
+                                <p class="text-sm text-gray-700 mt-1">Gerencia o ciclo de vida completo dos projetos, propostas, contratos e entregas de trabalho.</p>
+                                <div class="mt-2 flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-indigo-100 text-indigo-700 rounded text-xs">PostgreSQL</span>
+                                    <span class="px-2 py-1 bg-indigo-100 text-indigo-700 rounded text-xs">Elasticsearch</span>
+                                </div>
+                            </div>
+                            
+                            <div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-600">
+                                <h4 class="font-semibold text-blue-800">Módulo Pagamentos</h4>
+                                <p class="text-sm text-gray-700 mt-1">Processa transações financeiras, gerencia escrow, moedas fiat e crypto, integração com gateways.</p>
+                                <div class="mt-2 flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">PostgreSQL</span>
+                                    <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">MongoDB</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-lg mb-8">
+                        <h3 class="font-bold text-xl mb-4 text-purple-800">Módulos Especializados em IA</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="p-4 bg-purple-50 rounded-lg border-l-4 border-purple-500">
+                                <h4 class="font-semibold text-purple-800">AI Translation</h4>
+                                <p class="text-sm text-gray-700 mt-1">Tradução em tempo real de mensagens entre usuários de idiomas diferentes usando modelos de linguagem avançados.</p>
+                                <div class="mt-2 flex items-center">
+                                    <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs mr-2">Python</span>
+                                    <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs">OpenAI API</span>
+                                </div>
+                            </div>
+                            
+                            <div class="p-4 bg-purple-50 rounded-lg border-l-4 border-purple-500">
+                                <h4 class="font-semibold text-purple-800">AI Matchmaking</h4>
+                                <p class="text-sm text-gray-700 mt-1">Algoritmos de machine learning para combinar freelancers com projetos baseado em habilidades e histórico.</p>
+                                <div class="mt-2 flex items-center">
+                                    <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs mr-2">TensorFlow</span>
+                                    <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs">Python</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-5 p-4 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-lg text-white">
+                            <div class="flex items-center">
+                                <div class="mr-4 text-3xl">
+                                    <i class="fas fa-plug"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Arquitetura Orientada a Eventos</h4>
+                                    <p class="text-sm opacity-90">Todos os módulos se comunicam através de eventos, permitindo acoplamento fraco e alta escalabilidade.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 10: Estratégia -->
+    <section class="slide gradient-bg text-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen flex flex-col justify-center">
+            <h2 class="text-4xl font-bold text-center mb-16">Estratégia de Expansão Global</h2>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12 mb-16">
+                <div class="lg:w-1/2">
+                    <div class="relative rounded-xl overflow-hidden shadow-2xl">
+                        <!-- Mapa estilizado com pontos de expansão -->
+                        <div class="bg-gradient-to-br from-purple-900 to-indigo-900 p-4 rounded-xl aspect-video relative">
+                            <!-- Visual do mapa mundial estilizado -->
+                            <div class="absolute inset-0 opacity-20">
+                                <svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Contornos simplificados de continentes -->
+                                    <path d="M250,180 C300,150 350,160 400,170 C450,180 500,190 550,180 C600,170 650,150 700,160 C750,170 800,190 850,180" fill="none" stroke="white" stroke-width="2" />
+                                    <path d="M200,250 C250,240 300,230 350,250 C400,270 450,260 500,250 C550,240 600,230 650,250" fill="none" stroke="white" stroke-width="2" />
+                                    <path d="M300,300 C350,320 400,330 450,320 C500,310 550,300 600,320" fill="none" stroke="white" stroke-width="2" />
+                                </svg>
+                            </div>
+                            
+                            <!-- Pontos de expansão (países/regiões) -->
+                            <!-- Brasil (hub inicial) -->
+                            <div class="absolute left-[25%] top-[65%] flex flex-col items-center">
+                                <div class="bg-yellow-400 w-6 h-6 rounded-full border-2 border-white shadow-glow flex items-center justify-center text-black font-bold">
+                                    1
+                                </div>
+                                <div class="mt-2 px-2 py-1 bg-black bg-opacity-50 rounded text-xs text-white whitespace-nowrap">
+                                    Brasil (Hub)
+                                </div>
+                            </div>
+                            
+                            <!-- América Latina -->
+                            <div class="absolute left-[20%] top-[50%] flex flex-col items-center">
+                                <div class="bg-white w-5 h-5 rounded-full border-2 border-blue-300 shadow-glow flex items-center justify-center text-black font-bold text-xs">
+                                    2
+                                </div>
+                                <div class="mt-2 px-2 py-1 bg-black bg-opacity-50 rounded text-xs text-white whitespace-nowrap">
+                                    América Latina
+                                </div>
+                            </div>
+                            
+                            <!-- EUA -->
+                            <div class="absolute left-[18%] top-[30%] flex flex-col items-center">
+                                <div class="bg-white w-5 h-5 rounded-full border-2 border-blue-300 shadow-glow flex items-center justify-center text-black font-bold text-xs">
+                                    3
+                                </div>
+                                <div class="mt-2 px-2 py-1 bg-black bg-opacity-50 rounded text-xs text-white whitespace-nowrap">
+                                    EUA
+                                </div>
+                            </div>
+                            
+                            <!-- Europa -->
+                            <div class="absolute left-[45%] top-[25%] flex flex-col items-center">
+                                <div class="bg-white w-5 h-5 rounded-full border-2 border-blue-300 shadow-glow flex items-center justify-center text-black font-bold text-xs">
+                                    4
+                                </div>
+                                <div class="mt-2 px-2 py-1 bg-black bg-opacity-50 rounded text-xs text-white whitespace-nowrap">
+                                    Europa
+                                </div>
+                            </div>
+                            
+                            <!-- África -->
+                            <div class="absolute left-[48%] top-[50%] flex flex-col items-center">
+                                <div class="bg-white w-5 h-5 rounded-full border-2 border-blue-300 shadow-glow flex items-center justify-center text-black font-bold text-xs">
+                                    5
+                                </div>
+                                <div class="mt-2 px-2 py-1 bg-black bg-opacity-50 rounded text-xs text-white whitespace-nowrap">
+                                    África
+                                </div>
+                            </div>
+                            
+                            <!-- Ásia -->
+                            <div class="absolute left-[75%] top-[35%] flex flex-col items-center">
+                                <div class="bg-white w-5 h-5 rounded-full border-2 border-blue-300 shadow-glow flex items-center justify-center text-black font-bold text-xs">
+                                    6
+                                </div>
+                                <div class="mt-2 px-2 py-1 bg-black bg-opacity-50 rounded text-xs text-white whitespace-nowrap">
+                                    Ásia/Oceania
+                                </div>
+                            </div>
+                            
+                            <!-- Setas animadas melhoradas apontando para as expansões -->
+                            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                <!-- Seta Brasil -> América Latina -->
+                                <path d="M25,65 C23,60 21,55 20,50" 
+                                      fill="none" stroke="white" stroke-width="0.4" 
+                                      stroke-dasharray="2,1" class="animate-pulse" />
+                                      
+                                <polygon points="19.5,50 21,49 21,51" fill="white" transform="rotate(-85 20 50)"/>
+                                
+                                <!-- Seta Brasil -> EUA -->
+                                <path d="M25,65 C22,55 20,40 18,30" 
+                                      fill="none" stroke="white" stroke-width="0.4" 
+                                      stroke-dasharray="2,1" class="animate-pulse" />
+                                      
+                                <polygon points="17.5,30 19,29 19,31" fill="white" transform="rotate(-75 18 30)"/>
+                                
+                                <!-- Seta Brasil -> Europa -->
+                                <path d="M25,65 C30,55 40,35 45,25" 
+                                      fill="none" stroke="white" stroke-width="0.4" 
+                                      stroke-dasharray="2,1" class="animate-pulse" />
+                                      
+                                <polygon points="44.5,25 46,24 46,26" fill="white" transform="rotate(-45 45 25)"/>
+                                
+                                <!-- Fluxo de expansão com setas sólidas -->
+                                <!-- Brasil para América Latina -->
+                                <path d="M25,65 Q22.5,57.5 20,50" 
+                                      fill="none" stroke="#4FD1C5" stroke-width="2" 
+                                      marker-end="url(#arrowhead)" />
+                                
+                                <!-- América Latina para EUA -->
+                                <path d="M20,50 Q19,40 18,30" 
+                                      fill="none" stroke="#4FD1C5" stroke-width="2" 
+                                      marker-end="url(#arrowhead)" />
+                                
+                                <!-- EUA para Europa -->
+                                <path d="M18,30 Q31.5,27.5 45,25" 
+                                      fill="none" stroke="#4FD1C5" stroke-width="2" 
+                                      marker-end="url(#arrowhead)" />
+                                
+                                <!-- Europa para África -->
+                                <path d="M45,25 Q46.5,37.5 48,50" 
+                                      fill="none" stroke="#4FD1C5" stroke-width="2" 
+                                      marker-end="url(#arrowhead)" />
+                                
+                                <!-- Europa para Ásia -->
+                                <path d="M45,25 Q60,30 75,35" 
+                                      fill="none" stroke="#4FD1C5" stroke-width="2" 
+                                      marker-end="url(#arrowhead)" />
+                                
+                                <!-- Definição da ponta da seta -->
+                                <defs>
+                                    <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                                            refX="9" refY="3.5" orient="auto">
+                                        <polygon points="0 0, 10 3.5, 0 7" fill="#4FD1C5" />
+                                    </marker>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="space-y-6">
+                        <div class="bg-white bg-opacity-10 p-6 rounded-xl border border-white border-opacity-20">
+                            <h3 class="font-bold text-xl mb-4">Abordagem de Mercado Faseada</h3>
+                            
+                            <div class="grid grid-cols-1 gap-4 mb-6">
+                                <div class="flex items-start p-3 bg-white bg-opacity-5 rounded-lg">
+                                    <div class="bg-yellow-400 rounded-full w-8 h-8 flex items-center justify-center text-black font-bold mr-4 shrink-0">
+                                        1
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold">Brasil (12 meses)</div>
+                                        <p class="text-sm opacity-90">Mercado inicial para validar o produto, com 1.5M de freelancers locais. Estratégia de "go to market" com comunidades existentes.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start p-3 bg-white bg-opacity-5 rounded-lg">
+                                    <div class="bg-white rounded-full w-8 h-8 flex items-center justify-center text-purple-800 font-bold mr-4 shrink-0">
+                                        2
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold">América Latina (Ano 2)</div>
+                                        <p class="text-sm opacity-90">Expansão regional aproveitando similaridades culturais e afinidade linguística. Mercados alvo: México, Colômbia e Argentina.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start p-3 bg-white bg-opacity-5 rounded-lg">
+                                    <div class="bg-white rounded-full w-8 h-8 flex items-center justify-center text-purple-800 font-bold mr-4 shrink-0">
+                                        3-6
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold">Global (Anos 3-5)</div>
+                                        <p class="text-sm opacity-90">Expansão para EUA, Europa, África e Ásia com adaptações locais e conformidade regulatória específica para cada região.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-center items-center p-3 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-xl">
+                                <i class="fas fa-language text-3xl mr-4"></i>
+                                <div>
+                                    <div class="font-semibold text-lg">Suporte em 17 Idiomas</div>
+                                    <p class="text-sm">Alcance global com tradução contínua e em tempo real</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-5 bg-white bg-opacity-10 rounded-xl border border-white border-opacity-20">
+                            <h4 class="font-semibold mb-2">Vantagem Competitiva:</h4>
+                            <p class="text-sm opacity-90">"Nosso foco inicial na América Latina nos permite resolver desafios específicos como pagamentos transfronteiriços e pluralidade linguística, criando uma base sólida para expansão global."</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="stat-card p-3 rounded-lg bg-white bg-opacity-10 border border-white border-opacity-20 text-center">
+                                <div class="text-3xl font-bold">180+</div>
+                                <div class="text-xs">Países-Alvo</div>
+                            </div>
+                            <div class="stat-card p-3 rounded-lg bg-white bg-opacity-10 border border-white border-opacity-20 text-center">
+                                <div class="text-3xl font-bold">84%</div>
+                                <div class="text-xs">Adaptação Local</div>
+                            </div>
+                            <div class="stat-card p-3 rounded-lg bg-white bg-opacity-10 border border-white border-opacity-20 text-center">
+                                <div class="text-3xl font-bold">17</div>
+                                <div class="text-xs">Idiomas</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 11: Projeções -->
+    <section class="slide bg-purple-100">
+        <div class="container mx-auto px-6 py-20 min-h-screen flex flex-col justify-center">
+            <h2 class="text-4xl font-bold text-center mb-16 text-purple-800">Projeções Financeiras</h2>
+            
+            <!-- Conteúdo do slide -->
+                                </div>
+    </section>
+
+    <!-- Slide 12: Investimento -->
+    <section class="slide gradient-bg text-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen flex flex-col justify-center">
+            <h2 class="text-4xl font-bold text-center mb-16">Oportunidade de Investimento</h2>
+            
+            <!-- Conteúdo do slide -->
+        </div>
+    </section>
+
+    <!-- Slide 13: Equipe -->
+    <section class="slide bg-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen flex flex-col justify-center">
+            <h2 class="text-4xl font-bold text-center mb-16 text-purple-800">Equipe Qualificada</h2>
+            
+            <!-- Conteúdo do slide -->
+        </div>
+    </section>
+
+    <!-- Slide 14: Visão -->
+    <section class="slide gradient-bg text-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen flex flex-col justify-center">
+            <h2 class="text-4xl font-bold text-center mb-16">Nossa Visão para o Futuro</h2>
+            
+            <!-- Conteúdo do slide -->
+        </div>
+    </section>
+
+    <!-- Navigation Controls -->
+    <script>
+        // JavaScript para controle de navegação da apresentação
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            let currentSlideIndex = 0;
+            
+            function showSlide(index) {
+                slides.forEach(slide => {
+                    slide.style.display = 'none';
+                });
+                
+                if (index < 0) {
+                    currentSlideIndex = slides.length - 1;
+                } else if (index >= slides.length) {
+                    currentSlideIndex = 0;
+                } else {
+                    currentSlideIndex = index;
+                }
+                
+                slides[currentSlideIndex].style.display = 'block';
+            }
+            
+            function nextSlide() {
+                showSlide(currentSlideIndex + 1);
+            }
+            
+            function prevSlide() {
+                showSlide(currentSlideIndex - 1);
+            }
+            
+            // Configuração de teclas
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                    prevSlide();
+                }
+            });
+            
+            // Mostrar o primeiro slide ao carregar
+            showSlide(0);
+        });
+    </script>
+</body>
+</html>

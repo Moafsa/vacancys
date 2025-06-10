@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 11: Estratégia - Vacancy.services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <style>
+        .slide {
+            min-height: 100vh;
+            display: block;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #6e48aa 0%, #4894ea 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Estilos para os gráficos */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+        
+        /* Estilos para animação de gráficos */
+        .pie-chart-container, .line-chart-container {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .slide.active .pie-chart-container,
+        .slide.active .line-chart-container {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Estilos para animação das setas de expansão */
+        @keyframes arrowFlow {
+            0% { stroke-dashoffset: 10; }
+            100% { stroke-dashoffset: 0; }
+        }
+        
+        .arrow-path {
+            stroke-dasharray: 5, 2;
+            animation: arrowFlow 1s infinite linear;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="h-10 w-auto">
+                    <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images//3.svg" alt="Vacancy.services logo" class="h-full">
+                </div>
+                <span class="ml-3 text-sm text-purple-700 hidden md:block">Talentos Globais, Oportunidades sem Fronteiras</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="slide10-negocios.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-left text-purple-600"></i>
+                </a>
+                <a href="index_principal.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-home text-purple-600"></i>
+                </a>
+                <a href="slide12-america-latina.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-right text-purple-600"></i>
+                </a>
+                <span class="text-sm font-medium text-gray-600">12/22</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Slide 11: Estratégia -->
+    <section class="slide gradient-bg text-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen flex flex-col justify-center">
+            <h2 class="text-4xl font-bold text-center mb-16">Estratégia de Expansão Global</h2>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12 mb-16">
+                <div class="lg:w-1/2">
+                    <div class="relative rounded-xl overflow-hidden shadow-2xl">
+                        <!-- Mapa estilizado com pontos de expansão -->
+                        <div class="bg-gradient-to-br from-purple-900 to-indigo-900 p-4 rounded-xl aspect-video relative">
+                            <!-- Visual do mapa mundial estilizado melhorado -->
+                            <div class="absolute inset-0 opacity-40">
+                                <svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Contornos simplificados de continentes em estilo moderno -->
+                                    <path d="M200,170 C250,150 300,145 350,155 C400,165 450,175 500,170 C550,165 600,150 650,160 C700,170 750,175 800,165" 
+                                          fill="none" stroke="white" stroke-width="3" opacity="0.6" stroke-linecap="round" />
+                                    <path d="M150,230 C200,220 250,210 300,225 C350,240 400,235 450,225 C500,215 550,210 600,225" 
+                                          fill="none" stroke="white" stroke-width="3" opacity="0.6" stroke-linecap="round" />
+                                    <path d="M250,280 C300,295 350,300 400,295 C450,290 500,280 550,295" 
+                                          fill="none" stroke="white" stroke-width="3" opacity="0.6" stroke-linecap="round" />
+                                    
+                                    <!-- Adicionar pontos de referência para continentes -->
+                                    <circle cx="300" cy="170" r="5" fill="white" opacity="0.5" />
+                                    <circle cx="500" cy="170" r="5" fill="white" opacity="0.5" />
+                                    <circle cx="700" cy="160" r="5" fill="white" opacity="0.5" />
+                                    <circle cx="300" cy="225" r="5" fill="white" opacity="0.5" />
+                                    <circle cx="450" cy="295" r="5" fill="white" opacity="0.5" />
+                                </svg>
+                            </div>
+                            
+                            <!-- Pontos de expansão (países/regiões) -->
+                            <!-- Brasil (hub inicial) -->
+                            <div class="absolute left-[28%] top-[65%] flex flex-col items-center">
+                                <div class="bg-yellow-400 w-10 h-10 rounded-full border-2 border-white shadow-lg flex items-center justify-center text-black font-bold z-10">
+                                    1
+                                </div>
+                                <div class="mt-2 px-3 py-1 bg-black bg-opacity-70 rounded-lg text-xs text-white whitespace-nowrap shadow-lg">
+                                    Brasil (Hub)
+                                </div>
+                            </div>
+                            
+                            <!-- América Latina -->
+                            <div class="absolute left-[20%] top-[50%] flex flex-col items-center">
+                                <div class="bg-white w-8 h-8 rounded-full border-2 border-blue-300 shadow-lg flex items-center justify-center text-black font-bold text-xs z-10">
+                                    2
+                                </div>
+                                <div class="mt-2 px-3 py-1 bg-black bg-opacity-70 rounded-lg text-xs text-white whitespace-nowrap shadow-lg">
+                                    América Latina
+                                </div>
+                            </div>
+                            
+                            <!-- EUA -->
+                            <div class="absolute left-[18%] top-[30%] flex flex-col items-center">
+                                <div class="bg-white w-8 h-8 rounded-full border-2 border-blue-300 shadow-lg flex items-center justify-center text-black font-bold text-xs z-10">
+                                    3
+                                </div>
+                                <div class="mt-2 px-3 py-1 bg-black bg-opacity-70 rounded-lg text-xs text-white whitespace-nowrap shadow-lg">
+                                    EUA
+                                </div>
+                            </div>
+                            
+                            <!-- Europa -->
+                            <div class="absolute left-[45%] top-[25%] flex flex-col items-center">
+                                <div class="bg-white w-8 h-8 rounded-full border-2 border-blue-300 shadow-lg flex items-center justify-center text-black font-bold text-xs z-10">
+                                    4
+                                </div>
+                                <div class="mt-2 px-3 py-1 bg-black bg-opacity-70 rounded-lg text-xs text-white whitespace-nowrap shadow-lg">
+                                    Europa
+                                </div>
+                            </div>
+                            
+                            <!-- África -->
+                            <div class="absolute left-[48%] top-[50%] flex flex-col items-center">
+                                <div class="bg-white w-8 h-8 rounded-full border-2 border-blue-300 shadow-lg flex items-center justify-center text-black font-bold text-xs z-10">
+                                    5
+                                </div>
+                                <div class="mt-2 px-3 py-1 bg-black bg-opacity-70 rounded-lg text-xs text-white whitespace-nowrap shadow-lg">
+                                    África
+                                </div>
+                            </div>
+                            
+                            <!-- Ásia -->
+                            <div class="absolute left-[75%] top-[35%] flex flex-col items-center">
+                                <div class="bg-white w-8 h-8 rounded-full border-2 border-blue-300 shadow-lg flex items-center justify-center text-black font-bold text-xs z-10">
+                                    6
+                                </div>
+                                <div class="mt-2 px-3 py-1 bg-black bg-opacity-70 rounded-lg text-xs text-white whitespace-nowrap shadow-lg">
+                                    Ásia/Oceania
+                                </div>
+                            </div>
+                            
+                            <!-- Linhas de conexão com setas -->
+                            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                <!-- Definição de marcadores de seta (arrowheads) -->
+                                <defs>
+                                    <marker id="arrowhead-b" markerWidth="6" markerHeight="6" 
+                                            refX="5" refY="3" orient="auto">
+                                        <circle cx="3" cy="3" r="2" fill="#4FD1C5" />
+                                    </marker>
+                                    <marker id="arrowhead-e" markerWidth="8" markerHeight="8" 
+                                            refX="8" refY="4" orient="auto">
+                                        <path d="M0,0 L8,4 L0,8 L2,4 Z" fill="#4FD1C5" />
+                                    </marker>
+                                    
+                                    <!-- Gradiente para as linhas -->
+                                    <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#4FD1C5" stop-opacity="0.3" />
+                                        <stop offset="100%" stop-color="#4FD1C5" stop-opacity="1" />
+                                    </linearGradient>
+                                    
+                                    <!-- Filter para glow effect -->
+                                    <filter id="glow-effect" height="300%" width="300%" x="-75%" y="-75%">
+                                        <feMorphology operator="dilate" radius="1" in="SourceAlpha" result="thicken" />
+                                        <feGaussianBlur in="thicken" stdDeviation="2" result="blurred" />
+                                        <feFlood flood-color="#4FD1C5" result="glowColor" />
+                                        <feComposite in="glowColor" in2="blurred" operator="in" result="softGlow_colored" />
+                                        <feComposite in="softGlow_colored" in2="SourceGraphic" operator="over" />
+                                    </filter>
+                                </defs>
+                                
+                                <!-- Conexões entre pontos com efeito de fluxo -->
+                                <!-- Brasil para América Latina -->
+                                <path d="M28,65 Q24,57.5 20,50" 
+                                      fill="none" stroke="url(#line-gradient)" stroke-width="1.5"
+                                      marker-start="url(#arrowhead-b)" marker-end="url(#arrowhead-e)" 
+                                      filter="url(#glow-effect)" class="animate-pulse" />
+                                
+                                <!-- América Latina para EUA -->
+                                <path d="M20,50 Q19,40 18,30" 
+                                      fill="none" stroke="url(#line-gradient)" stroke-width="1.5"
+                                      marker-start="url(#arrowhead-b)" marker-end="url(#arrowhead-e)" 
+                                      filter="url(#glow-effect)" class="animate-pulse" />
+                                
+                                <!-- EUA para Europa -->
+                                <path d="M18,30 Q31.5,27.5 45,25" 
+                                      fill="none" stroke="url(#line-gradient)" stroke-width="1.5"
+                                      marker-start="url(#arrowhead-b)" marker-end="url(#arrowhead-e)" 
+                                      filter="url(#glow-effect)" class="animate-pulse" />
+                                
+                                <!-- Europa para África -->
+                                <path d="M45,25 Q46.5,37.5 48,50" 
+                                      fill="none" stroke="url(#line-gradient)" stroke-width="1.5"
+                                      marker-start="url(#arrowhead-b)" marker-end="url(#arrowhead-e)" 
+                                      filter="url(#glow-effect)" class="animate-pulse" />
+                                
+                                <!-- Europa para Ásia -->
+                                <path d="M45,25 Q60,30 75,35" 
+                                      fill="none" stroke="url(#line-gradient)" stroke-width="1.5"
+                                      marker-start="url(#arrowhead-b)" marker-end="url(#arrowhead-e)" 
+                                      filter="url(#glow-effect)" class="animate-pulse" />
+                                
+                                <!-- Pulso animado ao longo do caminho -->
+                                <circle cx="0" cy="0" r="2" fill="#4FD1C5">
+                                    <animateMotion
+                                        path="M28,65 Q24,57.5 20,50 Q19,40 18,30 Q31.5,27.5 45,25"
+                                        dur="3s"
+                                        repeatCount="indefinite" />
+                                </circle>
+                                
+                                <circle cx="0" cy="0" r="2" fill="#4FD1C5">
+                                    <animateMotion
+                                        path="M45,25 Q46.5,37.5 48,50"
+                                        dur="2s"
+                                        repeatCount="indefinite" />
+                                </circle>
+                                
+                                <circle cx="0" cy="0" r="2" fill="#4FD1C5">
+                                    <animateMotion
+                                        path="M45,25 Q60,30 75,35"
+                                        dur="2s"
+                                        repeatCount="indefinite" />
+                                </circle>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="space-y-6">
+                        <div class="bg-white bg-opacity-10 p-6 rounded-xl border border-white border-opacity-20">
+                            <h3 class="font-bold text-xl mb-4">Abordagem de Mercado Faseada</h3>
+                            
+                            <div class="grid grid-cols-1 gap-4 mb-6">
+                                <div class="flex items-start p-3 bg-white bg-opacity-5 rounded-lg">
+                                    <div class="bg-yellow-400 rounded-full w-8 h-8 flex items-center justify-center text-black font-bold mr-4 shrink-0">
+                                        1
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold">Brasil (2025)</div>
+                                        <p class="text-sm opacity-90">Consolidação do mercado brasileiro, com 2.5M de freelancers locais. Expansão acelerada através de parcerias estratégicas.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start p-3 bg-white bg-opacity-5 rounded-lg">
+                                    <div class="bg-white rounded-full w-8 h-8 flex items-center justify-center text-purple-800 font-bold mr-4 shrink-0">
+                                        2
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold">América Latina (2025-2026)</div>
+                                        <p class="text-sm opacity-90">Expansão regional em andamento, com presença forte no México, Colômbia, Argentina e Chile. Meta de 5M de freelancers até Q4 2026.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start p-3 bg-white bg-opacity-5 rounded-lg">
+                                    <div class="bg-white rounded-full w-8 h-8 flex items-center justify-center text-purple-800 font-bold mr-4 shrink-0">
+                                        3-6
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold">Global (2026-2028)</div>
+                                        <p class="text-sm opacity-90">Início da expansão para EUA (Q3 2026), Europa (Q1 2027), África (Q3 2027) e Ásia (Q1 2028) com infraestrutura local e conformidade regulatória.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-center items-center p-3 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-xl">
+                                <i class="fas fa-language text-3xl mr-4"></i>
+                                <div>
+                                    <div class="font-semibold text-lg">Suporte em 17 Idiomas</div>
+                                    <p class="text-sm">Alcance global com tradução contínua e em tempo real</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-5 bg-white bg-opacity-10 rounded-xl border border-white border-opacity-20">
+                            <h4 class="font-semibold mb-2">Vantagem Competitiva:</h4>
+                            <p class="text-sm opacity-90">"Nosso foco inicial na América Latina nos permite resolver desafios específicos como pagamentos transfronteiriços e pluralidade linguística, criando uma base sólida para expansão global."</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="stat-card p-3 rounded-lg bg-white bg-opacity-10 border border-white border-opacity-20 text-center">
+                                <div class="text-3xl font-bold">180+</div>
+                                <div class="text-xs">Países-Alvo</div>
+                            </div>
+                            <div class="stat-card p-3 rounded-lg bg-white bg-opacity-10 border border-white border-opacity-20 text-center">
+                                <div class="text-3xl font-bold">84%</div>
+                                <div class="text-xs">Adaptação Local</div>
+                            </div>
+                            <div class="stat-card p-3 rounded-lg bg-white bg-opacity-10 border border-white border-opacity-20 text-center">
+                                <div class="text-3xl font-bold">17</div>
+                                <div class="text-xs">Idiomas</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Para garantir que a seção esteja visível (já que estamos tornando todos os slides visíveis por padrão)
+        const slides = document.querySelectorAll('.slide');
+        slides.forEach(slide => {
+            slide.classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html> 

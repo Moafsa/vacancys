@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\User\\Documents\\vacancy\\modules\\core\\logs\\.c4f290484937cc16668aace56815454fb837989f-audit.json",
+    "files": [
+        {
+            "date": 1742850300686,
+            "name": "C:\\Users\\User\\Documents\\vacancy\\modules\\core\\logs\\error-2025-03-24.log",
+            "hash": "dc200da3d5d1c5e07c6b15c26feb5c000668a09c44d6ffaef6336963da148d77"
+        }
+    ],
+    "hashType": "sha256"
+}

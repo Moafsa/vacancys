@@ -1,0 +1,13 @@
+model ModuleAuditLog {
+  id        String   @id @default(cuid())
+  moduleName String
+  action    String   // activate, deactivate, configure
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  details   Json?
+  timestamp DateTime @default(now())
+
+  @@index([moduleName])
+  @@index([userId])
+  @@index([timestamp])
+} 

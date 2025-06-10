@@ -1,0 +1,701 @@
+openapi: 3.0.3
+info:
+  title: Core Module API
+  description: API for the Core Module providing authentication, event management, and status endpoints
+  version: 1.0.0
+  contact:
+    name: Vacancy System
+
+servers:
+  - url: /api/core
+    description: Base API path
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+          example: Error message describing what went wrong
+        stack:
+          type: string
+          description: Stack trace (only in development environment)
+          example: Error at line...
+
+    EventMetrics:
+      type: object
+      properties:
+        circuitBreakerState:
+          type: string
+          enum: [CLOSED, OPEN, HALF_OPEN]
+          example: CLOSED
+        deadLetterQueueEnabled:
+          type: boolean
+          example: true
+        retryEnabled:
+          type: boolean
+          example: true
+
+    Event:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 123
+        originalEvent:
+          type: object
+          properties:
+            type:
+              type: string
+              example: ERROR_EVENT
+            payload:
+              type: object
+              example: { "message": "Error occurred" }
+            createdAt:
+              type: string
+              format: date-time
+              example: 2023-03-26T21:26:28.261Z
+        failureReason:
+          type: string
+          example: Test failure
+        attemptCount:
+          type: integer
+          example: 5
+        lastAttemptAt:
+          type: string
+          format: date-time
+          example: 2023-03-26T21:26:28.261Z
+        createdAt:
+          type: string
+          format: date-time
+          example: 2023-03-26T21:26:28.261Z
+
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 789012
+        name:
+          type: string
+          example: New User
+        email:
+          type: string
+          format: email
+          example: newuser@example.com
+        role:
+          type: string
+          enum: [USER, ADMIN]
+          example: USER
+        status:
+          type: string
+          enum: [ACTIVE, INACTIVE, SUSPENDED]
+          example: ACTIVE
+        createdAt:
+          type: string
+          format: date-time
+          example: 2023-03-26T21:26:28.261Z
+        updatedAt:
+          type: string
+          format: date-time
+          example: 2023-03-26T21:26:28.261Z
+
+    LoginRequest:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+          example: user@example.com
+        password:
+          type: string
+          format: password
+          example: yourpassword
+
+    LoginResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+        user:
+          type: object
+          properties:
+            id:
+              type: string
+              example: 123456
+            name:
+              type: string
+              example: User Name
+            email:
+              type: string
+              format: email
+              example: user@example.com
+            role:
+              type: string
+              enum: [USER, ADMIN]
+              example: USER
+
+    CreateUserRequest:
+      type: object
+      required:
+        - name
+        - email
+        - password
+      properties:
+        name:
+          type: string
+          example: New User
+        email:
+          type: string
+          format: email
+          example: newuser@example.com
+        password:
+          type: string
+          format: password
+          example: securepassword
+        role:
+          type: string
+          enum: [USER, ADMIN]
+          example: USER
+
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        timestamp:
+          type: string
+          format: date-time
+          example: 2023-03-26T21:26:28.261Z
+
+    SystemStatus:
+      type: object
+      properties:
+        status:
+          type: string
+          example: OK
+        timestamp:
+          type: string
+          format: date-time
+          example: 2023-03-26T21:26:28.261Z
+        environment:
+          type: string
+          example: development
+        database:
+          type: object
+          properties:
+            status:
+              type: string
+              example: Connected
+        config:
+          type: object
+          properties:
+            email:
+              type: object
+              properties:
+                host:
+                  type: string
+                  example: smtp.example.com
+                port:
+                  type: integer
+                  example: 587
+                secure:
+                  type: boolean
+                  example: false
+                auth:
+                  type: object
+                  properties:
+                    user:
+                      type: string
+                      example: "******"
+                    pass:
+                      type: string
+                      example: "******"
+            redis:
+              type: object
+              properties:
+                host:
+                  type: string
+                  example: localhost
+                port:
+                  type: integer
+                  example: 6379
+                auth:
+                  type: string
+                  example: "******"
+
+    PaginationMetadata:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of items available
+        page:
+          type: integer
+          description: Current page number
+        limit:
+          type: integer
+          description: Number of items per page
+        pages:
+          type: integer
+          description: Total number of pages
+        hasNext:
+          type: boolean
+          description: Whether there is a next page
+        hasPrev:
+          type: boolean
+          description: Whether there is a previous page
+
+paths:
+  /status/health:
+    get:
+      summary: Health Check
+      description: Returns the current health status of the API
+      operationId: getHealthStatus
+      tags:
+        - Status
+      responses:
+        '200':
+          description: Server is operational
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+
+  /status/json:
+    get:
+      summary: System Status
+      description: Returns detailed system status information
+      operationId: getSystemStatus
+      tags:
+        - Status
+      responses:
+        '200':
+          description: Request successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemStatus'
+        '500':
+          description: Server error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /status:
+    get:
+      summary: Status Dashboard
+      description: Returns an HTML page with system status information
+      operationId: getStatusDashboard
+      tags:
+        - Status
+      responses:
+        '200':
+          description: Request successful
+          content:
+            text/html:
+              schema:
+                type: string
+        '404':
+          description: Status page not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /auth/login:
+    post:
+      summary: User Login
+      description: Authenticates a user and returns a JWT token
+      operationId: login
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Authentication successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '400':
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /users:
+    post:
+      summary: Create User
+      description: Creates a new user
+      operationId: createUser
+      tags:
+        - Users
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserRequest'
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid request data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /events/metrics:
+    get:
+      summary: Get Event Service Metrics
+      description: Returns metrics about the event service
+      operationId: getEventMetrics
+      tags:
+        - Events
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Request successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    $ref: '#/components/schemas/EventMetrics'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /events/dlq/types:
+    get:
+      summary: Get Dead Letter Queue Event Types
+      description: Returns a list of event types in the Dead Letter Queue
+      operationId: getDLQEventTypes
+      tags:
+        - Events
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Request successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    type: object
+                    properties:
+                      eventTypes:
+                        type: array
+                        items:
+                          type: string
+                          example: ERROR_EVENT
+                      count:
+                        type: integer
+                        example: 2
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /events/dlq/{eventType}:
+    get:
+      summary: Get events from the Dead Letter Queue
+      description: Retrieves events of a specific type from the Dead Letter Queue with pagination support
+      parameters:
+        - name: eventType
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The type of events to retrieve
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 1
+            minimum: 1
+          description: Page number (starting from 1)
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 10
+            minimum: 1
+            maximum: 100
+          description: Number of items per page (max 100)
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Events successfully retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  data:
+                    type: object
+                    properties:
+                      events:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Event'
+                      count:
+                        type: integer
+                        description: Number of events in the current page
+                  pagination:
+                    $ref: '#/components/schemas/PaginationMetadata'
+        '400':
+          description: Bad request - Missing required parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized - Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden - Insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Purge Dead Letter Queue Events
+      description: Purges all events of a specific type from the Dead Letter Queue
+      operationId: purgeDLQEvents
+      tags:
+        - Events
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: eventType
+          in: path
+          required: true
+          description: The type of events to purge
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Events purged successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Purged 5 events of type ERROR_EVENT from Dead Letter Queue
+                  data:
+                    type: object
+                    properties:
+                      count:
+                        type: integer
+                        example: 5
+        '400':
+          description: Event type is required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /events/dlq/{eventType}/{eventId}/reprocess:
+    post:
+      summary: Reprocess Dead Letter Queue Event
+      description: Reprocesses a specific event from the Dead Letter Queue
+      operationId: reprocessDLQEvent
+      tags:
+        - Events
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: eventType
+          in: path
+          required: true
+          description: The type of the event to reprocess
+          schema:
+            type: string
+        - name: eventId
+          in: path
+          required: true
+          description: The ID of the event to reprocess
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Event reprocessed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Event 123 reprocessed successfully
+        '400':
+          description: Event type and event ID are required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Event not found or reprocessing failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error' 

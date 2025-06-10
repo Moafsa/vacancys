@@ -1,0 +1,31 @@
+# Node
+node_modules
+npm-debug.log
+.next
+
+# Env
+.env
+.env.*
+.env.local
+
+# Git
+.git
+.gitignore
+
+# Build/IDE
+.vscode
+.DS_Store
+__pycache__
+.venv
+
+# Docs
+README.md
+LICENSE
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Outros
+*.tsbuildinfo 

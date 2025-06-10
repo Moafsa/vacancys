@@ -1,0 +1,32 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+
+    volumes:
+      - ./public:/app/public
+      - ./uploads:/app/uploads
+      - ./prisma:/app/prisma
+      - ./modules/core/prisma:/app/modules/core/prisma
+    restart: unless-stopped
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  postgres-data:
+  redis-data:
+  postgres5434-data:
+
+networks:
+  app-network:
+    driver: bridge 

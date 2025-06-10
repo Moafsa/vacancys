@@ -1,0 +1,505 @@
+<think>Vou analisar os requisitos fornecidos e os sites mencionados (GetNinjas, Workana e Upwork) para ajudar a estruturar o projeto Vacancy.service em módulos, começando pelo front-end. O usuário deseja começar pelo site principal, seguido pelos dashboards de administrador e usuário (tanto para clientes quanto freelancers), com autenticação via Google, Facebook, LinkedIn ou email. O sistema deve ser multilíngue, com inglês como idioma original.
+
+Baseado nos requisitos e nas referências mencionadas, vou estruturar o projeto em módulos começando pelo front-end:
+
+1. **Site principal (landing page)** - Para apresentar o serviço
+2. **Sistema de autenticação** - Para login/registro via diferentes métodos
+3. **Dashboard de Administrador** - Para gerenciamento da plataforma
+4. **Dashboard de Usuário** - Com áreas específicas para freelancers e clientes
+5. **Sistema multilíngue** - Para suportar múltiplos idiomas
+
+Vou detalhar cada módulo com suas funcionalidades principais e possíveis tecnologias.</think># Estrutura do Projeto Vacancy.service
+
+## Análise das Referências
+
+Após analisar o GetNinjas, Workana e Upwork, percebo que o projeto Vacancy.service precisa de uma abordagem modular com foco na experiência do usuário. Vamos estruturar o front-end primeiro, como solicitado.
+
+## Módulos do Front-end
+
+### 1. Site Principal (Landing Page)
+- **Páginas Principais:**
+  - Home (apresentação do serviço)
+  - Como Funciona (para freelancers e clientes)
+  - Categorias de Serviços
+  - Preços e Planos
+  - Blog/Recursos
+  - Cadastro/Login
+  - FAQ/Suporte
+
+- **Componentes Visuais:**
+  - Barra de pesquisa de serviços/profissionais
+  - Depoimentos de usuários
+  - Estatísticas da plataforma
+  - Categorias populares de serviços
+  - Chamadas para ação (CTA)
+
+### 2. Sistema de Autenticação
+- **Métodos de Login:**
+  - Email/senha
+  - Google
+  - Facebook
+  - LinkedIn
+  - Autenticação de dois fatores (2FA)
+
+- **Fluxos de Registro:**
+  - Conta (Freelancer/Cliente)
+  - Verificação de email
+  - Preenchimento de perfil básico
+  - Redirecionamento para dashboard apropriado
+
+### 3. Dashboard do Administrador
+- **Painel Principal:**
+  - Estatísticas gerais (usuários, projetos, transações)
+  - Atividades recentes
+  - Alertas e notificações
+
+- **Gerenciamento de Usuários:**
+  - Lista de freelancers e clientes
+  - Ferramentas de verificação
+  - Sistema de banimento/suspensão
+
+- **Gestão Financeira:**
+  - Transações
+  - Relatórios de receita
+  - Ajustes de taxas e comissões
+
+- **Gestão de Conteúdo:**
+  - Categorias de serviços
+  - Testes de habilidades
+  - Páginas e conteúdo estático
+
+- **Moderação:**
+  - Projetos reportados
+  - Contas suspeitas
+  - Disputas entre usuários
+
+### 4. Dashboard do Usuário (Freelancer)
+- **Painel Principal:**
+  - Resumo de atividades
+  - Créditos disponíveis
+  - Projetos ativos/pendentes
+  - Notificações
+
+- **Perfil:**
+  - Informações pessoais
+  - Portfólio
+  - Habilidades e certificações
+  - Testes de habilidades (IA)
+  - Avaliações recebidas
+
+- **Projetos:**
+  - Busca de oportunidades
+  - Propostas enviadas
+  - Contratos ativos
+  - Histórico
+
+- **Financeiro:**
+  - Ganhos
+  - Saldo disponível
+  - Histórico de transações
+  - Opções de saque (incluindo crypto)
+
+- **Agenda:**
+  - Reuniões programadas
+  - Prazos de entrega
+  - Disponibilidade
+
+- **Sistema de Afiliados:**
+  - Links de convite
+  - Estatísticas de conversão
+  - Ganhos de afiliados
+
+### 5. Dashboard do Usuário (Cliente)
+- **Painel Principal:**
+  - Projetos ativos
+  - Propostas recebidas
+  - Reuniões agendadas
+  - Notificações
+
+- **Perfil:**
+  - Informações da empresa/pessoais
+  - Histórico de projetos
+  - Avaliações dadas
+
+- **Projetos:**
+  - Criação de novos projetos
+  - Projetos em andamento
+  - Projetos concluídos
+  - Busca de freelancers
+
+- **Financeiro:**
+  - Pagamentos pendentes
+  - Histórico de transações
+  - Meios de pagamento
+
+- **Agenda:**
+  - Reuniões programadas
+  - Entregas pendentes
+
+### 6. Sistema de Comunicação
+- **Chat Integrado:**
+  - Mensagens diretas
+  - Tradução em tempo real (IA)
+  - Compartilhamento de arquivos
+
+- **Sala de Reuniões:**
+  - Videochamadas
+  - Compartilhamento de tela
+  - Quadro branco virtual
+  - Tradução simultânea
+
+### 7. Sistema Multilíngue
+- **Idiomas Iniciais:**
+  - Inglês (principal)
+  - Português
+  - Espanhol
+  - Francês
+  
+- **Componentes:**
+  - Seletor de idioma
+  - Arquivos de tradução
+  - Sistema de fallback para textos não traduzidos
+
+## Estrutura Técnica Front-end
+
+### Tecnologias Recomendadas
+- **Framework:** React.js com Next.js (para SEO e rendering otimizado)
+- **Gerenciamento de Estado:** Redux ou Context API
+- **Estilização:** Tailwind CSS ou Styled Components
+- **Autenticação:** NextAuth.js (para integração com provedores sociais)
+- **Internacionalização:** i18next ou react-intl
+- **UI Components:** Material UI ou Chakra UI
+- **Gráficos e Estatísticas:** Recharts ou Chart.js
+- **Comunicação em Tempo Real:** Socket.io
+- **Videoconferência:** WebRTC com Agora.io ou Daily.co
+
+### Arquitetura de Arquivos
+```
+src/
+  ├── assets/              # Imagens, ícones, etc.
+  ├── components/          # Componentes reutilizáveis
+  │   ├── common/          # Botões, inputs, cards, etc.
+  │   ├── layout/          # Header, footer, sidebar
+  │   ├── auth/            # Componentes de autenticação
+  │   ├── dashboard/       # Componentes específicos do dashboard
+  │   └── ...
+  ├── contexts/            # Contextos React
+  ├── hooks/               # Hooks customizados
+  ├── i18n/                # Arquivos de tradução
+  ├── pages/               # Estrutura de páginas (Next.js)
+  │   ├── index.js         # Landing page
+  │   ├── auth/            # Páginas de autenticação
+  │   ├── dashboard/       # Páginas de dashboard
+  │   │   ├── admin/       # Dashboard de admin
+  │   │   ├── freelancer/  # Dashboard de freelancer
+  │   │   └── client/      # Dashboard de cliente
+  │   └── ...
+  ├── services/            # Serviços de API
+  ├── store/               # Gerenciamento de estado (Redux)
+  ├── styles/              # Estilos globais
+  └── utils/               # Funções utilitárias
+```
+
+## Plano de Implementação
+
+### Fase 1: Prototipagem e Design
+1. Criar protótipos de baixa fidelidade para todas as páginas principais
+2. Desenvolver guia de estilo e design system
+3. Criar protótipos de alta fidelidade para validação
+
+### Fase 2: Landing Page e Autenticação
+1. Implementar landing page com todos os componentes
+2. Configurar sistema de internacionalização
+3. Desenvolver fluxos de autenticação e registro
+
+### Fase 3: Dashboards de Usuário
+1. Implementar dashboard de freelancer
+2. Implementar dashboard de cliente
+3. Desenvolver componentes compartilhados
+
+### Fase 4: Dashboard de Administrador
+1. Implementar painéis de estatísticas
+2. Desenvolver ferramentas de gestão de usuários
+3. Implementar ferramentas de moderação
+
+### Fase 5: Recursos Avançados
+1. Implementar sala de reuniões com WebRTC
+2. Configurar sistema de traduções em tempo real
+3. Desenvolver testes de habilidades com IA
+
+Quando o front-end estiver bem estabelecido, poderemos focar no desenvolvimento do back-end para dar vida a todas essas funcionalidades.
+
+
+Escopo:
+
+
+Vou ajudar a estruturar os requisitos para o **Vacancy.service**, considerando seus diferenciais (taxas administrativas competitivas, sala de reuniões integrada, IA para atendimento/tradução e gestão de agenda). Vamos dividir em módulos e funcionalidades:
+
+---
+
+### **1. Requisitos Principais do Sistema**
+#### **A. Usuários e Perfis**
+- **Cadastro/Login**:  
+  - Opções via e-mail, redes sociais (Google, LinkedIn) e SSO.  
+  - Verificação em duas etapas (2FA).  
+  - Tipos de usuário: **Freelancer** e **Cliente**.  
+
+- **Perfil de Freelancer**:  
+  - Portfólio (projetos, habilidades, certificações).  
+  - Taxa horária ou por projeto.  
+  - Disponibilidade (integrado ao calendário).  
+  - Avaliações e reviews de clientes.  
+
+- **Perfil do Cliente**:  
+  - Descrição da empresa/necessidades.  
+  - Histórico de projetos postados.  
+  - Sistema de reputação (para evitar fraudes).  
+
+- **Verificação de Identidade**:  
+  - Upload de documentos (RG/CNH, CNPJ para empresas).  
+  - Validação via IA (reconhecimento facial, por exemplo).  
+
+---
+
+#### **B. Postagem de Projetos e Propostas**
+- **Postagem de Projetos**:  
+  - Campos: título, descrição, categoria (ex: design, programação), orçamento, prazo, habilidades necessárias.  
+  - Opção de projeto público ou privado (convidar freelancers específicos).  
+
+- **Sistema de Propostas**:  
+  - Freelancers enviam propostas com valor, prazo, mensagem e links de portfólio.  
+  - Clientes podem negociar termos via chat integrado.  
+  - IA sugere propostas baseadas no perfil do freelancer.  
+
+- **Busca e Filtros**:  
+  - Busca por habilidades, localização, avaliação, preço.  
+  - Recomendações personalizadas (machine learning).  
+
+---
+
+#### **C. Pagamentos e Taxas Administrativas**
+- **Integração com Stripe**:  
+  - Pagamentos seguros (cartão, PIX, boleto).  
+  - **Escrow**: cliente deposita o valor, liberado após aprovação.  
+  - Taxa administrativa transparente (ex: 5% para clientes, 10% para freelancers).  
+  - Faturamento recorrente para assinaturas premium.  
+
+- **Gestão Financeira**:  
+  - Dashboard de transações.  
+  - Emissão de recibos e notas fiscais automáticas.  
+  - Sistema de reembolsos e disputas.  
+
+---
+
+### **2. Diferenciais do Vacancy.service**
+#### **A. Sala de Reunião Integrada**
+- **Videochamada com Recursos Avançados**:  
+  - Gravação de reuniões (armazenamento em nuvem por X dias).  
+  - Compartilhamento de tela e quadro branco virtual.  
+  - Tradução simultânea em tempo real (via IA, ex: Google Translate API).  
+  - Suporte para grupos (até 20 participantes).  
+
+- **Agendamento Automático**:  
+  - Integração com Google Calendar/Outlook.  
+  - Lembretes automáticos por e-mail/notificação.  
+
+---
+
+#### **B. IA para Atendimento e Tradução**
+- **Chatbot Inteligente**:  
+  - Responde dúvidas sobre uso da plataforma, pagamentos, políticas.  
+  - NLP (Natural Language Processing) para compreensão contextual.  
+
+- **Tradução em Tempo Real**:  
+  - Tradução automática de mensagens no chat (suporte a 10+ idiomas).  
+  - Transcrição de reuniões com legendas em múltiplos idiomas.  
+
+- **Recomendações de Projetos**:  
+  - IA sugere projetos baseados em histórico e habilidades do freelancer.  
+
+---
+
+#### **C. Gestão de Projetos e Agenda**
+- **Calendário Integrado**:  
+  - Visualização de prazos, reuniões e entregas.  
+  - Sincronização com ferramentas externas (Google Calendar, iCal).  
+
+- **Gestão de Tarefas**:  
+  - Checklists, milestones e atualizações em tempo real.  
+  - Notificações de prazos e atrasos.  
+
+- **Armazenamento de Arquivos**:  
+  - Compartilhamento seguro de documentos (ex: contratos, briefings).  
+  - Limite de armazenamento gratuito, com upgrade para planos premium.  
+
+---
+
+### **3. Requisitos Administrativos**
+- **Painel de Controle Admin**:  
+  - Monitoramento de transações financeiras.  
+  - Moderação de perfis e projetos (denúncias, fraudes).  
+  - Relatórios de uso da plataforma (usuários ativos, receitas).  
+
+- **Políticas e Suporte**:  
+  - Termos de uso e política de privacidade claros.  
+  - Suporte 24/7 via chat (humano + IA).  
+
+---
+
+### **4. Tecnologias Recomendadas**
+- **Frontend**: React.js ou Vue.js (SPA com responsividade).  
+- **Backend**: Node.js (Express) ou Python (Django).  
+- **Banco de Dados**: PostgreSQL ou MongoDB.  
+- **WebRTC**: Para salas de reunião (ex: usando Agora.io ou Daily.co).  
+- **IA**: APIs como Dialogflow (chatbot), AWS Transcribe (transcrição), Google Cloud Translation.  
+- **Stripe API**: Para pagamentos e gestão financeira.  
+
+---
+
+### **5. Monetização**
+- **Taxas de Serviço**:  
+  - Cobrança sobre transações (ex: 5% do cliente + 10% do freelancer).  
+  - Planos premium com recursos exclusivos (ex: mais espaço de armazenamento, salas de reunião estendidas).  
+
+- **Publicidade**:  
+  - Anúncios segmentados para freelancers/clientes.  
+
+---
+
+### **6. Desafios e Considerações**
+- **Escalabilidade**: Suporte a alto tráfego e vídeo em tempo real.  
+- **Segurança**: Criptografia de dados (SSL), compliance com LGPD/GDPR.  
+- **Concorrência**: Destaque os diferenciais (taxas menores, salas de reunião, tradução).  
+
+---
+
+### **7. Roadmap Sugerido**
+1. **MVP (3-6 meses)**:  
+   - Cadastro, perfis, postagem de projetos, pagamentos via Stripe, chat básico.  
+2. **Fase 2 (6-12 meses)**:  
+   - Integração de salas de reunião, IA para tradução, gestão de agenda.  
+3. **Fase 3 (12+ meses)**:  
+   - Expansão para mercados internacionais (tradução multilíngue).  
+
+---
+
+
+
+
+Vamos expandir os requisitos do **Vacancy.service** com suas novas ideias (testes de habilidades via IA, pagamentos em criptomoedas, sistema de créditos baseado em tokens, afiliados e plano de créditos diários). Organizarei em tópicos claros:
+
+---
+
+### **1. Sistema de Teste de Habilidades com IA**
+#### **Avaliação Técnica Automatizada**
+- **Testes Personalizados por Categoria**:  
+  - Ex: Programação (desafios de código em Python, JS), Design (avaliação de portfólio via IA), Redação (análise de texto com GPT-4).  
+  - Plataforma integrada de quizzes e desafios práticos (ex: HackerRank integrado).  
+
+- **Projeto Simulado**:  
+  - Freelancers completam uma tarefa curta (ex: criar um landing page em 1h) para demonstrar habilidades.  
+  - Feedback automático da IA (ex: qualidade do código, criatividade do design).  
+
+- **Certificação e Badges**:  
+  - Níveis de habilidade (Iniciante, Intermediário, Especialista) baseados nos resultados.  
+  - Badges exibidas no perfil (ex: "Front-End Avançado", "Copywriting Aprovado pela IA").  
+
+#### **Tecnologias Sugeridas**  
+- Ferramentas de IA: **GPT-4** (para textos), **TensorFlow** (análise de código), **CodeSandbox** (desafios práticos).  
+- APIs de terceiros: HackerRank, Codility.  
+
+---
+
+### **2. Sistema de Pagamentos em Criptomoedas**
+#### **Integração Crypto + Stripe**
+- **Opções de Pagamento**:  
+  - **Criptomoedas**: Bitcoin, Ethereum, USDT (via carteiras EVM: MetaMask, Trust Wallet).  
+  - **Moedas Tradicionais**: Cartão, PIX, PayPal (via Stripe).  
+
+- **Conversão Automática**:  
+  - Clientes pagam em crypto ou fiat; freelancers escolhem como receber (crypto ou fiat).  
+  - Taxas de conversão transparentes 
+
+
+---
+
+### **3. Sistema de Créditos (Tokens)**
+#### **Créditos Diários e Planos**
+- **Créditos Gratuitos**:  
+  - Freelancers recebem **X créditos/dia** (ex: 3) para se candidatar a propostas.  
+  - Planos premium aumentam créditos diários (ex: 10 créditos/dia por R$50/mês).  
+
+- **Compra de Créditos**:  
+  - Créditos vendidos em pacotes (ex: 50 créditos por R$20).  
+  - Pagamento via crypto (desconto de 10%) ou fiat.  
+
+
+---
+
+### **4. Sistema de Afiliados**
+#### **Programa de Indicação**
+- **Comissões em Tokens**:  
+  - Afiliados ganham **X%** das taxas geradas por freelancers/clientes indicados (ex: 5% por 1 ano).  
+  - Pagamento em tokens .  
+
+- **Links e Códigos Únicos**:  
+  - Dashboard de afiliados com métricas (conversões, ganhos).  
+  - Ferramentas de marketing: landing pages, banners, cupons (ex: "Indique um amigo e ganhe 10 créditos").  
+
+- **Requisitos para Saque**:  
+  - Limite mínimo de saque (ex: 100 tokens).  
+  - Opção de converter tokens em crypto ou fiat.  
+
+---
+
+### **5. Requisitos Técnicos Adicionais**
+#### **Segurança e Compliance**  
+- **KYC/AML**: Verificação de identidade para transações em crypto.  
+- **Auditoria de Smart Contracts**: Garantir segurança dos tokens e escrow.  
+- **Relatórios Fiscais**: Geração automática para transações em crypto (ex: Formulário 8949 para EUA).  
+
+---
+
+### **6. Fluxo de Uso do Freelancer**
+1. **Teste de Habilidades**: Completa desafios para subir de nível no perfil.  
+2. **Recebe Créditos Diários**: Usa para se candidatar a propostas.  
+3. **Participa de Projetos**: Escolhe receber pagamento em crypto ou fiat.  
+4. **Indica Amigos**: Ganha tokens por cada conversão.  
+5. **Resgata Tokens**: Converte em outra crypto, fiat ou usa para benefícios na plataforma.  
+
+---
+
+### **7. Monetização**
+- **Taxas de Transação**: 5% do cliente + 10% do freelancer (em crypto ou fiat).  
+- **Venda de Créditos**: Pacotes de créditos para propostas extras.  
+- **Planos Premium**: Recursos como créditos ilimitados, salas de reunião premium.  
+- **Comissões de Afiliados**: Percentual sobre transações de indicados.  
+
+---
+
+## Estado Atual do Projeto
+
+- Landing page principal já implementada e funcional.
+- Módulo core (autenticação, usuários, dashboard admin) está plugável, com integração via função de registro, mas com pontos de acoplamento à raiz para facilitar MVP. Recomenda-se revisão para garantir plugabilidade total.
+- Dashboard admin protegido por JWT e seed de admin operacional.
+- Estrutura modular (actions, filters, hooks) aplicada no core.
+- Documentação e testes de integração em andamento.
+
+## O que falta para MVP
+
+- Garantir plugabilidade total do core e demais módulos (projetos, etc.).
+- Documentar todos os hooks/actions/filters disponíveis.
+- Implementar e proteger dashboards de usuário (freelancer/cliente).
+- Integrar módulo de projetos como plugin.
+- Implementar autenticação social (Google, Facebook, LinkedIn).
+- Finalizar multilíngue completo (i18n).
+- Testes de integração entre módulos.
+
+## Roadmap Atualizado
+
+- MVP: Core plugável, landing page, dashboard admin, autenticação JWT, módulo de projetos integrado.
+- Fase 2: Autenticação social, multilíngue, dashboards de usuário, documentação completa.
+- Fase 3: Diferenciais (pagamentos crypto, sala de reunião, IA, sistema de créditos/tokens, afiliados, compliance fiscal, etc.).
+
+
+

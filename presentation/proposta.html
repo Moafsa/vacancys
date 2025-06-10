@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacancy.services - Pitch Deck para Investidores</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+        }
+        
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+        
+        .highlight-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid #8b5cf6;
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #8b5cf6;
+        }
+        
+        .timeline-item:after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 21px;
+            width: 2px;
+            height: calc(100% - 16px);
+            background: #e2e8f0;
+        }
+        
+        .timeline-item:last-child:after {
+            display: none;
+        }
+        
+        .globe-spin {
+            animation: spin 20s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Responsividade extra */
+        @media (max-width: 640px) {
+            .slide {
+                min-height: unset;
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+            .max-w-7xl, .max-w-2xl, .max-w-3xl {
+                max-width: 100vw !important;
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+            .logo {
+                height: 22px !important;
+                max-width: 28px !important;
+            }
+            .brand-name {
+                display: none !important;
+                background: none !important;
+            }
+            nav .flex.h-16 {
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+            }
+            nav .flex.items-center {
+                flex-direction: row !important;
+                align-items: center !important;
+            }
+            .timeline-item {
+                padding-left: 18px;
+            }
+            .timeline-item:before {
+                width: 10px;
+                height: 10px;
+                top: 2px;
+            }
+            .timeline-item:after {
+                left: 4px;
+                top: 12px;
+            }
+            .h-20 {
+                height: 48px !important;
+            }
+            .h-16 {
+                height: 32px !important;
+            }
+            .h-8 {
+                height: 20px !important;
+            }
+            .rounded-xl, .rounded-lg, .rounded-md {
+                border-radius: 0.75rem !important;
+            }
+            .p-8, .p-6 {
+                padding: 1rem !important;
+            }
+            .mb-16 {
+                margin-bottom: 1.5rem !important;
+            }
+            .mb-12 {
+                margin-bottom: 1rem !important;
+            }
+            .text-4xl {
+                font-size: 1.7rem !important;
+            }
+            .text-3xl {
+                font-size: 1.3rem !important;
+            }
+            .text-2xl {
+                font-size: 1.1rem !important;
+            }
+            .text-xl {
+                font-size: 1rem !important;
+            }
+            .text-lg {
+                font-size: 0.95rem !important;
+            }
+            .text-base, .text-sm {
+                font-size: 0.9rem !important;
+            }
+            .grid, .grid-cols-2, .grid-cols-3 {
+                display: block !important;
+            }
+            .overflow-x-auto, table {
+                max-width: 100vw !important;
+                overflow-x: auto !important;
+                display: block !important;
+            }
+            .flex {
+                flex-direction: column !important;
+                gap: 0.5rem !important;
+            }
+            .items-center, .justify-center {
+                align-items: flex-start !important;
+                justify-content: flex-start !important;
+            }
+            .hero-btns {
+                flex-direction: column !important;
+                gap: 0.75rem !important;
+                align-items: stretch !important;
+            }
+            .market-flags {
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: wrap !important;
+                gap: 0.5rem !important;
+                justify-content: center !important;
+                margin-top: 1rem !important;
+            }
+            .market-flags img, .market-flags span {
+                margin: 0 !important;
+            }
+            .market-target-box {
+                text-align: center !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images//3.svg" alt="Vacancy.services Logo" class="logo">
+                    <span class="ml-2 text-xl font-bold text-indigo-600 brand-name">Vacancy.services</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#intro" class="text-gray-700 hover:text-indigo-600 font-medium">Introdução</a>
+                    <a href="#opportunity" class="text-gray-700 hover:text-indigo-600 font-medium">Oportunidade</a>
+                    <a href="#solution" class="text-gray-700 hover:text-indigo-600 font-medium">Solução</a>
+                    <a href="#investment" class="text-gray-700 hover:text-indigo-600 font-medium">Investimento</a>
+                    <a href="mailto:mferreira@vacancy.services" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">Contato</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="text-gray-700">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white pb-4 px-4 shadow-lg">
+            <a href="#intro" class="block py-2 text-gray-700 hover:text-indigo-600">Introdução</a>
+            <a href="#opportunity" class="block py-2 text-gray-700 hover:text-indigo-600">Oportunidade</a>
+            <a href="#solution" class="block py-2 text-gray-700 hover:text-indigo-600">Solução</a>
+            <a href="#investment" class="block py-2 text-gray-700 hover:text-indigo-600">Investimento</a>
+            <a href="mailto:mferreira@vacancy.services" class="block bg-indigo-600 text-white px-4 py-2 rounded-md text-center mt-2 hover:bg-indigo-700">Contato</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="intro" class="slide pt-16 gradient-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+            <div class="md:flex items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 fade-in">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">O Futuro do Trabalho Freelancer é Agora</h1>
+                    <p class="text-xl mb-8 opacity-90">Encontre os serviços freelancers perfeitos para o seu negócio. Conecte-se com profissionais talentosos do mundo todo.</p>
+                    <div class="flex space-x-4 hero-btns">
+                        <a href="#investment" class="bg-white text-indigo-600 px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition">Invista Agora</a>
+                        <a href="#solution" class="border-2 border-white text-white px-6 py-3 rounded-md font-medium hover:bg-white hover:text-indigo-600 transition">Saiba Mais</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center fade-in">
+                    <div class="relative">
+                        <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images//3.svg" alt="Vacancy.services Logo" class="w-64 h-64 mx-auto">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-72 h-72 rounded-full border-4 border-white border-opacity-20 globe-spin"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Opportunity -->
+    <section id="opportunity" class="slide bg-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Oportunidade de Mercado</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">A Revolução Global do Freelancer</h3>
+                    <p class="text-gray-600 mb-6">Estamos testemunhando uma mudança fundamental em como o trabalho é realizado. O emprego tradicional está sendo transformado por IA, robótica e automação, criando uma demanda massiva por soluções alternativas de renda.</p>
+                    
+                    <div class="bg-gray-50 p-6 rounded-lg mb-8">
+                        <div class="flex items-start">
+                            <div class="text-indigo-600 mr-4 mt-1">
+                                <i class="fas fa-exclamation-triangle text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">O Problema</h4>
+                                <p class="text-gray-600">Plataformas como Upwork, Freelancer e Fiverr estão saturadas, são burocráticas e carecem de inovação. Não atendem às necessidades da força de trabalho global e móvel de hoje.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="grid grid-cols-2 gap-4 market-flags">
+                        <div class="bg-indigo-50 p-6 rounded-lg text-center">
+                            <div class="text-indigo-600 text-4xl mb-3">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4 class="font-bold text-lg">1B+</h4>
+                            <p class="text-gray-600 text-sm">Freelancers ativos no mundo</p>
+                        </div>
+                        <div class="bg-purple-50 p-6 rounded-lg text-center">
+                            <div class="text-purple-600 text-4xl mb-3">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h4 class="font-bold text-lg">50%</h4>
+                            <p class="text-gray-600 text-sm">Força de trabalho freelancer até 2030</p>
+                        </div>
+                        <div class="bg-blue-50 p-6 rounded-lg text-center">
+                            <div class="text-blue-600 text-4xl mb-3">
+                                <i class="fas fa-globe-asia"></i>
+                            </div>
+                            <h4 class="font-bold text-lg">Ásia</h4>
+                            <p class="text-gray-600 text-sm">Potencial massivo inexplorado</p>
+                        </div>
+                        <div class="bg-green-50 p-6 rounded-lg text-center">
+                            <div class="text-green-600 text-4xl mb-3">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <h4 class="font-bold text-lg">Multilíngue</h4>
+                            <p class="text-gray-600 text-sm">Quebrando barreiras de idioma</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gray-800 text-white p-8 rounded-xl market-target-box">
+                <div class="md:flex items-center">
+                    <div class="md:w-2/3 mb-6 md:mb-0">
+                        <h3 class="text-2xl font-bold mb-4">Nossos Mercados-Alvo</h3>
+                        <p class="text-gray-300">Focamos em regiões de alto crescimento onde as plataformas existentes não atendem à demanda, especialmente Ásia (China & Índia) e América Latina.</p>
+                    </div>
+                    <div class="md:w-1/3 flex justify-center">
+                        <img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons/flags/4x3/in.svg" class="h-16 mx-2 shadow-md">
+                        <img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons/flags/4x3/cn.svg" class="h-16 mx-2 shadow-md">
+                        <img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons/flags/4x3/br.svg" class="h-16 mx-2 shadow-md">
+                        <img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons/flags/4x3/mx.svg" class="h-16 mx-2 shadow-md">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Solution -->
+    <section id="solution" class="slide bg-gray-50 py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nossa Solução</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="highlight-card bg-white p-6 rounded-lg shadow-sm">
+                    <div class="text-indigo-600 text-3xl mb-4">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Arquitetura Modular</h3>
+                    <p class="text-gray-600">Construída com Node.js, Next.js e TypeScript para máxima flexibilidade e escalabilidade em diferentes jurisdições e idiomas.</p>
+                </div>
+                
+                <div class="highlight-card bg-white p-6 rounded-lg shadow-sm">
+                    <div class="text-purple-600 text-3xl mb-4">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Matchmaking com IA</h3>
+                    <p class="text-gray-600">Algoritmos inteligentes conectam os freelancers certos às oportunidades certas com base em habilidades, localização e reputação.</p>
+                </div>
+                
+                <div class="highlight-card bg-white p-6 rounded-lg shadow-sm">
+                    <div class="text-blue-600 text-3xl mb-4">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Carteira Integrada</h3>
+                    <p class="text-gray-600">Escrow integrado, câmbio e gestão financeira para simplificar transações globais.</p>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 items-center mb-16">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Plataforma Híbrida</h3>
+                    <p class="text-gray-600 mb-6">A Vacancy.services une o melhor dos serviços digitais e presenciais. De programadores a encanadores, conectamos empresas a todos os tipos de talentos freelancers.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="text-green-500 mr-3 mt-1">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Tradução Automática</h4>
+                                <p class="text-gray-600 text-sm">Tradução nativa elimina barreiras para colaboração global.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-green-500 mr-3 mt-1">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Geolocalização</h4>
+                                <p class="text-gray-600 text-sm">Match inteligente para serviços remotos e presenciais.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-green-500 mr-3 mt-1">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Categorias Abrangentes</h4>
+                                <p class="text-gray-600 text-sm">De jardineiros a designers gráficos, cobrimos todas as necessidades de serviço.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Interface da plataforma" class="w-full h-auto rounded-md">
+                </div>
+            </div>
+            
+            <div class="bg-indigo-600 text-white p-8 rounded-xl">
+                <h3 class="text-2xl font-bold mb-6">Status Atual</h3>
+                <div class="md:flex items-center">
+                    <div class="md:w-2/3 mb-6 md:mb-0">
+                        <p class="mb-4">Nosso MVP está quase pronto, com módulos principais (autenticação, gestão de projetos, dashboards e integrações) finalizados ou em fase final de testes.</p>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5 mb-4">
+                            <div class="bg-green-400 h-2.5 rounded-full" style="width: 85%"></div>
+                        </div>
+                        <p class="text-sm text-indigo-100">Progresso do desenvolvimento: 85% concluído</p>
+                    </div>
+                    <div class="md:w-1/3 flex justify-center">
+                        <div class="bg-white text-indigo-600 p-4 rounded-full">
+                            <i class="fas fa-rocket text-4xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitive Advantage -->
+    <section class="slide bg-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Vantagem Competitiva</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div>
+                    <div class="flex mb-6">
+                        <div class="text-indigo-600 mr-4 text-2xl">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Modelo Híbrido</h3>
+                            <p class="text-gray-600">Diferente dos concorrentes que focam apenas em serviços digitais, conectamos prestadores de serviços físicos e digitais aos clientes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex mb-6">
+                        <div class="text-purple-600 mr-4 text-2xl">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Tradução Nativa</h3>
+                            <p class="text-gray-600">Tradução automática nativa elimina barreiras de idioma que limitam o alcance global de outras plataformas.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="flex mb-6">
+                        <div class="text-blue-600 mr-4 text-2xl">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Sistema Financeiro Integrado</h3>
+                            <p class="text-gray-600">Nossa carteira com escrow e câmbio resolve desafios de pagamento que frustram usuários em outras plataformas.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex mb-6">
+                        <div class="text-green-600 mr-4 text-2xl">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Abordagem Global Localizada</h3>
+                            <p class="text-gray-600">Combinamos infraestrutura global com operações locais em cada mercado para melhor compliance e experiência do usuário.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gray-100 p-6 rounded-lg mb-12">
+                <h3 class="text-xl font-bold mb-4 text-center">Comparativo com Concorrentes</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white rounded-lg overflow-hidden">
+                        <thead class="bg-gray-200">
+                            <tr>
+                                <th class="py-3 px-4 text-left">Funcionalidade</th>
+                                <th class="py-3 px-4 text-left">Vacancy.services</th>
+                                <th class="py-3 px-4 text-left">Upwork</th>
+                                <th class="py-3 px-4 text-left">Fiverr</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="py-3 px-4">Serviços Físicos</td>
+                                <td class="py-3 px-4 text-green-600 font-bold">Sim</td>
+                                <td class="py-3 px-4 text-red-500">Não</td>
+                                <td class="py-3 px-4 text-red-500">Não</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="py-3 px-4">Tradução Automática</td>
+                                <td class="py-3 px-4 text-green-600 font-bold">Nativa</td>
+                                <td class="py-3 px-4">Limitada</td>
+                                <td class="py-3 px-4">Nenhuma</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Carteira Integrada</td>
+                                <td class="py-3 px-4 text-green-600 font-bold">Sim</td>
+                                <td class="py-3 px-4">Parcial</td>
+                                <td class="py-3 px-4">Não</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="py-3 px-4">Presença Local</td>
+                                <td class="py-3 px-4 text-green-600 font-bold">25+ países</td>
+                                <td class="py-3 px-4">Poucos</td>
+                                <td class="py-3 px-4">Nenhum</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Revenue -->
+    <section class="slide bg-gray-50 py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Receita de Mercado</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://www.svgrepo.com/show/331630/upwork.svg" alt="Upwork Logo" class="h-8 mr-3">
+                        <h3 class="text-xl font-bold">Upwork</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Receita Anual (2024)</span>
+                            <span class="text-2xl font-bold text-indigo-600">$771,09M</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-indigo-600 h-2 rounded-full" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://cdn.worldvectorlogo.com/logos/fiverr-1.svg" alt="Fiverr Logo" class="h-8 mr-3">
+                        <h3 class="text-xl font-bold">Fiverr</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Receita Anual (2023)</span>
+                            <span class="text-2xl font-bold text-purple-600">$361,4M</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-purple-600 h-2 rounded-full" style="width: 47%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://hpg.com.br/wp-content/uploads/2025/10/getninjas-e-confiavel.jpg.jpg" alt="GetNinjas Logo" class="h-8 mr-3">
+                        <h3 class="text-xl font-bold">GetNinjas</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Receita Anual (2022)</span>
+                            <span class="text-2xl font-bold text-blue-600">$11,4M</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-blue-600 h-2 rounded-full" style="width: 1.5%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-indigo-600 text-white p-8 rounded-xl">
+                <div class="md:flex items-center">
+                    <div class="md:w-2/3 mb-6 md:mb-0">
+                        <h3 class="text-2xl font-bold mb-4">Oportunidade de Mercado</h3>
+                        <p>O mercado freelancer está crescendo de forma explosiva, com os principais players apresentando aumentos significativos de receita. Nosso modelo híbrido, que combina serviços digitais e presenciais, nos posiciona para capturar uma fatia relevante desse mercado em expansão.</p>
+                    </div>
+                    <div class="md:w-1/3 flex justify-center">
+                        <i class="fas fa-chart-line text-6xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expansion Strategy -->
+    <section class="slide bg-indigo-50 py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Estratégia de Expansão</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Infraestrutura Global com Operação Local</h3>
+                    <p class="text-gray-600 mb-6">Para cada país que entramos, estabelecemos uma entidade local com liderança regional, garantindo compliance com as leis locais e adaptação cultural.</p>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-sm mb-6">
+                        <h4 class="font-bold text-lg mb-3">Países de Lançamento Inicial</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Brasil</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">México</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">EUA</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Espanha</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Israel</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Dubai</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm h-full">
+                        <h4 class="font-bold text-lg mb-4">Modelo de Localização</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="bg-indigo-100 text-indigo-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 mt-1">
+                                    <i class="fas fa-building text-sm"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">Empresa Local</h5>
+                                    <p class="text-gray-600 text-sm">Entidade legal estabelecida em cada país</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-indigo-100 text-indigo-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 mt-1">
+                                    <i class="fas fa-users text-sm"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">Time Local</h5>
+                                    <p class="text-gray-600 text-sm">Operação sob liderança regional</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-indigo-100 text-indigo-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 mt-1">
+                                    <i class="fas fa-share-alt text-sm"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">Participação Local</h5>
+                                    <p class="text-gray-600 text-sm">Até 25% de participação para investidores/operadores locais</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-8 rounded-xl shadow-md">
+                <h3 class="text-2xl font-bold mb-6 text-center">Crescimento Projetado</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="text-5xl font-bold text-indigo-600 mb-2">5M+</div>
+                        <div class="text-gray-600">Usuários em 3 anos</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-5xl font-bold text-purple-600 mb-2">$50-$250</div>
+                        <div class="text-gray-600">Receita por usuário/mês</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-5xl font-bold text-blue-600 mb-2">$300M-$1.5B</div>
+                        <div class="text-gray-600">Potencial de receita anual</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Revenue Streams -->
+    <section class="slide bg-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Fontes de Receita</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-indigo-600">
+                    <div class="text-indigo-600 text-3xl mb-4">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Taxas de Transação</h3>
+                    <p class="text-gray-600">Comissão sobre projetos concluídos, escalonada conforme o tamanho do projeto e o nível do usuário.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-purple-600">
+                    <div class="text-purple-600 text-3xl mb-4">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Serviços Premium</h3>
+                    <p class="text-gray-600">Assinaturas com visibilidade ampliada, ferramentas de IA e recursos avançados.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-blue-600">
+                    <div class="text-blue-600 text-3xl mb-4">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Operações Financeiras</h3>
+                    <p class="text-gray-600">Receita de câmbio, taxas de saque e serviços de escrow via nossa carteira integrada.</p>
+                </div>
+            </div>
+            
+            <div class="bg-indigo-600 text-white p-8 rounded-xl">
+                <div class="md:flex items-center">
+                    <div class="md:w-2/3 mb-6 md:mb-0">
+                        <h3 class="text-2xl font-bold mb-4">Modelo de Negócio Escalável</h3>
+                        <p>Nossa receita cresce proporcionalmente ao uso da plataforma. À medida que expandimos para novos mercados e aumentamos a base de usuários, nossas múltiplas fontes de receita se potencializam para impulsionar a lucratividade.</p>
+                    </div>
+                    <div class="md:w-1/3 flex justify-center">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" class="h-32">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Opportunity -->
+    <section id="investment" class="slide bg-gray-800 text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Oportunidade de Investimento</h2>
+                <div class="w-20 h-1 bg-indigo-400 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Rodada Pré-Seed</h3>
+                    <p class="text-gray-300 mb-6">Estamos captando US$ 200,000 na nossa rodada pré-seed global para finalizar o MVP, estruturar operações internacionais e lançar nos mercados iniciais.</p>
+                    
+                    <div class="bg-gray-700 p-6 rounded-lg mb-6">
+                        <h4 class="font-bold text-lg mb-3">Termos do Investimento</h4>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-gray-300">Equity Oferecido:</span>
+                                <span class="font-bold">10%</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-300">Valuation:</span>
+                                <span class="font-bold">US$ 2M</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-300">Investimento Mínimo:</span>
+                                <span class="font-bold">US$ 10,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-gray-700 p-6 rounded-lg h-full">
+                        <h4 class="font-bold text-lg mb-4">Uso dos Recursos</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-2/3">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm font-medium">Finalização do MVP</span>
+                                        <span class="text-sm font-medium">30%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-600 rounded-full h-2">
+                                        <div class="bg-blue-400 h-2 rounded-full" style="width: 30%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2/3">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm font-medium">Expansão do Time</span>
+                                        <span class="text-sm font-medium">25%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-600 rounded-full h-2">
+                                        <div class="bg-purple-400 h-2 rounded-full" style="width: 25%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2/3">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm font-medium">Lançamento no Mercado</span>
+                                        <span class="text-sm font-medium">25%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-600 rounded-full h-2">
+                                        <div class="bg-green-400 h-2 rounded-full" style="width: 25%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2/3">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm font-medium">Estrutura Legal</span>
+                                        <span class="text-sm font-medium">20%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-600 rounded-full h-2">
+                                        <div class="bg-yellow-400 h-2 rounded-full" style="width: 20%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-indigo-600 p-8 rounded-xl">
+                <div class="md:flex items-center">
+                    <div class="md:w-2/3 mb-6 md:mb-0">
+                        <h3 class="text-2xl font-bold mb-4">Estrutura Legal</h3>
+                        <p>Com esta rodada, vamos estabelecer a holding global Vacancy.services em Delaware (EUA). Todos os investidores pré-seed serão incluídos nos documentos societários.</p>
+                    </div>
+                    <div class="md:w-1/3 flex justify-center">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2781/2781393.png" class="h-24">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="slide gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images//3.svg" alt="Vacancy.services Logo" class="h-20 mx-auto mb-6" style="filter: brightness(0) invert(1);">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">A Nova Infraestrutura para o Trabalho Global</h2>
+                <div class="w-20 h-1 bg-white bg-opacity-50 mx-auto mb-8"></div>
+                <p class="text-xl max-w-3xl mx-auto opacity-90">A Vacancy.services combina o melhor de Upwork, GetNinjas e Workana com tradução automática, infraestrutura financeira e verdadeira escalabilidade global.</p>
+            </div>
+            
+            <div class="max-w-2xl mx-auto bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm mb-12">
+                <h3 class="text-2xl font-bold mb-6 text-center">Junte-se a Nós para Construir o Futuro do Trabalho</h3>
+                <p class="mb-8 text-center">Investir agora é fazer parte da plataforma que vai impulsionar o trabalho freelancer no mundo todo. Nossa tecnologia está pronta, nosso time preparado e o mercado esperando.</p>
+                
+                <div class="text-center">
+                    <a href="mailto:mferreira@vacancy.services" class="inline-block bg-white text-indigo-600 px-8 py-3 rounded-md font-bold text-lg hover:bg-gray-100 transition">Entre em Contato para Investir</a>
+                </div>
+            </div>
+            
+            <div class="flex justify-center space-x-6">
+                <!-- Ícones sociais removidos para visual mais limpo -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images//3.svg" alt="Vacancy.services Logo" class="h-8 mr-2" style="filter: brightness(0) invert(1);">
+                    <span class="text-lg font-bold">Vacancy.services</span>
+                </div>
+                <div class="text-gray-400 text-sm">
+                    &copy; 2025 Vacancy.services. Todos os direitos reservados.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Add fade-in animation when elements come into view
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.slide').forEach(slide => {
+            observer.observe(slide);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+import chalk from 'chalk';
+
+export const logger = {
+  info: (message: string) => {
+    console.log(chalk.blue('ℹ'), chalk.blue(message));
+  },
+
+  success: (message: string) => {
+    console.log(chalk.green('✓'), chalk.green(message));
+  },
+
+  warning: (message: string) => {
+    console.log(chalk.yellow('⚠'), chalk.yellow(message));
+  },
+
+  error: (message: string, error?: any) => {
+    console.error(chalk.red('✖'), chalk.red(message));
+    if (error) {
+      console.error(chalk.red(error instanceof Error ? error.stack : JSON.stringify(error, null, 2)));
+    }
+  },
+
+  module: (moduleName: string, message: string) => {
+    console.log(chalk.cyan(`[${moduleName}]`), message);
+  }
+}; 

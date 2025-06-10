@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  core:
+    image: vacancy/core-module:staging-latest
+    container_name: vacancy-core-staging
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=staging
+      - PORT=8080
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+      - JWT_SECRET=${JWT_SECRET}
+      - LOG_LEVEL=info
+    depends_on:
+      - db
+      - redis
+    networks:
+      - vacancy-network
+
+  db:
+    image: postgres:14
+    container_name: vacancy-db-staging
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - pg_data_staging:/var/lib/postgresql/data
+    networks:
+      - vacancy-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:6
+    container_name: vacancy-redis-staging
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data_staging:/data
+    networks:
+      - vacancy-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  vacancy-network:
+    driver: bridge
+
+volumes:
+  pg_data_staging:
+  redis_data_staging: 

@@ -1,0 +1,40 @@
+version: "3.7"
+
+services:
+  vacancy-app:
+    image: vacancy-app:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - vacancy_app_data:/app
+    networks:
+      - network_public
+    environment:
+      - DATABASE_URL=postgresql://postgres:122334Qw!!Conext@postgres:5432/vacancy_service?schema=public
+      - NEXT_PUBLIC_APP_URL=https://vacancy.conext.click
+      - POSTMARK_API_TOKEN=f4d95eca-be47-42ad-93de-3c075f887bde
+      - POSTMARK_FROM_EMAIL=noreply@conext.click
+      - NODE_ENV=production
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.middlewares.redirect-https.redirectscheme.scheme=https"
+        - "traefik.http.middlewares.redirect-https.redirectscheme.permanent=true"
+        - "traefik.http.routers.vacancy.rule=Host(`vacancy.conext.click`)"
+        - "traefik.http.routers.vacancy.entrypoints=websecure"
+        - "traefik.http.routers.vacancy.tls.certresolver=letsencryptresolver"
+        - "traefik.http.routers.vacancy-http.rule=Host(`vacancy.conext.click`)"
+        - "traefik.http.routers.vacancy-http.entrypoints=web"
+        - "traefik.http.routers.vacancy-http.middlewares=redirect-https@docker"
+        - "traefik.http.services.vacancy.loadbalancer.server.port=3000"
+
+networks:
+  network_public:
+    name: network_public
+    external: true
+
+volumes:
+  vacancy_app_data:
+    external: true
+    name: vacancy_app_data 

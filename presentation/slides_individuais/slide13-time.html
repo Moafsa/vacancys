@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 13: Time - Vacancy.services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <style>
+        .slide {
+            min-height: 100vh;
+            display: block;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #6e48aa 0%, #4894ea 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Estilos para os gráficos */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+        
+        /* Estilos para animação de gráficos */
+        .pie-chart-container, .line-chart-container {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .slide.active .pie-chart-container,
+        .slide.active .line-chart-container {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Estilos para o time */
+        .team-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .team-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 1.5rem;
+            transform: translateY(30%);
+            transition: transform 0.3s ease;
+        }
+        
+        .team-card:hover .team-overlay {
+            transform: translateY(0);
+        }
+        
+        .team-social {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .team-card:hover .team-social {
+            opacity: 1;
+        }
+        
+        .team-social a {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+        
+        .team-social a:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="h-10 w-auto">
+                    <img src="https://ajvhvvndnlxelmbbhbbd.supabase.co/storage/v1/object/public/images//3.svg" alt="Vacancy.services logo" class="h-full">
+                </div>
+                <span class="ml-3 text-sm text-purple-700 hidden md:block">Talentos Globais, Oportunidades sem Fronteiras</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="slide12-america-latina.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-left text-purple-600"></i>
+                </a>
+                <a href="index_principal.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-home text-purple-600"></i>
+                </a>
+                <a href="slide14-investimento.html" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i class="fas fa-chevron-right text-purple-600"></i>
+                </a>
+                <span class="text-sm font-medium text-gray-600">13/22</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Slide: Time -->
+    <section class="slide bg-white">
+        <div class="container mx-auto px-6 py-20 min-h-screen">
+            <h2 class="text-4xl font-bold text-center mb-16 mt-10 text-purple-800">Nosso Time de Fundadores</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Membro 1 -->
+                <div class="team-card h-96">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="CEO" class="w-full h-full object-cover">
+                    <div class="team-overlay">
+                        <h3 class="font-bold text-white text-xl">Pedro Campos</h3>
+                        <p class="text-gray-300">CEO & Founder</p>
+                        <p class="text-gray-400 text-sm mt-2">Empreendedor serial, ex-Uber, especialista em marketplaces</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Membro 2 -->
+                <div class="team-card h-96">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80" alt="CTO" class="w-full h-full object-cover">
+                    <div class="team-overlay">
+                        <h3 class="font-bold text-white text-xl">Sofia Rodriguez</h3>
+                        <p class="text-gray-300">CTO</p>
+                        <p class="text-gray-400 text-sm mt-2">Ex-Google AI, PhD em Machine Learning, especialista em matchmaking</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Membro 3 -->
+                <div class="team-card h-96">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="COO" class="w-full h-full object-cover">
+                    <div class="team-overlay">
+                        <h3 class="font-bold text-white text-xl">Rafael Oliveira</h3>
+                        <p class="text-gray-300">COO</p>
+                        <p class="text-gray-400 text-sm mt-2">10+ anos em gestão operacional, ex-99/Didi, especialista em expansão LATAM</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Membro 4 -->
+                <div class="team-card h-96">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80" alt="CPO" class="w-full h-full object-cover">
+                    <div class="team-overlay">
+                        <h3 class="font-bold text-white text-xl">Ana Martins</h3>
+                        <p class="text-gray-300">CPO</p>
+                        <p class="text-gray-400 text-sm mt-2">UX/UI expert, ex-Nubank, especialista em design de produto centrado no usuário</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-dribbble"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-20 bg-purple-50 p-8 rounded-2xl shadow-lg">
+                <h3 class="font-bold text-2xl text-purple-800 mb-6">Experiência Combinada</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white p-5 rounded-xl shadow-md">
+                        <div class="text-4xl font-bold text-purple-700">15+</div>
+                        <p class="text-gray-600">Anos de experiência em marketplaces tech</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow-md">
+                        <div class="text-4xl font-bold text-blue-600">4</div>
+                        <p class="text-gray-600">Startups vendidas anteriormente</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow-md">
+                        <div class="text-4xl font-bold text-green-600">$75M+</div>
+                        <p class="text-gray-600">Capital levantado em ventures anteriores</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow-md">
+                        <div class="text-4xl font-bold text-amber-600">3</div>
+                        <p class="text-gray-600">Patentes em tecnologia de matchmaking</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Para garantir que a seção esteja visível (já que estamos tornando todos os slides visíveis por padrão)
+        const slides = document.querySelectorAll('.slide');
+        slides.forEach(slide => {
+            slide.classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html> 

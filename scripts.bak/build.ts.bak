@@ -1,0 +1,22 @@
+import { moduleUtils } from './utils/modules';
+import { logger } from './utils/logger';
+
+async function build() {
+  try {
+    // Get all modules
+    const modules = moduleUtils.getModules();
+    logger.info(`Found ${modules.length} modules to build`);
+
+    // Build each module sequentially
+    for (const moduleInfo of modules) {
+      await moduleUtils.buildModule(moduleInfo);
+    }
+
+    logger.success('Build completed successfully!');
+  } catch (error) {
+    logger.error('Build failed', error);
+    process.exit(1);
+  }
+}
+
+build(); 
